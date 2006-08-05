@@ -1,0 +1,1045 @@
+/home/lfs-kable/src/busybox-1.00/loginutils/su.o: /home/lfs-kable/src/busybox-1.00/loginutils/su.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/u/w/tmp.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/selinux.h)
+/home/lfs-kable/src/busybox-1.00/loginutils/delgroup.o: /home/lfs-kable/src/busybox-1.00/loginutils/delgroup.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/deluser.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/shadowpasswds.h)
+/home/lfs-kable/src/busybox-1.00/loginutils/adduser.o: /home/lfs-kable/src/busybox-1.00/loginutils/adduser.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/shadowpasswds.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/addgroup.h)
+/home/lfs-kable/src/busybox-1.00/loginutils/login.o: /home/lfs-kable/src/busybox-1.00/loginutils/login.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/selinux.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/u/w/tmp.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/securetty.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/wheel/group.h)
+/home/lfs-kable/src/busybox-1.00/loginutils/passwd.o: /home/lfs-kable/src/busybox-1.00/loginutils/passwd.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/shadowpasswds.h)
+/home/lfs-kable/src/busybox-1.00/loginutils/getty.o: /home/lfs-kable/src/busybox-1.00/loginutils/getty.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/syslogd.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/u/w/tmp.h)
+/home/lfs-kable/src/busybox-1.00/loginutils/delline.o: /home/lfs-kable/src/busybox-1.00/loginutils/delline.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/loginutils/deluser.o: /home/lfs-kable/src/busybox-1.00/loginutils/deluser.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/shadowpasswds.h)
+/home/lfs-kable/src/busybox-1.00/loginutils/vlock.o: /home/lfs-kable/src/busybox-1.00/loginutils/vlock.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/shadowpasswds.h)
+/home/lfs-kable/src/busybox-1.00/loginutils/sulogin.o: /home/lfs-kable/src/busybox-1.00/loginutils/sulogin.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/shadowpasswds.h)
+/home/lfs-kable/src/busybox-1.00/loginutils/addgroup.o: /home/lfs-kable/src/busybox-1.00/loginutils/addgroup.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/pwd_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/pwd_.h) \
+ /home/lfs-kable/src/busybox-1.00/include/grp_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/grp_.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/shadowpasswds.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/adduser.h)
+/home/lfs-kable/src/busybox-1.00/init/init_shared.o: /home/lfs-kable/src/busybox-1.00/init/init_shared.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/initrd.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/init.h)
+/home/lfs-kable/src/busybox-1.00/init/poweroff.o: /home/lfs-kable/src/busybox-1.00/init/poweroff.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/init.h)
+/home/lfs-kable/src/busybox-1.00/init/halt.o: /home/lfs-kable/src/busybox-1.00/init/halt.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/init.h)
+/home/lfs-kable/src/busybox-1.00/init/init.o: /home/lfs-kable/src/busybox-1.00/init/init.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/syslogd.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/init/coredumps.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/extra/quiet.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/use/inittab.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/initrd.h)
+/home/lfs-kable/src/busybox-1.00/init/mesg.o: /home/lfs-kable/src/busybox-1.00/init/mesg.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/init/reboot.o: /home/lfs-kable/src/busybox-1.00/init/reboot.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/init.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/swaponoff.o: /home/lfs-kable/src/busybox-1.00/util-linux/swaponoff.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/umount.o: /home/lfs-kable/src/busybox-1.00/util-linux/umount.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/mount/force.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/mount/loop.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/mtab/support.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/losetup.o: /home/lfs-kable/src/busybox-1.00/util-linux/losetup.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/rdate.o: /home/lfs-kable/src/busybox-1.00/util-linux/rdate.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/dmesg.o: /home/lfs-kable/src/busybox-1.00/util-linux/dmesg.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/fsck_minix.o: /home/lfs-kable/src/busybox-1.00/util-linux/fsck_minix.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/minix2.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/nfsmount.o: /home/lfs-kable/src/busybox-1.00/util-linux/nfsmount.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/fdflush.o: /home/lfs-kable/src/busybox-1.00/util-linux/fdflush.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/fbset.o: /home/lfs-kable/src/busybox-1.00/util-linux/fbset.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/fbset/fancy.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/fbset/readmode.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/fdisk.o: /home/lfs-kable/src/busybox-1.00/util-linux/fdisk.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/sun/label.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/sgi/label.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/aix/label.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/osf/label.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/fdisk/writable.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/fdisk/advanced.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/weird/partition/types.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/fdisk/blksize.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/freeramdisk.o: /home/lfs-kable/src/busybox-1.00/util-linux/freeramdisk.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/hwclock.o: /home/lfs-kable/src/busybox-1.00/util-linux/hwclock.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/hwclock/longoptions.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/pivot_root.o: /home/lfs-kable/src/busybox-1.00/util-linux/pivot_root.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/getopt.o: /home/lfs-kable/src/busybox-1.00/util-linux/getopt.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/mount.o: /home/lfs-kable/src/busybox-1.00/util-linux/mount.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/nfsmount.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/mount/loop.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/mtab/support.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/hexdump.o: /home/lfs-kable/src/busybox-1.00/util-linux/hexdump.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/dump.h $(dep_/home/lfs-kable/src/busybox-1.00/include/dump.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/fdformat.o: /home/lfs-kable/src/busybox-1.00/util-linux/fdformat.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/more.o: /home/lfs-kable/src/busybox-1.00/util-linux/more.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/use/termios.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/mkfs_minix.o: /home/lfs-kable/src/busybox-1.00/util-linux/mkfs_minix.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/minix2.h)
+/home/lfs-kable/src/busybox-1.00/util-linux/mkswap.o: /home/lfs-kable/src/busybox-1.00/util-linux/mkswap.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/miscutils/dc.o: /home/lfs-kable/src/busybox-1.00/miscutils/dc.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/miscutils/mt.o: /home/lfs-kable/src/busybox-1.00/miscutils/mt.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/miscutils/rx.o: /home/lfs-kable/src/busybox-1.00/miscutils/rx.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/miscutils/crond.o: /home/lfs-kable/src/busybox-1.00/miscutils/crond.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/crond/call/sendmail.h)
+/home/lfs-kable/src/busybox-1.00/miscutils/strings.o: /home/lfs-kable/src/busybox-1.00/miscutils/strings.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/miscutils/adjtimex.o: /home/lfs-kable/src/busybox-1.00/miscutils/adjtimex.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/miscutils/crontab.o: /home/lfs-kable/src/busybox-1.00/miscutils/crontab.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/miscutils/last.o: /home/lfs-kable/src/busybox-1.00/miscutils/last.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/miscutils/time.o: /home/lfs-kable/src/busybox-1.00/miscutils/time.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/miscutils/devfsd.o: /home/lfs-kable/src/busybox-1.00/miscutils/devfsd.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/devfsd/modload.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/devfsd/verbose.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/debug.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/devfsd/fg/np.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/file.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/modules/devfs.h)
+/home/lfs-kable/src/busybox-1.00/miscutils/watchdog.o: /home/lfs-kable/src/busybox-1.00/miscutils/watchdog.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/miscutils/hdparm.o: /home/lfs-kable/src/busybox-1.00/miscutils/hdparm.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/hdparm/get/identity.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/hdparm/hdio/getset/dma.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/hdparm/hdio/unregister/hwif.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/hdparm/hdio/scan/hwif.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/hdparm/hdio/tristate/hwif.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/hdparm/hdio/drive/reset.h)
+/home/lfs-kable/src/busybox-1.00/miscutils/makedevs.o: /home/lfs-kable/src/busybox-1.00/miscutils/makedevs.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/libbb/simplify_path.o: /home/lfs-kable/src/busybox-1.00/libbb/simplify_path.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/interface.o: /home/lfs-kable/src/busybox-1.00/libbb/interface.c \
+ /home/lfs-kable/src/busybox-1.00/include/inet_common.h $(dep_/home/lfs-kable/src/busybox-1.00/include/inet_common.h) \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ipv6.h)
+/home/lfs-kable/src/busybox-1.00/libbb/vherror_msg.o: /home/lfs-kable/src/busybox-1.00/libbb/vherror_msg.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/parse_number.o: /home/lfs-kable/src/busybox-1.00/libbb/parse_number.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/vdprintf.o: /home/lfs-kable/src/busybox-1.00/libbb/vdprintf.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/herror_msg_and_die.o: /home/lfs-kable/src/busybox-1.00/libbb/herror_msg_and_die.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/full_write.o: /home/lfs-kable/src/busybox-1.00/libbb/full_write.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/xreadlink.o: /home/lfs-kable/src/busybox-1.00/libbb/xreadlink.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/warn_ignoring_args.o: /home/lfs-kable/src/busybox-1.00/libbb/warn_ignoring_args.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/perror_nomsg_and_die.o: /home/lfs-kable/src/busybox-1.00/libbb/perror_nomsg_and_die.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/get_line_from_file.o: /home/lfs-kable/src/busybox-1.00/libbb/get_line_from_file.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/vfork_daemon_rexec.o: /home/lfs-kable/src/busybox-1.00/libbb/vfork_daemon_rexec.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/mtab_file.o: /home/lfs-kable/src/busybox-1.00/libbb/mtab_file.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/mtab/support.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/mtab/filename.h)
+/home/lfs-kable/src/busybox-1.00/libbb/messages.o: /home/lfs-kable/src/busybox-1.00/libbb/messages.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/ask_confirmation.o: /home/lfs-kable/src/busybox-1.00/libbb/ask_confirmation.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/get_console.o: /home/lfs-kable/src/busybox-1.00/libbb/get_console.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/xgetularg.o: /home/lfs-kable/src/busybox-1.00/libbb/xgetularg.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/make_directory.o: /home/lfs-kable/src/busybox-1.00/libbb/make_directory.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/read_package_field.o: /home/lfs-kable/src/busybox-1.00/libbb/read_package_field.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/qmodule.o: /home/lfs-kable/src/busybox-1.00/libbb/qmodule.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/xregcomp.o: /home/lfs-kable/src/busybox-1.00/libbb/xregcomp.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/wfopen.o: /home/lfs-kable/src/busybox-1.00/libbb/wfopen.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/device_open.o: /home/lfs-kable/src/busybox-1.00/libbb/device_open.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/recursive_action.o: /home/lfs-kable/src/busybox-1.00/libbb/recursive_action.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/bb_asprintf.o: /home/lfs-kable/src/busybox-1.00/libbb/bb_asprintf.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/default_error_retval.o: /home/lfs-kable/src/busybox-1.00/libbb/default_error_retval.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/create_icmp6_socket.o: /home/lfs-kable/src/busybox-1.00/libbb/create_icmp6_socket.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ipv6.h)
+/home/lfs-kable/src/busybox-1.00/libbb/wfopen_input.o: /home/lfs-kable/src/busybox-1.00/libbb/wfopen_input.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/run_shell.o: /home/lfs-kable/src/busybox-1.00/libbb/run_shell.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/selinux.h)
+/home/lfs-kable/src/busybox-1.00/libbb/login.o: /home/lfs-kable/src/busybox-1.00/libbb/login.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/xgetcwd.o: /home/lfs-kable/src/busybox-1.00/libbb/xgetcwd.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/skip_whitespace.o: /home/lfs-kable/src/busybox-1.00/libbb/skip_whitespace.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/safe_read.o: /home/lfs-kable/src/busybox-1.00/libbb/safe_read.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/find_pid_by_name.o: /home/lfs-kable/src/busybox-1.00/libbb/find_pid_by_name.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/selinux.h)
+/home/lfs-kable/src/busybox-1.00/libbb/getopt_ulflags.o: /home/lfs-kable/src/busybox-1.00/libbb/getopt_ulflags.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/remove_file.o: /home/lfs-kable/src/busybox-1.00/libbb/remove_file.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/vperror_msg.o: /home/lfs-kable/src/busybox-1.00/libbb/vperror_msg.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/herror_msg.o: /home/lfs-kable/src/busybox-1.00/libbb/herror_msg.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/my_getgrgid.o: /home/lfs-kable/src/busybox-1.00/libbb/my_getgrgid.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/grp_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/grp_.h)
+/home/lfs-kable/src/busybox-1.00/libbb/verror_msg.o: /home/lfs-kable/src/busybox-1.00/libbb/verror_msg.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/my_getgrnam.o: /home/lfs-kable/src/busybox-1.00/libbb/my_getgrnam.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/pwd_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/pwd_.h) \
+ /home/lfs-kable/src/busybox-1.00/include/grp_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/grp_.h)
+/home/lfs-kable/src/busybox-1.00/libbb/hash_fd.o: /home/lfs-kable/src/busybox-1.00/libbb/hash_fd.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/sha1sum.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/md5sum.h)
+/home/lfs-kable/src/busybox-1.00/libbb/kernel_version.o: /home/lfs-kable/src/busybox-1.00/libbb/kernel_version.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/dump.o: /home/lfs-kable/src/busybox-1.00/libbb/dump.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/dump.h $(dep_/home/lfs-kable/src/busybox-1.00/include/dump.h)
+/home/lfs-kable/src/busybox-1.00/libbb/last_char_is.o: /home/lfs-kable/src/busybox-1.00/libbb/last_char_is.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/fflush_stdout_and_exit.o: /home/lfs-kable/src/busybox-1.00/libbb/fflush_stdout_and_exit.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/safe_strncpy.o: /home/lfs-kable/src/busybox-1.00/libbb/safe_strncpy.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/copyfd.o: /home/lfs-kable/src/busybox-1.00/libbb/copyfd.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/libbb/error_msg_and_die.o: /home/lfs-kable/src/busybox-1.00/libbb/error_msg_and_die.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/create_icmp_socket.o: /home/lfs-kable/src/busybox-1.00/libbb/create_icmp_socket.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/full_read.o: /home/lfs-kable/src/busybox-1.00/libbb/full_read.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/xgethostbyname2.o: /home/lfs-kable/src/busybox-1.00/libbb/xgethostbyname2.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ipv6.h)
+/home/lfs-kable/src/busybox-1.00/libbb/loop.o: /home/lfs-kable/src/busybox-1.00/libbb/loop.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/fgets_str.o: /home/lfs-kable/src/busybox-1.00/libbb/fgets_str.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/mtab.o: /home/lfs-kable/src/busybox-1.00/libbb/mtab.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/xgethostbyname.o: /home/lfs-kable/src/busybox-1.00/libbb/xgethostbyname.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/find_root_device.o: /home/lfs-kable/src/busybox-1.00/libbb/find_root_device.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/devfs.h)
+/home/lfs-kable/src/busybox-1.00/libbb/get_terminal_width_height.o: /home/lfs-kable/src/busybox-1.00/libbb/get_terminal_width_height.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/autowidth.h)
+/home/lfs-kable/src/busybox-1.00/libbb/inode_hash.o: /home/lfs-kable/src/busybox-1.00/libbb/inode_hash.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/libbb/concat_subpath_file.o: /home/lfs-kable/src/busybox-1.00/libbb/concat_subpath_file.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/change_identity.o: /home/lfs-kable/src/busybox-1.00/libbb/change_identity.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/isdirectory.o: /home/lfs-kable/src/busybox-1.00/libbb/isdirectory.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/inet_common.o: /home/lfs-kable/src/busybox-1.00/libbb/inet_common.c \
+ /home/lfs-kable/src/busybox-1.00/include/inet_common.h $(dep_/home/lfs-kable/src/busybox-1.00/include/inet_common.h) \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ipv6.h)
+/home/lfs-kable/src/busybox-1.00/libbb/trim.o: /home/lfs-kable/src/busybox-1.00/libbb/trim.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/perror_msg_and_die.o: /home/lfs-kable/src/busybox-1.00/libbb/perror_msg_and_die.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/setup_environment.o: /home/lfs-kable/src/busybox-1.00/libbb/setup_environment.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/printf.o: /home/lfs-kable/src/busybox-1.00/libbb/printf.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/find_mount_point.o: /home/lfs-kable/src/busybox-1.00/libbb/find_mount_point.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/perror_nomsg.o: /home/lfs-kable/src/busybox-1.00/libbb/perror_nomsg.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/xconnect.o: /home/lfs-kable/src/busybox-1.00/libbb/xconnect.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/perror_msg.o: /home/lfs-kable/src/busybox-1.00/libbb/perror_msg.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/my_getug.o: /home/lfs-kable/src/busybox-1.00/libbb/my_getug.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/human_readable.o: /home/lfs-kable/src/busybox-1.00/libbb/human_readable.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/fclose_nonstdin.o: /home/lfs-kable/src/busybox-1.00/libbb/fclose_nonstdin.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/procps.o: /home/lfs-kable/src/busybox-1.00/libbb/procps.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/selinux.h)
+/home/lfs-kable/src/busybox-1.00/libbb/parse_mode.o: /home/lfs-kable/src/busybox-1.00/libbb/parse_mode.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/my_getpwnam.o: /home/lfs-kable/src/busybox-1.00/libbb/my_getpwnam.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/pwd_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/pwd_.h) \
+ /home/lfs-kable/src/busybox-1.00/include/grp_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/grp_.h)
+/home/lfs-kable/src/busybox-1.00/libbb/concat_path_file.o: /home/lfs-kable/src/busybox-1.00/libbb/concat_path_file.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/syscalls.o: /home/lfs-kable/src/busybox-1.00/libbb/syscalls.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/my_getpwuid.o: /home/lfs-kable/src/busybox-1.00/libbb/my_getpwuid.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/pwd_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/pwd_.h)
+/home/lfs-kable/src/busybox-1.00/libbb/run_parts.o: /home/lfs-kable/src/busybox-1.00/libbb/run_parts.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/restricted_shell.o: /home/lfs-kable/src/busybox-1.00/libbb/restricted_shell.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/copy_file.o: /home/lfs-kable/src/busybox-1.00/libbb/copy_file.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/preserve/hardlinks.h)
+/home/lfs-kable/src/busybox-1.00/libbb/process_escape_sequence.o: /home/lfs-kable/src/busybox-1.00/libbb/process_escape_sequence.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/xgetlarg.o: /home/lfs-kable/src/busybox-1.00/libbb/xgetlarg.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/libbb/print_file.o: /home/lfs-kable/src/busybox-1.00/libbb/print_file.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/safe_write.o: /home/lfs-kable/src/busybox-1.00/libbb/safe_write.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/error_msg.o: /home/lfs-kable/src/busybox-1.00/libbb/error_msg.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/xfuncs.o: /home/lfs-kable/src/busybox-1.00/libbb/xfuncs.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/speed_table.o: /home/lfs-kable/src/busybox-1.00/libbb/speed_table.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/correct_password.o: /home/lfs-kable/src/busybox-1.00/libbb/correct_password.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/shadowpasswds.h)
+/home/lfs-kable/src/busybox-1.00/libbb/chomp.o: /home/lfs-kable/src/busybox-1.00/libbb/chomp.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/module_syscalls.o: /home/lfs-kable/src/busybox-1.00/libbb/module_syscalls.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/safe_strtol.o: /home/lfs-kable/src/busybox-1.00/libbb/safe_strtol.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/pwd2spwd.o: /home/lfs-kable/src/busybox-1.00/libbb/pwd2spwd.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/shadow_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/shadow_.h)
+/home/lfs-kable/src/busybox-1.00/libbb/obscure.o: /home/lfs-kable/src/busybox-1.00/libbb/obscure.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/libbb/pw_encrypt.o: /home/lfs-kable/src/busybox-1.00/libbb/pw_encrypt.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/sha1/passwords.h)
+/home/lfs-kable/src/busybox-1.00/libbb/llist_add_to.o: /home/lfs-kable/src/busybox-1.00/libbb/llist_add_to.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/shell/ash.o: /home/lfs-kable/src/busybox-1.00/shell/ash.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/pwd_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/pwd_.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/ash/job/control.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/ash/alias.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/ash/optimize/for/size.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/ash/math/support.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/ash/cmdcmd.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/ash/getopts.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/sh/extra/quiet.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/ash/mail.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/ash/math/support/64.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/ash/random/support.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/locale/support.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/command/savehistory.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/command/editing.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/sh/fancy/prompt.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/sh/standalone/shell.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/command/tab/completion.h)
+/home/lfs-kable/src/busybox-1.00/shell/msh.o: /home/lfs-kable/src/busybox-1.00/shell/msh.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/command/editing.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/sh/fancy/prompt.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/sh/extra/quiet.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/sh/standalone/shell.h)
+/home/lfs-kable/src/busybox-1.00/shell/hush.o: /home/lfs-kable/src/busybox-1.00/shell/hush.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/sh/fancy/prompt.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/command/editing.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/sh/standalone/shell.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/sh/extra/quiet.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/shell/cmdedit.o: /home/lfs-kable/src/busybox-1.00/shell/cmdedit.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/../shell/cmdedit.h $(dep_/home/lfs-kable/src/busybox-1.00/include/../shell/cmdedit.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/locale/support.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/command/tab/completion.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/command/editing.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/command/username/completion.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/sh/fancy/prompt.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/getusername/and/homedir.h) \
+ /home/lfs-kable/src/busybox-1.00/include/pwd_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/pwd_.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/command/history.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/nonprintable/inverse/put.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/ash.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/command/savehistory.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/shell/lash.o: /home/lfs-kable/src/busybox-1.00/shell/lash.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/locale/support.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/lash/pipe/n/redirects.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/sh/fancy/prompt.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/lash/job/control.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/command/editing.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/sh/standalone/shell.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/sh/extra/quiet.h)
+/home/lfs-kable/src/busybox-1.00/libpwdgrp/pwd_grp.o: /home/lfs-kable/src/busybox-1.00/libpwdgrp/pwd_grp.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/pwd_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/pwd_.h) \
+ /home/lfs-kable/src/busybox-1.00/include/grp_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/grp_.h) \
+ /home/lfs-kable/src/busybox-1.00/include/shadow_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/shadow_.h)
+/home/lfs-kable/src/busybox-1.00/editors/vi.o: /home/lfs-kable/src/busybox-1.00/editors/vi.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/locale/support.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/vi/optimize/cursor.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/vi/use/signals.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/vi/crashme.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/vi/dot/cmd.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/vi/yankmark.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/vi/readonly.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/vi/search.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/vi/colon.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/vi/win/resize.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/vi/setopts.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/vi/set.h)
+/home/lfs-kable/src/busybox-1.00/editors/awk.o: /home/lfs-kable/src/busybox-1.00/editors/awk.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/awk/math.h)
+/home/lfs-kable/src/busybox-1.00/editors/sed.o: /home/lfs-kable/src/busybox-1.00/editors/sed.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/editors/patch.o: /home/lfs-kable/src/busybox-1.00/editors/patch.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/findutils/find.o: /home/lfs-kable/src/busybox-1.00/findutils/find.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/find/type.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/find/perm.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/find/mtime.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/find/xdev.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/find/newer.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/find/inum.h)
+/home/lfs-kable/src/busybox-1.00/findutils/grep.o: /home/lfs-kable/src/busybox-1.00/findutils/grep.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/grep/context.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/grep/egrep/alias.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/findutils/xargs.o: /home/lfs-kable/src/busybox-1.00/findutils/xargs.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/xargs/support/confirmation.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/xargs/support/quotes.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/xargs/support/termopt.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/xargs/support/zero/term.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/modutils/rmmod.o: /home/lfs-kable/src/busybox-1.00/modutils/rmmod.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/2/6/modules.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/query/module/interface.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/modutils/lsmod.o: /home/lfs-kable/src/busybox-1.00/modutils/lsmod.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/check/tainted/module.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/query/module/interface.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/modutils/modprobe.o: /home/lfs-kable/src/busybox-1.00/modutils/modprobe.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/2/6/modules.h)
+/home/lfs-kable/src/busybox-1.00/modutils/insmod.o: /home/lfs-kable/src/busybox-1.00/modutils/insmod.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/2/4/modules.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/2/6/modules.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/insmod/loadinkmem.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/insmod/version/checking.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/use/list.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/list/archtype.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/use/single.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/use/plt/entries.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/use/got/entries.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/use/plt/list.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/got/entry/size.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/plt/entry/size.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/check/tainted/module.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/insmod/ksymoops/symbols.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/insmod/load/map.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/insmod/load/map/full.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/archival/ar.o: /home/lfs-kable/src/busybox-1.00/archival/ar.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/archival/uncompress.o: /home/lfs-kable/src/busybox-1.00/archival/uncompress.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/rpm.o: /home/lfs-kable/src/busybox-1.00/archival/rpm.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/tar.o: /home/lfs-kable/src/busybox-1.00/archival/tar.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/tar/create.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/tar/from.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/tar/gzip.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/tar/compress.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/tar/bzip2.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/tar/long/options.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/archival/cpio.o: /home/lfs-kable/src/busybox-1.00/archival/cpio.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/archival/dpkg.o: /home/lfs-kable/src/busybox-1.00/archival/dpkg.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/deb/tar/gz.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/deb/tar/bz2.h)
+/home/lfs-kable/src/busybox-1.00/archival/gzip.o: /home/lfs-kable/src/busybox-1.00/archival/gzip.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/gunzip.h)
+/home/lfs-kable/src/busybox-1.00/archival/dpkg_deb.o: /home/lfs-kable/src/busybox-1.00/archival/dpkg_deb.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/deb/tar/gz.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/deb/tar/bz2.h)
+/home/lfs-kable/src/busybox-1.00/archival/bunzip2.o: /home/lfs-kable/src/busybox-1.00/archival/bunzip2.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/data_skip.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/data_skip.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/seek_by_char.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/seek_by_char.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/filter_accept_all.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/filter_accept_all.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/data_extract_to_buffer.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/data_extract_to_buffer.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/decompress_bunzip2.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/decompress_bunzip2.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/seek_by_jump.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/seek_by_jump.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/unarchive/tape.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/get_header_tar_gz.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/get_header_tar_gz.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/data_extract_to_stdout.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/data_extract_to_stdout.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/filter_accept_list_reassign.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/filter_accept_list_reassign.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/deb/tar/gz.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/deb/tar/bz2.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/header_verbose_list.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/header_verbose_list.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/decompress_uncompress.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/decompress_uncompress.c \
+ /home/lfs-kable/src/busybox-1.00/include/config.h $(dep_/home/lfs-kable/src/busybox-1.00/include/config.h) \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/get_header_tar.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/get_header_tar.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/tar/gnu/extensions.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/tar/oldgnu/compatability.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/decompress_unzip.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/decompress_unzip.c \
+ /home/lfs-kable/src/busybox-1.00/include/config.h $(dep_/home/lfs-kable/src/busybox-1.00/include/config.h) \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/unpack_ar_archive.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/unpack_ar_archive.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/init_handle.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/init_handle.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/header_list.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/header_list.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/filter_accept_reject_list.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/filter_accept_reject_list.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/data_extract_all.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/data_extract_all.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/get_header_ar.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/get_header_ar.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ar/long/filenames.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/header_skip.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/header_skip.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/open_transformer.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/open_transformer.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/archive_xread_all_eof.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/archive_xread_all_eof.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/data_align.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/data_align.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/find_list_entry.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/find_list_entry.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/filter_accept_list.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/filter_accept_list.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/get_header_cpio.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/get_header_cpio.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/check_header_gzip.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/check_header_gzip.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/archive_xread_all.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/archive_xread_all.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/archival/libunarchive/get_header_tar_bz2.o: /home/lfs-kable/src/busybox-1.00/archival/libunarchive/get_header_tar_bz2.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/rpm2cpio.o: /home/lfs-kable/src/busybox-1.00/archival/rpm2cpio.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h)
+/home/lfs-kable/src/busybox-1.00/archival/unzip.o: /home/lfs-kable/src/busybox-1.00/archival/unzip.c \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/archival/gunzip.o: /home/lfs-kable/src/busybox-1.00/archival/gunzip.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/unarchive.h $(dep_/home/lfs-kable/src/busybox-1.00/include/unarchive.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/gunzip/uncompress.h)
+/home/lfs-kable/src/busybox-1.00/procps/ps.o: /home/lfs-kable/src/busybox-1.00/procps/ps.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/selinux.h)
+/home/lfs-kable/src/busybox-1.00/procps/renice.o: /home/lfs-kable/src/busybox-1.00/procps/renice.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/procps/top.o: /home/lfs-kable/src/busybox-1.00/procps/top.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/use/termios.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/selinux.h)
+/home/lfs-kable/src/busybox-1.00/procps/free.o: /home/lfs-kable/src/busybox-1.00/procps/free.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/procps/kill.o: /home/lfs-kable/src/busybox-1.00/procps/kill.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/killall.h)
+/home/lfs-kable/src/busybox-1.00/procps/uptime.o: /home/lfs-kable/src/busybox-1.00/procps/uptime.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/procps/sysctl.o: /home/lfs-kable/src/busybox-1.00/procps/sysctl.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/procps/pidof.o: /home/lfs-kable/src/busybox-1.00/procps/pidof.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/sysklogd/klogd.o: /home/lfs-kable/src/busybox-1.00/sysklogd/klogd.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/sysklogd/syslogd.o: /home/lfs-kable/src/busybox-1.00/sysklogd/syslogd.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/rotate/logfile.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/remote/log.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ipc/syslog.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ipc/syslog/buffer/size.h)
+/home/lfs-kable/src/busybox-1.00/sysklogd/logread.o: /home/lfs-kable/src/busybox-1.00/sysklogd/logread.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/logread/reduced/locking.h)
+/home/lfs-kable/src/busybox-1.00/sysklogd/logger.o: /home/lfs-kable/src/busybox-1.00/sysklogd/logger.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/syslogd.h)
+/home/lfs-kable/src/busybox-1.00/networking/ip.o: /home/lfs-kable/src/busybox-1.00/networking/ip.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ip/address.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ip/route.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ip/link.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ip/tunnel.h)
+/home/lfs-kable/src/busybox-1.00/networking/nc.o: /home/lfs-kable/src/busybox-1.00/networking/nc.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/networking/ipaddr.o: /home/lfs-kable/src/busybox-1.00/networking/ipaddr.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/networking/iproute.o: /home/lfs-kable/src/busybox-1.00/networking/iproute.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/networking/ipcalc.o: /home/lfs-kable/src/busybox-1.00/networking/ipcalc.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ipcalc/fancy.h)
+/home/lfs-kable/src/busybox-1.00/networking/iplink.o: /home/lfs-kable/src/busybox-1.00/networking/iplink.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/networking/vconfig.o: /home/lfs-kable/src/busybox-1.00/networking/vconfig.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/networking/route.o: /home/lfs-kable/src/busybox-1.00/networking/route.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/inet_common.h $(dep_/home/lfs-kable/src/busybox-1.00/include/inet_common.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ipv6.h)
+/home/lfs-kable/src/busybox-1.00/networking/telnet.o: /home/lfs-kable/src/busybox-1.00/networking/telnet.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/telnet/ttype.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/telnet/autologin.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/autowidth.h)
+/home/lfs-kable/src/busybox-1.00/networking/ifupdown.o: /home/lfs-kable/src/busybox-1.00/networking/ifupdown.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ifupdown/mapping.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ifupdown/ip.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ifupdown/ipx.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ifupdown/ipv6.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ifupdown/ipv4.h)
+/home/lfs-kable/src/busybox-1.00/networking/iptunnel.o: /home/lfs-kable/src/busybox-1.00/networking/iptunnel.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/networking/netstat.o: /home/lfs-kable/src/busybox-1.00/networking/netstat.c \
+ /home/lfs-kable/src/busybox-1.00/include/inet_common.h $(dep_/home/lfs-kable/src/busybox-1.00/include/inet_common.h) \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/pwd_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/pwd_.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/route.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ipv6.h)
+/home/lfs-kable/src/busybox-1.00/networking/ifconfig.o: /home/lfs-kable/src/busybox-1.00/networking/ifconfig.c \
+ /home/lfs-kable/src/busybox-1.00/include/inet_common.h $(dep_/home/lfs-kable/src/busybox-1.00/include/inet_common.h) \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ifconfig/slip.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ipv6.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ifconfig/broadcast/plus.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ifconfig/hw.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ifconfig/memstart/ioaddr/irq.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ifconfig/status.h)
+/home/lfs-kable/src/busybox-1.00/networking/ftpgetput.o: /home/lfs-kable/src/busybox-1.00/networking/ftpgetput.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/ftpget.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/ftpput.h)
+/home/lfs-kable/src/busybox-1.00/networking/ping.o: /home/lfs-kable/src/busybox-1.00/networking/ping.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/fancy/ping.h)
+/home/lfs-kable/src/busybox-1.00/networking/libiproute/iproute.o: /home/lfs-kable/src/busybox-1.00/networking/libiproute/iproute.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/networking/libiproute/iplink.o: /home/lfs-kable/src/busybox-1.00/networking/libiproute/iplink.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/networking/libiproute/ipaddress.o: /home/lfs-kable/src/busybox-1.00/networking/libiproute/ipaddress.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/networking/libiproute/ll_addr.o: /home/lfs-kable/src/busybox-1.00/networking/libiproute/ll_addr.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/networking/libiproute/ip_parse_common_args.o: /home/lfs-kable/src/busybox-1.00/networking/libiproute/ip_parse_common_args.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/networking/libiproute/iptunnel.o: /home/lfs-kable/src/busybox-1.00/networking/libiproute/iptunnel.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/networking/libiproute/utils.o: /home/lfs-kable/src/busybox-1.00/networking/libiproute/utils.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/networking/libiproute/libnetlink.o: /home/lfs-kable/src/busybox-1.00/networking/libiproute/libnetlink.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/networking/tftp.o: /home/lfs-kable/src/busybox-1.00/networking/tftp.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/tftp/blocksize.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/tftp/debug.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/tftp/get.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/tftp/put.h)
+/home/lfs-kable/src/busybox-1.00/networking/wget.o: /home/lfs-kable/src/busybox-1.00/networking/wget.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/wget/statusbar.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/wget/authentication.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/wget/ip6/literal.h)
+/home/lfs-kable/src/busybox-1.00/networking/nslookup.o: /home/lfs-kable/src/busybox-1.00/networking/nslookup.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/networking/arping.o: /home/lfs-kable/src/busybox-1.00/networking/arping.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/networking/telnetd.o: /home/lfs-kable/src/busybox-1.00/networking/telnetd.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/login.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/telnetd/inetd.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/devpts.h)
+/home/lfs-kable/src/busybox-1.00/networking/httpd.o: /home/lfs-kable/src/busybox-1.00/networking/httpd.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/lfs.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/httpd/usage/from/inetd/only.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/httpd/basic/auth.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/httpd/cgi.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/httpd/config/with/mime/types.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/httpd/encode/url/str.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/httpd/set/remote/port/to/env.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/httpd/auth/md5.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/httpd/reload/config/sighup.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/httpd/setuid.h)
+/home/lfs-kable/src/busybox-1.00/networking/hostname.o: /home/lfs-kable/src/busybox-1.00/networking/hostname.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/networking/ping6.o: /home/lfs-kable/src/busybox-1.00/networking/ping6.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/fancy/ping6.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/fancy/ping.h)
+/home/lfs-kable/src/busybox-1.00/networking/inetd.o: /home/lfs-kable/src/busybox-1.00/networking/inetd.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/inetd/support/biltin/echo.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/inetd/support/biltin/discard.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/inetd/support/biltin/time.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/inetd/support/biltin/daytime.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/inetd/support/biltin/chargen.h)
+/home/lfs-kable/src/busybox-1.00/networking/traceroute.o: /home/lfs-kable/src/busybox-1.00/networking/traceroute.c \
+ /home/lfs-kable/src/busybox-1.00/include/inet_common.h $(dep_/home/lfs-kable/src/busybox-1.00/include/inet_common.h) \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/traceroute/verbose.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/traceroute.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/traceroute/so/debug.h)
+/home/lfs-kable/src/busybox-1.00/networking/nameif.o: /home/lfs-kable/src/busybox-1.00/networking/nameif.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/applets/applets.o: /home/lfs-kable/src/busybox-1.00/applets/applets.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/usage.h $(dep_/home/lfs-kable/src/busybox-1.00/include/usage.h) \
+ /home/lfs-kable/src/busybox-1.00/include/applets.h $(dep_/home/lfs-kable/src/busybox-1.00/include/applets.h) \
+ /home/lfs-kable/src/busybox-1.00/include/applets.h $(dep_/home/lfs-kable/src/busybox-1.00/include/applets.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/suid.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/suid/config.h) \
+ /home/lfs-kable/src/busybox-1.00/include/pwd_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/pwd_.h) \
+ /home/lfs-kable/src/busybox-1.00/include/grp_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/grp_.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/suid/config/quiet.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/file.h)
+/home/lfs-kable/src/busybox-1.00/applets/busybox.o: /home/lfs-kable/src/busybox-1.00/applets/busybox.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/locale/support.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/installer.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/init.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/autowidth.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/dd.o: /home/lfs-kable/src/busybox-1.00/coreutils/dd.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/cp.o: /home/lfs-kable/src/busybox-1.00/coreutils/cp.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/df.o: /home/lfs-kable/src/busybox-1.00/coreutils/df.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/human/readable.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/du.o: /home/lfs-kable/src/busybox-1.00/coreutils/du.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/human/readable.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/du/defalt/blocksize/1k.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/id.o: /home/lfs-kable/src/busybox-1.00/coreutils/id.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/pwd_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/pwd_.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/selinux.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/ln.o: /home/lfs-kable/src/busybox-1.00/coreutils/ln.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/ls.o: /home/lfs-kable/src/busybox-1.00/coreutils/ls.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/selinux.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ls/timestamps.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ls/sortfiles.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ls/followlinks.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/human/readable.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ls/filetypes.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ls/color.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/autowidth.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ls/recursive.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/locale/support.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/ls/username.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/mv.o: /home/lfs-kable/src/busybox-1.00/coreutils/mv.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/od.o: /home/lfs-kable/src/busybox-1.00/coreutils/od.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/dump.h $(dep_/home/lfs-kable/src/busybox-1.00/include/dump.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/rm.o: /home/lfs-kable/src/busybox-1.00/coreutils/rm.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/tr.o: /home/lfs-kable/src/busybox-1.00/coreutils/tr.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/wc.o: /home/lfs-kable/src/busybox-1.00/coreutils/wc.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/locale/support.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/cal.o: /home/lfs-kable/src/busybox-1.00/coreutils/cal.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/locale/support.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/cat.o: /home/lfs-kable/src/busybox-1.00/coreutils/cat.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/cmp.o: /home/lfs-kable/src/busybox-1.00/coreutils/cmp.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/cut.o: /home/lfs-kable/src/busybox-1.00/coreutils/cut.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/env.o: /home/lfs-kable/src/busybox-1.00/coreutils/env.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/pwd.o: /home/lfs-kable/src/busybox-1.00/coreutils/pwd.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/seq.o: /home/lfs-kable/src/busybox-1.00/coreutils/seq.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/tee.o: /home/lfs-kable/src/busybox-1.00/coreutils/tee.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/tee/use/block/io.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/tty.o: /home/lfs-kable/src/busybox-1.00/coreutils/tty.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/who.o: /home/lfs-kable/src/busybox-1.00/coreutils/who.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/yes.o: /home/lfs-kable/src/busybox-1.00/coreutils/yes.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/rmdir.o: /home/lfs-kable/src/busybox-1.00/coreutils/rmdir.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/libcoreutils/xgetoptfile_sort_uniq.o: /home/lfs-kable/src/busybox-1.00/coreutils/libcoreutils/xgetoptfile_sort_uniq.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/libcoreutils/getopt_mk_fifo_nod.o: /home/lfs-kable/src/busybox-1.00/coreutils/libcoreutils/getopt_mk_fifo_nod.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/libcoreutils/cp_mv_stat.o: /home/lfs-kable/src/busybox-1.00/coreutils/libcoreutils/cp_mv_stat.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/uuencode.o: /home/lfs-kable/src/busybox-1.00/coreutils/uuencode.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/basename.o: /home/lfs-kable/src/busybox-1.00/coreutils/basename.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/false.o: /home/lfs-kable/src/busybox-1.00/coreutils/false.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/uudecode.o: /home/lfs-kable/src/busybox-1.00/coreutils/uudecode.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/sleep.o: /home/lfs-kable/src/busybox-1.00/coreutils/sleep.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/fancy/sleep.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/dos2unix.o: /home/lfs-kable/src/busybox-1.00/coreutils/dos2unix.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/length.o: /home/lfs-kable/src/busybox-1.00/coreutils/length.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/logname.o: /home/lfs-kable/src/busybox-1.00/coreutils/logname.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/mkdir.o: /home/lfs-kable/src/busybox-1.00/coreutils/mkdir.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/mknod.o: /home/lfs-kable/src/busybox-1.00/coreutils/mknod.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/date.o: /home/lfs-kable/src/busybox-1.00/coreutils/date.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/date/isofmt.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/echo.o: /home/lfs-kable/src/busybox-1.00/coreutils/echo.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/fancy/echo.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/expr.o: /home/lfs-kable/src/busybox-1.00/coreutils/expr.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/fold.o: /home/lfs-kable/src/busybox-1.00/coreutils/fold.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/whoami.o: /home/lfs-kable/src/busybox-1.00/coreutils/whoami.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/head.o: /home/lfs-kable/src/busybox-1.00/coreutils/head.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/fancy/head.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/md5_sha1_sum.o: /home/lfs-kable/src/busybox-1.00/coreutils/md5_sha1_sum.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/md5/sha1/sum/check.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/md5sum.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/sha1sum.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/chroot.o: /home/lfs-kable/src/busybox-1.00/coreutils/chroot.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/touch.o: /home/lfs-kable/src/busybox-1.00/coreutils/touch.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/hostid.o: /home/lfs-kable/src/busybox-1.00/coreutils/hostid.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/uname.o: /home/lfs-kable/src/busybox-1.00/coreutils/uname.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/tail.o: /home/lfs-kable/src/busybox-1.00/coreutils/tail.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/fancy/tail.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/sort.o: /home/lfs-kable/src/busybox-1.00/coreutils/sort.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/test.o: /home/lfs-kable/src/busybox-1.00/coreutils/test.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/test/64.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/stty.o: /home/lfs-kable/src/busybox-1.00/coreutils/stty.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/sync.o: /home/lfs-kable/src/busybox-1.00/coreutils/sync.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/true.o: /home/lfs-kable/src/busybox-1.00/coreutils/true.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/uniq.o: /home/lfs-kable/src/busybox-1.00/coreutils/uniq.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/printf.o: /home/lfs-kable/src/busybox-1.00/coreutils/printf.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/realpath.o: /home/lfs-kable/src/busybox-1.00/coreutils/realpath.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/mkfifo.o: /home/lfs-kable/src/busybox-1.00/coreutils/mkfifo.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/watch.o: /home/lfs-kable/src/busybox-1.00/coreutils/watch.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/usleep.o: /home/lfs-kable/src/busybox-1.00/coreutils/usleep.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/dirname.o: /home/lfs-kable/src/busybox-1.00/coreutils/dirname.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/install.o: /home/lfs-kable/src/busybox-1.00/coreutils/install.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/chgrp.o: /home/lfs-kable/src/busybox-1.00/coreutils/chgrp.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/chmod.o: /home/lfs-kable/src/busybox-1.00/coreutils/chmod.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/coreutils/chown.o: /home/lfs-kable/src/busybox-1.00/coreutils/chown.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/debianutils/readlink.o: /home/lfs-kable/src/busybox-1.00/debianutils/readlink.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/debianutils/start_stop_daemon.o: /home/lfs-kable/src/busybox-1.00/debianutils/start_stop_daemon.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+ /home/lfs-kable/src/busybox-1.00/include/pwd_.h $(dep_/home/lfs-kable/src/busybox-1.00/include/pwd_.h)
+/home/lfs-kable/src/busybox-1.00/debianutils/run_parts.o: /home/lfs-kable/src/busybox-1.00/debianutils/run_parts.c \
+ /home/lfs-kable/src/busybox-1.00/include/libbb.h $(dep_/home/lfs-kable/src/busybox-1.00/include/libbb.h)
+/home/lfs-kable/src/busybox-1.00/debianutils/which.o: /home/lfs-kable/src/busybox-1.00/debianutils/which.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/debianutils/pipe_progress.o: /home/lfs-kable/src/busybox-1.00/debianutils/pipe_progress.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h) \
+   $(wildcard /home/lfs-kable/src/busybox-1.00/config/feature/clean/up.h)
+/home/lfs-kable/src/busybox-1.00/debianutils/mktemp.o: /home/lfs-kable/src/busybox-1.00/debianutils/mktemp.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/console-tools/dumpkmap.o: /home/lfs-kable/src/busybox-1.00/console-tools/dumpkmap.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/console-tools/reset.o: /home/lfs-kable/src/busybox-1.00/console-tools/reset.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/console-tools/chvt.o: /home/lfs-kable/src/busybox-1.00/console-tools/chvt.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/console-tools/loadfont.o: /home/lfs-kable/src/busybox-1.00/console-tools/loadfont.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/console-tools/deallocvt.o: /home/lfs-kable/src/busybox-1.00/console-tools/deallocvt.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/console-tools/loadkmap.o: /home/lfs-kable/src/busybox-1.00/console-tools/loadkmap.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/console-tools/setkeycodes.o: /home/lfs-kable/src/busybox-1.00/console-tools/setkeycodes.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/console-tools/openvt.o: /home/lfs-kable/src/busybox-1.00/console-tools/openvt.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)
+/home/lfs-kable/src/busybox-1.00/console-tools/clear.o: /home/lfs-kable/src/busybox-1.00/console-tools/clear.c \
+ /home/lfs-kable/src/busybox-1.00/include/busybox.h $(dep_/home/lfs-kable/src/busybox-1.00/include/busybox.h)

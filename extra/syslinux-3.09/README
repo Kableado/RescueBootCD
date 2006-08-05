@@ -1,0 +1,31 @@
+See the following files for documentation about SYSLINUX:
+
+	syslinux.doc	    - Usage instructions; manual.
+	distrib.doc	    - For creators of Linux distributions.
+	pxelinux.doc	    - Documentation specific to PXELINUX.
+	isolinux.doc	    - Documentation specific to ISOLINUX.
+	extlinux.doc	    - Documentation specific to EXTLINUX.
+	README.menu	    - About the menu systems.
+	README.usbkey	    - About using SYSLINUX on USB keys.
+	comboot.doc	    - About the extension API.
+	memdisk/memdisk.doc - Documentation about MEMDISK.
+	NEWS		    - List of changes from previous releases.
+	TODO		    - About features planned for future releases.
+	COPYING		    - For the license terms of this software.
+
+SYSLINUX now builds in a Linux environment, using nasm.  You need nasm
+version 0.98.38 or later to build SYSLINUX from source.  See
+http://nasm.sf.net/ for information about nasm.
+
+There is now a mailing list for SYSLINUX.  See the end of syslinux.doc
+for details.
+
+SYSLINUX is:
+
+   Copyright 1994-2005 H. Peter Anvin - All Rights Reserved
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, Inc., 53 Temple Place Ste 330,
+   Boston MA 02111-1307, USA; either version 2 of the License, or
+   (at your option) any later version; incorporated herein by reference.

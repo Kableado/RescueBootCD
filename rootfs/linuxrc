@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# iniciar el sistema
+/etc/rc.sysinit
+
+
+# pivotar y cambiar el rootcambiar el roor
+pivot_root . .
+chroot / /bin/sh
+
+
+## desiniciar el sistema
+#/etc/rc.sysuninit
+#/sbin/reboot
+

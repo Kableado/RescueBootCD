@@ -1,0 +1,785 @@
+     1                                  ;; -*- fundamental -*-
+     2                                  ;; $Id: memdisk16.asm,v 1.3 2004/12/14 22:46:25 hpa Exp $
+     3                                  ;; -----------------------------------------------------------------------
+     4                                  ;;   
+     5                                  ;;   Copyright 1994-2004 H. Peter Anvin - All Rights Reserved
+     6                                  ;;
+     7                                  ;;   This program is free software; you can redistribute it and/or modify
+     8                                  ;;   it under the terms of the GNU General Public License as published by
+     9                                  ;;   the Free Software Foundation, Inc., 53 Temple Place Ste 330,
+    10                                  ;;   Boston MA 02111-1307, USA; either version 2 of the License, or
+    11                                  ;;   (at your option) any later version; incorporated herein by reference.
+    12                                  ;;
+    13                                  ;; -----------------------------------------------------------------------
+    14                                  
+    15                                  ;;
+    16                                  ;; init16.asm
+    17                                  ;;
+    18                                  ;; Routine to initialize and to trampoline into 32-bit
+    19                                  ;; protected memory.  This code is derived from bcopy32.inc and
+    20                                  ;; com32.inc in the main SYSLINUX distribution.
+    21                                  ;;
+    22                                  
+    23                                  MY_CS		equ 0x0800		; Segment address to use
+    24                                  CS_BASE		equ (MY_CS << 4)	; Corresponding address
+    25                                  
+    26                                  ; Low memory bounce buffer
+    27                                  BOUNCE_SEG	equ (MY_CS+0x1000)
+    28                                  
+    29                                  %define DO_WBINVD 0
+    30                                  
+    31                                  %define STACK_HEAP_SIZE	(128*1024)
+    32                                  
+    33                                  		section .rodata align=16
+    34                                  		section .data   align=16
+    35                                  		section .bss    align=16
+    36                                  
+    37                                  ;; -----------------------------------------------------------------------
+    38                                  ;;  Kernel image header
+    39                                  ;; -----------------------------------------------------------------------
+    40                                  
+    41                                  		section .text		; Must be first in image
+    42                                  		bits 16
+    43                                  
+    44 00000000 00<rept>                cmdline		times 497 db 0		; We put the command line here
+    45 000001F1 00                      setup_sects	db 0
+    46 000001F2 0000                    root_flags	dw 0
+    47 000001F4 0000                    syssize		dw 0
+    48 000001F6 0000                    swap_dev	dw 0
+    49 000001F8 0000                    ram_size	dw 0
+    50 000001FA 0000                    vid_mode	dw 0
+    51 000001FC 0000                    root_dev	dw 0
+    52 000001FE 55AA                    boot_flag	dw 0xAA55
+    53                                  
+    54 00000200 EB2E                    _start:		jmp short start
+    55                                  
+    56 00000202 48647253                		db "HdrS"		; Header signature
+    57 00000206 0302                    		dw 0x0203		; Header version number
+    58                                  
+    59 00000208 00000000                realmode_swtch	dw 0, 0			; default_switch, SETUPSEG
+    60 0000020C 0010                    start_sys_seg	dw 0x1000		; obsolete
+    61 0000020E [00FE]                  version_ptr	dw memdisk_version-0x200	; version string ptr
+    62 00000210 00                      type_of_loader	db 0			; Filled in by boot loader
+    63 00000211 01                      loadflags	db 1			; Please load high
+    64 00000212 0000                    setup_move_size	dw 0			; Unused
+    65 00000214 00001000                code32_start	dd 0x100000		; 32-bit start address
+    66 00000218 00000000                ramdisk_image	dd 0			; Loaded ramdisk image address
+    67 0000021C 00000000                ramdisk_size	dd 0			; Size of loaded ramdisk
+    68 00000220 00000000                bootsect_kludge	dw 0, 0
+    69 00000224 0000                    heap_end_ptr	dw 0
+    70 00000226 0000                    pad1		dw 0
+    71 00000228 00000000                cmd_line_ptr	dd 0			; Command line
+    72 0000022C FFFFFFFF                ramdisk_max	dd 0xffffffff		; Highest allowed ramdisk address
+    73                                  
+    74                                  		section .rodata
+    75                                  memdisk_version:
+    76 00000000 4D454D4449534B2033-     		db "MEMDISK ", VERSION, " ", DATE, 0
+    77 00000009 2E3039203078343165-
+    78 00000012 666662636100       
+    79                                  
+    80                                  ;; -----------------------------------------------------------------------
+    81                                  ;;  End kernel image header
+    82                                  ;; -----------------------------------------------------------------------
+    83                                  
+    84                                  ;
+    85                                  ; Move ourselves down into memory to reduce the risk of conflicts;
+    86                                  ; then canonicalize CS to match the other segments.
+    87                                  ;
+    88                                  		section .text
+    89                                  		bits 16
+    90                                  start:
+    91 00000230 B80008                  		mov ax,MY_CS
+    92 00000233 8EC0                    		mov es,ax
+    93 00000235 0FB60E[F101]            		movzx cx,byte [setup_sects]
+    94 0000023A 41                      		inc cx			; Add one for the boot sector
+    95 0000023B C1E107                  		shl cx,7		; Convert to dwords
+    96 0000023E 31F6                    		xor si,si
+    97 00000240 31FF                    		xor di,di
+    98 00000242 8EE6                    		mov fs,si		; fs <- 0
+    99 00000244 FC                      		cld
+   100 00000245 F366A5                  		rep movsd
+   101 00000248 8ED8                    		mov ds,ax
+   102 0000024A 8ED0                    		mov ss,ax
+   103 0000024C 6631E4                  		xor esp,esp		; Stack at top of 64K segment
+   104 0000024F EA[5402]0008            		jmp MY_CS:.next
+   105                                  .next:
+   106                                  
+   107                                  ;
+   108                                  ; Copy the command line, if there is one
+   109                                  ;
+   110                                  copy_cmdline:
+   111 00000254 31FF                    		xor di,di		; Bottom of our own segment (= "boot sector")
+   112 00000256 66A1[2802]              		mov eax,[cmd_line_ptr]
+   113 0000025A 6621C0                  		and eax,eax
+   114 0000025D 7417                    		jz .endcmd		; No command line
+   115 0000025F 89C6                    		mov si,ax
+   116 00000261 66C1E804                		shr eax,4		; Convert to segment
+   117 00000265 83E60F                  		and si,0x000F		; Starting offset only
+   118 00000268 8EE8                    		mov gs,ax
+   119 0000026A B9F001                  		mov cx,496		; Max number of bytes
+   120                                  .copycmd:
+   121 0000026D 65AC                    		gs lodsb
+   122 0000026F 20C0                    		and al,al
+   123 00000271 7403                    		jz .endcmd
+   124 00000273 AA                      		stosb
+   125 00000274 E2F7                    		loop .copycmd
+   126                                  .endcmd:
+   127 00000276 30C0                    		xor al,al
+   128 00000278 AA                      		stosb
+   129                                  
+   130                                  ;
+   131                                  ; Now jump to 32-bit code
+   132                                  ;
+   133 00000279 FB                      		sti
+   134 0000027A E83D01                  		call init32
+   135                                  ;
+   136                                  ; When init32 returns, we have been set up, the new boot sector loaded,
+   137                                  ; and we should go and and run the newly loaded boot sector
+   138                                  ;
+   139                                  ; The setup function returns (in AL) the drive number which should be
+   140                                  ; put into DL
+   141                                  ;
+   142 0000027D 89C2                    		mov dx,ax
+   143                                  
+   144 0000027F FA                      		cli
+   145 00000280 6631F6                  		xor esi,esi		; No partition table involved
+   146 00000283 8EDE                    		mov ds,si		; Make all the segments consistent
+   147 00000285 8EC6                    		mov es,si
+   148 00000287 8EE6                    		mov fs,si
+   149 00000289 8EEE                    		mov gs,si
+   150 0000028B 8ED6                    		mov ss,si
+   151 0000028D 66BC007C0000            		mov esp,0x7C00		; Good place for SP to start out
+   152 00000293 EA007C0000              		jmp 0:0x7C00
+   153                                  
+   154                                  ;
+   155                                  ; We enter protected mode, set up a flat 32-bit environment, run rep movsd
+   156                                  ; and then exit.  IMPORTANT: This code assumes cs == MY_CS.
+   157                                  ;
+   158                                  ; This code is probably excessively anal-retentive in its handling of
+   159                                  ; segments, but this stuff is painful enough as it is without having to rely
+   160                                  ; on everything happening "as it ought to."
+   161                                  ;
+   162                                  		section .rodata
+   163                                  
+   164                                  	; desc base, limit, flags
+   165                                  %macro	desc 3
+   166                                  	dd (%2 & 0xffff) | ((%1 & 0xffff) << 16)
+   167                                  	dd (%1 & 0xff000000) | (%2 & 0xf0000) | ((%3 & 0xf0ff) << 8) | ((%1 & 0x00ff0000) >> 16)
+   168                                  %endmacro
+   169                                  	
+   170                                  		align 8, db 0
+   171 00000018 2F00                    call32_gdt:	dw call32_gdt_size-1	; Null descriptor - contains GDT
+   172 0000001A [18800000]              .adj1:		dd call32_gdt+CS_BASE	; pointer for LGDT instruction
+   173 0000001E 0000                    		dw 0
+   174                                  		
+   175                                  		; 0008: Code segment, use16, readable, dpl 0, base CS_BASE, 64K
+   176                                  		desc CS_BASE, 0xffff, 0x009b
+   177 00000020 FFFF0080            <1>  dd (%2 & 0xffff) | ((%1 & 0xffff) << 16)
+   178 00000024 009B0000            <1>  dd (%1 & 0xff000000) | (%2 & 0xf0000) | ((%3 & 0xf0ff) << 8) | ((%1 & 0x00ff0000) >> 16)
+   179                                  
+   180                                  		; 0010: Data segment, use16, read/write, dpl 0, base CS_BASE, 64K
+   181                                  		desc CS_BASE, 0xffff, 0x0093
+   182 00000028 FFFF0080            <1>  dd (%2 & 0xffff) | ((%1 & 0xffff) << 16)
+   183 0000002C 00930000            <1>  dd (%1 & 0xff000000) | (%2 & 0xf0000) | ((%3 & 0xf0ff) << 8) | ((%1 & 0x00ff0000) >> 16)
+   184                                  
+   185                                  		; 0018: Data segment, use16, read/write, dpl 0, base 0, 4G
+   186                                  		desc 0, 0xfffff, 0x809b
+   187 00000030 FFFF0000            <1>  dd (%2 & 0xffff) | ((%1 & 0xffff) << 16)
+   188 00000034 009B8F00            <1>  dd (%1 & 0xff000000) | (%2 & 0xf0000) | ((%3 & 0xf0ff) << 8) | ((%1 & 0x00ff0000) >> 16)
+   189                                  
+   190                                  		; 0020: Code segment, use32, read/write, dpl 0, base 0, 4G
+   191                                  		desc 0, 0xfffff, 0xc09b
+   192 00000038 FFFF0000            <1>  dd (%2 & 0xffff) | ((%1 & 0xffff) << 16)
+   193 0000003C 009BCF00            <1>  dd (%1 & 0xff000000) | (%2 & 0xf0000) | ((%3 & 0xf0ff) << 8) | ((%1 & 0x00ff0000) >> 16)
+   194                                  
+   195                                  		; 0028: Data segment, use32, read/write, dpl 0, base 0, 4G
+   196                                  		desc 0, 0xfffff, 0xc093
+   197 00000040 FFFF0000            <1>  dd (%2 & 0xffff) | ((%1 & 0xffff) << 16)
+   198 00000044 0093CF00            <1>  dd (%1 & 0xff000000) | (%2 & 0xf0000) | ((%3 & 0xf0ff) << 8) | ((%1 & 0x00ff0000) >> 16)
+   199                                  	
+   200                                  call32_gdt_size:	equ $-call32_gdt
+   201                                  
+   202 00000048 4552524F523A204132-     err_a20:	db 'ERROR: A20 gate not responding!',13,10,0
+   203 00000051 302067617465206E6F-
+   204 0000005A 7420726573706F6E64-
+   205 00000063 696E67210D0A00     
+   206                                  	
+   207                                  		section .bss
+   208                                  		alignb 4
+   209 00000000 <res 00000004>          SavedSSSP	resd 1			; Place to save SS:SP
+   210 00000004 <res 00000004>          Return		resd 1			; Return value
+   211 00000008 <res 00000002>          A20Test		resw 1			; Space to test A20
+   212 0000000A <res 00000001>          A20Tries	resb 1
+   213                                  		
+   214                                  		section .data
+   215                                  		alignb 4
+   216 00000000 00000000                Target		dd 0			; Target address
+   217 00000004 2000                    Target_Seg	dw 20h			; Target CS
+   218                                  
+   219 00000006 0000                    A20Type		dw 0			; Default = unknown
+   220                                  		
+   221                                  		section .text
+   222                                  		bits 16
+   223                                  ;
+   224                                  ; Routines to enable and disable (yuck) A20.  These routines are gathered
+   225                                  ; from tips from a couple of sources, including the Linux kernel and
+   226                                  ; http://www.x86.org/.  The need for the delay to be as large as given here
+   227                                  ; is indicated by Donnie Barnes of RedHat, the problematic system being an
+   228                                  ; IBM ThinkPad 760EL.
+   229                                  ;
+   230                                  ; We typically toggle A20 twice for every 64K transferred.
+   231                                  ; 
+   232                                  %define	io_delay	call _io_delay
+   233                                  %define IO_DELAY_PORT	80h		; Invalid port (we hope!)
+   234                                  %define disable_wait 	32		; How long to wait for a disable
+   235                                  
+   236                                  %define A20_DUNNO	0		; A20 type unknown
+   237                                  %define A20_NONE	1		; A20 always on?
+   238                                  %define A20_BIOS	2		; A20 BIOS enable
+   239                                  %define A20_KBC		3		; A20 through KBC
+   240                                  %define A20_FAST	4		; A20 through port 92h
+   241                                  
+   242                                  		align 2, db 0
+   243 00000298 [C302][C302][CD02]-     A20List		dw a20_dunno, a20_none, a20_bios, a20_kbc, a20_fast
+   244 0000029E [DE02][0303]       
+   245 000002A2 [9403][9403][6603]-     A20DList	dw a20d_dunno, a20d_none, a20d_bios, a20d_kbc, a20d_fast
+   246 000002A8 [7703][6F03]       
+   247                                  a20_adjust_cnt	equ ($-A20List)/2
+   248                                  
+   249 000002AC EE                      slow_out:	out dx, al		; Fall through
+   250                                  
+   251 000002AD E680                    _io_delay:	out IO_DELAY_PORT,al
+   252 000002AF E680                    		out IO_DELAY_PORT,al
+   253 000002B1 C3                      		ret
+   254                                  
+   255                                  enable_a20:
+   256 000002B2 6660                    		pushad
+   257 000002B4 C606[0A00]FF            		mov byte [A20Tries],255 ; Times to try to make this work
+   258                                  
+   259                                  try_enable_a20:
+   260                                  
+   261                                  ;
+   262                                  ; Flush the caches
+   263                                  ;
+   264                                  %if DO_WBINVD
+   265                                  		call try_wbinvd
+   266                                  %endif
+   267                                  
+   268                                  ;
+   269                                  ; If the A20 type is known, jump straight to type
+   270                                  ;
+   271 000002B9 8B2E[0600]              		mov bp,[A20Type]
+   272 000002BD 01ED                    		add bp,bp			; Convert to word offset
+   273 000002BF FFA6[9802]              .adj4:		jmp word [bp+A20List]
+   274                                  
+   275                                  ;
+   276                                  ; First, see if we are on a system with no A20 gate
+   277                                  ;
+   278                                  a20_dunno:
+   279                                  a20_none:
+   280 000002C3 C606[0600]01            		mov byte [A20Type], A20_NONE
+   281 000002C8 E86F00                  		call a20_test
+   282 000002CB 756A                    		jnz a20_done
+   283                                  
+   284                                  ;
+   285                                  ; Next, try the BIOS (INT 15h AX=2401h)
+   286                                  ;
+   287                                  a20_bios:
+   288 000002CD C606[0600]02            		mov byte [A20Type], A20_BIOS
+   289 000002D2 B80124                  		mov ax,2401h
+   290 000002D5 9C                      		pushf				; Some BIOSes muck with IF
+   291 000002D6 CD15                    		int 15h
+   292 000002D8 9D                      		popf
+   293                                  
+   294 000002D9 E85E00                  		call a20_test
+   295 000002DC 7559                    		jnz a20_done
+   296                                  
+   297                                  ;
+   298                                  ; Enable the keyboard controller A20 gate
+   299                                  ;
+   300                                  a20_kbc:
+   301 000002DE B201                    		mov dl, 1			; Allow early exit
+   302 000002E0 E8B600                  		call empty_8042
+   303 000002E3 7552                    		jnz a20_done			; A20 live, no need to use KBC
+   304                                  
+   305 000002E5 C606[0600]03            		mov byte [A20Type], A20_KBC	; Starting KBC command sequence
+   306                                  
+   307 000002EA B0D1                    		mov al,0D1h			; Command write
+   308 000002EC E664                    		out 064h, al
+   309 000002EE E8A600                  		call empty_8042_uncond
+   310                                  
+   311 000002F1 B0DF                    		mov al,0DFh			; A20 on
+   312 000002F3 E660                    		out 060h, al
+   313 000002F5 E89F00                  		call empty_8042_uncond
+   314                                  
+   315                                  		; Verify that A20 actually is enabled.  Do that by
+   316                                  		; observing a word in low memory and the same word in
+   317                                  		; the HMA until they are no longer coherent.  Note that
+   318                                  		; we don't do the same check in the disable case, because
+   319                                  		; we don't want to *require* A20 masking (SYSLINUX should
+   320                                  		; work fine without it, if the BIOS does.)
+   321 000002F8 51                      .kbc_wait:	push cx
+   322 000002F9 31C9                    		xor cx,cx
+   323                                  .kbc_wait_loop:
+   324 000002FB E83C00                  		call a20_test
+   325 000002FE 7536                    		jnz a20_done_pop
+   326 00000300 E2F9                    		loop .kbc_wait_loop
+   327                                  
+   328 00000302 59                      		pop cx
+   329                                  ;
+   330                                  ; Running out of options here.  Final attempt: enable the "fast A20 gate"
+   331                                  ;
+   332                                  a20_fast:
+   333 00000303 C606[0600]04            		mov byte [A20Type], A20_FAST	; Haven't used the KBC yet
+   334 00000308 E492                    		in al, 092h
+   335 0000030A 0C02                    		or al,02h
+   336 0000030C 24FE                    		and al,~01h			; Don't accidentally reset the machine!
+   337 0000030E E692                    		out 092h, al
+   338                                  
+   339 00000310 51                      .fast_wait:	push cx
+   340 00000311 31C9                    		xor cx,cx
+   341                                  .fast_wait_loop:
+   342 00000313 E82400                  		call a20_test
+   343 00000316 751E                    		jnz a20_done_pop
+   344 00000318 E2F9                    		loop .fast_wait_loop
+   345                                  
+   346 0000031A 59                      		pop cx
+   347                                  
+   348                                  ;
+   349                                  ; Oh bugger.  A20 is not responding.  Try frobbing it again; eventually give up
+   350                                  ; and report failure to the user.
+   351                                  ;
+   352                                  
+   353 0000031B FE0E[0A00]              		dec byte [A20Tries]
+   354 0000031F 7598                    		jnz try_enable_a20
+   355                                  
+   356                                  
+   357                                  		; Error message time
+   358 00000321 BE[4800]                		mov si,err_a20
+   359                                  print_err:
+   360 00000324 AC                      		lodsb
+   361 00000325 20C0                    		and al,al
+   362 00000327 7409                    		jz die
+   363 00000329 BB0700                  		mov bx,7
+   364 0000032C B40E                    		mov ah,0xe
+   365 0000032E CD10                    		int 10h
+   366 00000330 EBF2                    		jmp print_err
+   367                                  
+   368                                  
+   369                                  die:
+   370 00000332 FB                      		sti
+   371 00000333 F4                      .hlt:		hlt
+   372 00000334 EBFD                    		jmp short .hlt
+   373                                  
+   374                                  ;
+   375                                  ; A20 unmasked, proceed...
+   376                                  ;
+   377 00000336 59                      a20_done_pop:	pop cx
+   378 00000337 6661                    a20_done:	popad
+   379 00000339 C3                      		ret
+   380                                  
+   381                                  ;
+   382                                  ; This routine tests if A20 is enabled (ZF = 0).  This routine
+   383                                  ; must not destroy any register contents.
+   384                                  ;
+   385                                  a20_test:
+   386 0000033A 06                      		push es
+   387 0000033B 51                      		push cx
+   388 0000033C 50                      		push ax
+   389 0000033D B9FFFF                  		mov cx,0FFFFh		; HMA = segment 0FFFFh
+   390 00000340 8EC1                    		mov es,cx
+   391 00000342 B92000                  		mov cx,32		; Loop count
+   392 00000345 A1[0800]                		mov ax,[A20Test]
+   393 00000348 40                      .a20_wait:	inc ax
+   394 00000349 A3[0800]                		mov [A20Test],ax
+   395 0000034C E85EFF                  		io_delay		; Serialize, and fix delay
+   396 0000034F 263B06[1880]            		cmp ax,[es:A20Test+CS_BASE+10h]
+   397 00000354 E1F2                    		loopz .a20_wait
+   398 00000356 58                      .a20_done:	pop ax
+   399 00000357 59                      		pop cx
+   400 00000358 07                      		pop es
+   401 00000359 C3                      		ret
+   402                                  
+   403                                  disable_a20:
+   404 0000035A 6660                    		pushad
+   405                                  ;
+   406                                  ; Flush the caches
+   407                                  ;
+   408                                  %if DO_WBINVD
+   409                                  		call try_wbinvd
+   410                                  %endif
+   411                                  
+   412 0000035C 8B2E[0600]              		mov bp,[A20Type]
+   413 00000360 01ED                    		add bp,bp			; Convert to word offset
+   414 00000362 FFA6[A202]              .adj5:		jmp word [bp+A20DList]
+   415                                  
+   416                                  a20d_bios:
+   417 00000366 B80024                  		mov ax,2400h
+   418 00000369 9C                      		pushf				; Some BIOSes muck with IF
+   419 0000036A CD15                    		int 15h
+   420 0000036C 9D                      		popf
+   421 0000036D EB19                    		jmp short a20d_snooze
+   422                                  
+   423                                  ;
+   424                                  ; Disable the "fast A20 gate"
+   425                                  ;
+   426                                  a20d_fast:
+   427 0000036F E492                    		in al, 092h
+   428 00000371 24FC                    		and al,~03h
+   429 00000373 E692                    		out 092h, al
+   430 00000375 EB11                    		jmp short a20d_snooze
+   431                                  
+   432                                  ;
+   433                                  ; Disable the keyboard controller A20 gate
+   434                                  ;
+   435                                  a20d_kbc:
+   436 00000377 E81D00                  		call empty_8042_uncond
+   437 0000037A B0D1                    		mov al,0D1h
+   438 0000037C E664                    		out 064h, al		; Command write
+   439 0000037E E81600                  		call empty_8042_uncond
+   440 00000381 B0DD                    		mov al,0DDh		; A20 off
+   441 00000383 E660                    		out 060h, al
+   442 00000385 E80F00                  		call empty_8042_uncond
+   443                                  		; Wait a bit for it to take effect
+   444                                  a20d_snooze:
+   445 00000388 51                      		push cx
+   446 00000389 B92000                  		mov cx, disable_wait
+   447 0000038C E8ABFF                  .delayloop:	call a20_test
+   448 0000038F 7402                    		jz .disabled
+   449 00000391 E2F9                    		loop .delayloop
+   450 00000393 59                      .disabled:	pop cx
+   451                                  a20d_dunno:
+   452                                  a20d_none:
+   453 00000394 6661                    		popad
+   454 00000396 C3                      		ret
+   455                                  
+   456                                  ;
+   457                                  ; Routine to empty the 8042 KBC controller.  If dl != 0
+   458                                  ; then we will test A20 in the loop and exit if A20 is
+   459                                  ; suddenly enabled.
+   460                                  ;
+   461                                  empty_8042_uncond:
+   462 00000397 30D2                    		xor dl,dl
+   463                                  empty_8042:
+   464 00000399 E89EFF                  		call a20_test
+   465 0000039C 7404                    		jz .a20_on
+   466 0000039E 20D2                    		and dl,dl
+   467 000003A0 7517                    		jnz .done
+   468 000003A2 E808FF                  .a20_on:	io_delay
+   469 000003A5 E464                    		in al, 064h		; Status port
+   470 000003A7 A801                    		test al,1
+   471 000003A9 7407                    		jz .no_output
+   472 000003AB E8FFFE                  		io_delay
+   473 000003AE E460                    		in al, 060h		; Read input
+   474 000003B0 EBE7                    		jmp short empty_8042
+   475                                  .no_output:
+   476 000003B2 A802                    		test al,2
+   477 000003B4 75E3                    		jnz empty_8042
+   478 000003B6 E8F4FE                  		io_delay
+   479 000003B9 C3                      .done:		ret	
+   480                                  
+   481                                  ;
+   482                                  ; Execute a WBINVD instruction if possible on this CPU
+   483                                  ;
+   484                                  %if DO_WBINVD
+   485                                  try_wbinvd:
+   486                                  		wbinvd
+   487                                  		ret
+   488                                  %endif
+   489                                  
+   490                                  		section .bss
+   491 0000000B <res 00000001>          		alignb 4
+   492 0000000C <res 00000004>          PMESP		resd 1			; Protected mode %esp
+   493                                  
+   494                                  		section .idt nobits align=4096
+   495                                  		alignb 4096
+   496 00000000 <res 00001000>          pm_idt		resb 4096		; Protected-mode IDT, followed by interrupt stubs
+   497                                  
+   498                                  
+   499                                  
+   500                                  
+   501                                  pm_entry:	equ 0x100000
+   502                                  
+   503                                  		section .rodata
+   504 0000006A 00<rept>                		align 4, db 0
+   505                                  call32_pmidt:
+   506 0000006C 0008                    		dw 8*256		; Limit
+   507 0000006E [00800000]              		dd pm_idt+CS_BASE	; Address
+   508                                  
+   509                                  call32_rmidt:
+   510 00000072 FFFF                    		dw 0ffffh		; Limit
+   511 00000074 00000000                		dd 0			; Address
+   512                                  
+   513                                  		section .text
+   514                                  ;
+   515                                  ; This is the main entrypoint in this function
+   516                                  ;
+   517                                  init32:
+   518 000003BA 66BB[06840000]          		mov ebx,call32_call_start+CS_BASE	; Where to go in PM
+   519                                  
+   520                                  call32_enter_pm:
+   521 000003C0 8CC8                    		mov ax,cs
+   522 000003C2 8ED8                    		mov ds,ax
+   523 000003C4 FA                      		cli
+   524 000003C5 8926[0000]              		mov [SavedSSSP],sp
+   525 000003C9 8C16[0200]              		mov [SavedSSSP+2],ss
+   526 000003CD FC                      		cld
+   527 000003CE E869FF                  		call a20_test
+   528 000003D1 7503                    		jnz .a20ok
+   529 000003D3 E8DCFE                  		call enable_a20
+   530                                  
+   531                                  .a20ok:
+   532 000003D6 0F0116[1800]            		lgdt [call32_gdt]	; Set up GDT
+   533 000003DB 0F011E[6C00]            		lidt [call32_pmidt]	; Set up the IDT
+   534 000003E0 0F20C0                  		mov eax,cr0
+   535 000003E3 0C01                    		or al,1
+   536 000003E5 0F22C0                  		mov cr0,eax		; Enter protected mode
+   537 000003E8 66EA[F0830000]2000      		jmp 20h:dword .in_pm+CS_BASE
+   538                                  		
+   539                                  		bits 32
+   540                                  .in_pm:
+   541 000003F0 31C0                    		xor eax,eax		; Available for future use...
+   542 000003F2 8EE0                    		mov fs,eax
+   543 000003F4 8EE8                    		mov gs,eax
+   544                                  
+   545 000003F6 B028                    		mov al,28h		; Set up data segments
+   546 000003F8 8EC0                    		mov es,eax
+   547 000003FA 8ED8                    		mov ds,eax
+   548 000003FC 8ED0                    		mov ss,eax
+   549                                  
+   550 000003FE 8B25[0C800000]          		mov esp,[PMESP+CS_BASE]	; Load protmode %esp if available
+   551 00000404 FFE3                    		jmp ebx			; Go to where we need to go
+   552                                  
+   553                                  ;
+   554                                  ; This is invoked before first dispatch of the 32-bit code, in 32-bit mode
+   555                                  ;
+   556                                  call32_call_start:
+   557                                  		;
+   558                                  		; Point the stack into low memory
+   559                                  		; We have: this segment, bounce buffer, then stack+heap
+   560                                  		;
+   561 00000406 BC00800400              		mov esp, CS_BASE + 0x20000 + STACK_HEAP_SIZE
+   562 0000040B 83E4F0                  		and esp, ~0xf
+   563                                  
+   564                                  		;
+   565                                  		; Set up the protmode IDT and the interrupt jump buffers
+   566                                  		;
+   567 0000040E BF[00800000]            		mov edi,pm_idt+CS_BASE
+   568                                  
+   569                                  		; Form an interrupt gate descriptor
+   570                                  		; WARNING: This is broken if pm_idt crosses a 64K boundary;
+   571                                  		; however, it can't because of the alignment constraints.
+   572 00000413 BB[00880000]            		mov ebx,pm_idt+CS_BASE+8*256
+   573 00000418 B800EE2000              		mov eax,0x0020ee00
+   574 0000041D 6693                    		xchg ax,bx
+   575 0000041F 31C9                    		xor ecx,ecx
+   576 00000421 FEC5                    		inc ch				; ecx <- 256
+   577                                  
+   578 00000423 51                      		push ecx
+   579                                  .make_idt:
+   580 00000424 AB                      		stosd
+   581 00000425 83C008                  		add eax,8
+   582 00000428 93                      		xchg eax,ebx
+   583 00000429 AB                      		stosd
+   584 0000042A 93                      		xchg eax,ebx
+   585 0000042B E2F7                    		loop .make_idt
+   586                                  
+   587 0000042D 59                      		pop ecx
+   588                                  
+   589                                  		; Each entry in the interrupt jump buffer contains
+   590                                  		; the following instructions:
+   591                                  		;
+   592                                  		; 00000000 60                pushad
+   593                                  		; 00000001 B0xx              mov al,<interrupt#>
+   594                                  		; 00000003 E9xxxxxxxx        jmp call32_handle_interrupt
+   595                                  
+   596 0000042E B860B000E9              		mov eax,0xe900b060
+   597 00000433 BB[D7840000]            		mov ebx,call32_handle_interrupt+CS_BASE
+   598 00000438 29FB                    		sub ebx,edi
+   599                                  
+   600                                  .make_ijb:
+   601 0000043A AB                      		stosd
+   602 0000043B 284FFE                  		sub [edi-2],cl			; Interrupt #
+   603 0000043E 93                      		xchg eax,ebx
+   604 0000043F 83E808                  		sub eax,8
+   605 00000442 AB                      		stosd
+   606 00000443 93                      		xchg eax,ebx
+   607 00000444 E2F4                    		loop .make_ijb
+   608                                  
+   609                                  		; Now everything is set up for interrupts...
+   610                                  
+   611 00000446 6800800100              		push dword (BOUNCE_SEG << 4)	; Bounce buffer address
+   612 0000044B 68[EA840000]            		push dword call32_syscall+CS_BASE ; Syscall entry point
+   613 00000450 FB                      		sti				; Interrupts OK now
+   614 00000451 E8(00800F00)            		call pm_entry-CS_BASE		; Run the program...
+   615                                  
+   616                                  		; ... on return ...
+   617 00000456 A3[04800000]            		mov [Return+CS_BASE],eax
+   618                                  
+   619                                  		; ... fall through to call32_exit ...
+   620                                  
+   621                                  call32_exit:
+   622 0000045B 66BB[A004]              		mov bx,call32_done	; Return to command loop
+   623                                  
+   624                                  call32_enter_rm:
+   625 0000045F FA                      		cli
+   626 00000460 FC                      		cld
+   627 00000461 8925[0C800000]          		mov [PMESP+CS_BASE],esp	; Save exit %esp
+   628 00000467 31E4                    		xor esp,esp		; Make sure the high bits are zero
+   629 00000469 EA[70040000]0800        		jmp 08h:.in_pm16	; Return to 16-bit mode first
+   630                                  
+   631                                  		bits 16
+   632                                  .in_pm16:
+   633 00000470 B81000                  		mov ax,10h		; Real-mode-like segment
+   634 00000473 8EC0                    		mov es,ax
+   635 00000475 8ED8                    		mov ds,ax
+   636 00000477 8ED0                    		mov ss,ax
+   637 00000479 8EE0                    		mov fs,ax
+   638 0000047B 8EE8                    		mov gs,ax
+   639                                  
+   640 0000047D 0F011E[7200]            		lidt [call32_rmidt]	; Real-mode IDT (rm needs no GDT)
+   641 00000482 0F20C0                  		mov eax,cr0
+   642 00000485 24FE                    		and al,~1
+   643 00000487 0F22C0                  		mov cr0,eax
+   644 0000048A EA[8F04]0008            		jmp MY_CS:.in_rm
+   645                                  
+   646                                  .in_rm:					; Back in real mode
+   647 0000048F 8CC8                    		mov ax,cs		; Set up sane segments
+   648 00000491 8ED8                    		mov ds,ax
+   649 00000493 8EC0                    		mov es,ax
+   650 00000495 8EE0                    		mov fs,ax
+   651 00000497 8EE8                    		mov gs,ax
+   652 00000499 0FB226[0000]            		lss sp,[SavedSSSP]	; Restore stack
+   653 0000049E FFE3                    		jmp bx			; Go to whereever we need to go...
+   654                                  
+   655                                  call32_done:
+   656 000004A0 E8B7FE                  		call disable_a20
+   657 000004A3 FB                      		sti
+   658 000004A4 A1[0400]                		mov ax,[Return]
+   659 000004A7 C3                      		ret
+   660                                  
+   661                                  ;
+   662                                  ; 16-bit support code
+   663                                  ;
+   664                                  		bits 16
+   665                                  
+   666                                  ;
+   667                                  ; 16-bit interrupt-handling code
+   668                                  ;
+   669                                  call32_int_rm:
+   670 000004A8 9C                      		pushf				; Flags on stack
+   671 000004A9 0E                      		push cs				; Return segment
+   672 000004AA 68[B004]                		push word .cont			; Return address
+   673 000004AD 6652                    		push dword edx			; Segment:offset of IVT entry
+   674 000004AF CB                      		retf				; Invoke IVT routine
+   675                                  .cont:		; ... on resume ...
+   676 000004B0 66BB[E8840000]          		mov ebx,call32_int_resume+CS_BASE
+   677 000004B6 E907FF                  		jmp call32_enter_pm		; Go back to PM
+   678                                  
+   679                                  ;
+   680                                  ; 16-bit system call handling code
+   681                                  ;
+   682                                  call32_sys_rm:
+   683 000004B9 0FA9                    		pop gs
+   684 000004BB 0FA1                    		pop fs
+   685 000004BD 07                      		pop es
+   686 000004BE 1F                      		pop ds
+   687 000004BF 6661                    		popad
+   688 000004C1 669D                    		popfd
+   689 000004C3 CB                      		retf				; Invoke routine
+   690                                  .return:
+   691 000004C4 669C                    		pushfd
+   692 000004C6 6660                    		pushad
+   693 000004C8 1E                      		push ds
+   694 000004C9 06                      		push es
+   695 000004CA 0FA0                    		push fs
+   696 000004CC 0FA8                    		push gs
+   697 000004CE 66BB[39850000]          		mov ebx,call32_sys_resume+CS_BASE
+   698 000004D4 E9E9FE                  		jmp call32_enter_pm
+   699                                  
+   700                                  ;
+   701                                  ; 32-bit support code
+   702                                  ;
+   703                                  		bits 32
+   704                                  
+   705                                  ;
+   706                                  ; This is invoked on getting an interrupt in protected mode.  At
+   707                                  ; this point, we need to context-switch to real mode and invoke
+   708                                  ; the interrupt routine.
+   709                                  ;
+   710                                  ; When this gets invoked, the registers are saved on the stack and
+   711                                  ; AL contains the register number.
+   712                                  ;
+   713                                  call32_handle_interrupt:
+   714 000004D7 0FB6C0                  		movzx eax,al
+   715 000004DA 31DB                    		xor ebx,ebx		; Actually makes the code smaller
+   716 000004DC 8B1483                  		mov edx,[ebx+eax*4]	; Get the segment:offset of the routine
+   717 000004DF 66BB[A804]              		mov bx,call32_int_rm
+   718 000004E3 E977FFFFFF              		jmp call32_enter_rm	; Go to real mode
+   719                                  
+   720                                  call32_int_resume:
+   721 000004E8 61                      		popad
+   722 000004E9 CF                      		iret
+   723                                  
+   724                                  ;
+   725                                  ; Syscall invocation.  We manifest a structure on the real-mode stack,
+   726                                  ; containing the call32sys_t structure from <call32.h> as well as
+   727                                  ; the following entries (from low to high address):
+   728                                  ; - Target offset
+   729                                  ; - Target segment
+   730                                  ; - Return offset
+   731                                  ; - Return segment (== real mode cs)
+   732                                  ; - Return flags
+   733                                  ;
+   734                                  call32_syscall:
+   735 000004EA 9C                      		pushfd			; Save IF among other things...
+   736 000004EB 60                      		pushad			; We only need to save some, but...
+   737 000004EC FC                      		cld
+   738                                  
+   739 000004ED 0FB73D[00800000]        		movzx edi,word [SavedSSSP+CS_BASE]
+   740 000004F4 0FB705[02800000]        		movzx eax,word [SavedSSSP+CS_BASE+2]
+   741 000004FB 83EF36                  		sub edi,54		; Allocate 54 bytes
+   742 000004FE 66893D[00800000]        		mov [SavedSSSP+CS_BASE],di
+   743 00000505 C1E004                  		shl eax,4
+   744 00000508 01C7                    		add edi,eax		; Create linear address
+   745                                  
+   746 0000050A 8B74242C                		mov esi,[esp+11*4]	; Source regs
+   747 0000050E 31C9                    		xor ecx,ecx
+   748 00000510 B10B                    		mov cl,11		; 44 bytes to copy
+   749 00000512 F3A5                    		rep movsd
+   750                                  
+   751 00000514 0FB6442428              		movzx eax,byte [esp+10*4] ; Interrupt number
+   752                                  		; ecx == 0 here; adding it to the EA makes the
+   753                                  		; encoding smaller
+   754 00000519 8B0481                  		mov eax,[ecx+eax*4]	; Get IVT entry
+   755 0000051C AB                      		stosd			; Save in stack frame
+   756 0000051D B8[C4040008]            		mov eax,call32_sys_rm.return + (MY_CS << 16) ; Return seg:offs
+   757 00000522 AB                      		stosd			; Save in stack frame
+   758 00000523 8B47F4                  		mov eax,[edi-12]	; Return flags
+   759 00000526 25D70C2000              		and eax,0x200cd7	; Mask (potentially) unsafe flags
+   760 0000052B 8947F4                  		mov [edi-12],eax	; Primary flags entry
+   761 0000052E 66AB                    		stosw			; Return flags
+   762                                  
+   763 00000530 66BB[B904]              		mov bx,call32_sys_rm
+   764 00000534 E926FFFFFF              		jmp call32_enter_rm	; Go to real mode
+   765                                  
+   766                                  		; On return, the 44-byte return structure is on the
+   767                                  		; real-mode stack.
+   768                                  call32_sys_resume:
+   769 00000539 0FB735[00800000]        		movzx esi,word [SavedSSSP+CS_BASE]
+   770 00000540 0FB705[02800000]        		movzx eax,word [SavedSSSP+CS_BASE+2]
+   771 00000547 8B7C2430                		mov edi,[esp+12*4]	; Dest regs
+   772 0000054B C1E004                  		shl eax,4
+   773 0000054E 01C6                    		add esi,eax		; Create linear address
+   774 00000550 21FF                    		and edi,edi		; NULL pointer?
+   775 00000552 7502                    		jnz .do_copy
+   776 00000554 89F7                    .no_copy:	mov edi,esi		; Do a dummy copy-to-self
+   777 00000556 31C9                    .do_copy:	xor ecx,ecx
+   778 00000558 B10B                    		mov cl,11		; 44 bytes
+   779 0000055A F3A5                    		rep movsd		; Copy register block
+   780                                  
+   781 0000055C 8305[00800000]2C        		add dword [SavedSSSP+CS_BASE],44	; Remove from stack
+   782                                  
+   783 00000563 61                      		popad
+   784 00000564 9D                      		popfd
+   785 00000565 C3                      		ret			; Return to 32-bit program

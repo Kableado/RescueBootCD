@@ -1,0 +1,7 @@
+::sysinit:/etc/rc.sysinit
+::once:/dodeeds.sh
+::ctrlaltdel:/sbin/reboot
+::shutdown:/etc/rc.sysuninit
+::restart:/sbin/init
+
+

@@ -1,0 +1,1 @@
+cmd_arch/i386/kernel/timers/built-in.o :=  ld -m elf_i386  -r -o arch/i386/kernel/timers/built-in.o arch/i386/kernel/timers/timer.o arch/i386/kernel/timers/timer_none.o arch/i386/kernel/timers/timer_tsc.o arch/i386/kernel/timers/timer_pit.o arch/i386/kernel/timers/common.o

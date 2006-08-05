@@ -1,0 +1,1398 @@
+
+- NASM Map file ---------------------------------------------------------------
+
+Source file:  pxelinux.asm
+Output file:  pxelinux.bin
+
+-- Program origin -------------------------------------------------------------
+
+00009000
+
+-- Sections (summary) ---------------------------------------------------------
+
+Vstart    Start     Stop      Length    Class     Name
+00009000  00009000  0000B786  00002786  progbits  .text
+0000B790  0000B790  0000C09A  0000090A  progbits  .data
+00005D70  0000C09C  0000C2A8  0000020C  progbits  .bcopy32
+00000800  00000800  00005D6F  0000556F  nobits    .earlybss
+00006000  00006000  000084AC  000024AC  nobits    .bss
+0000E000  0000E000  00010000  00002000  nobits    .latebss
+
+-- Sections (detailed) --------------------------------------------------------
+
+---- Section .text ------------------------------------------------------------
+
+class:     progbits
+length:    00002786
+start:     00009000
+align:     not defined
+follows:   not defined
+vstart:    00009000
+valign:    not defined
+vfollows:  not defined
+
+---- Section .data ------------------------------------------------------------
+
+class:     progbits
+length:    0000090A
+start:     0000B790
+align:     00000010
+follows:   not defined
+vstart:    0000B790
+valign:    not defined
+vfollows:  not defined
+
+---- Section .bcopy32 ---------------------------------------------------------
+
+class:     progbits
+length:    0000020C
+start:     0000C09C
+align:     00000004
+follows:   .data
+vstart:    00005D70
+valign:    00000010
+vfollows:  .earlybss
+
+---- Section .earlybss --------------------------------------------------------
+
+class:     nobits
+length:    0000556F
+start:     00000800
+align:     not defined
+follows:   not defined
+vstart:    00000800
+valign:    not defined
+vfollows:  not defined
+
+---- Section .bss -------------------------------------------------------------
+
+class:     nobits
+length:    000024AC
+start:     00006000
+align:     00000100
+follows:   not defined
+vstart:    00006000
+valign:    00000100
+vfollows:  .bcopy32
+
+---- Section .latebss ---------------------------------------------------------
+
+class:     nobits
+length:    00002000
+start:     0000E000
+align:     not defined
+follows:   not defined
+vstart:    0000E000
+valign:    not defined
+vfollows:  not defined
+
+-- Symbols --------------------------------------------------------------------
+
+---- No Section ---------------------------------------------------------------
+
+Value     Name
+0000000D  CR
+0000000A  LF
+0000000C  FF
+00000008  BS
+000001FF  max_cmd_len
+37FFFFFF  HIGHMEM_MAX
+00002580  DEFAULT_BAUD
+0001C200  BAUD_DIVISOR
+00008FF4  linux_stack
+00008FF4  linux_fdctab
+00009000  cmd_line_here
+0000A33F  CMD_MAGIC
+53726448  HEADER_ID
+00000001  LOAD_HIGH
+00000080  CAN_USE_HEAP
+00000031  syslinux_id
+00000032  pxelinux_id
+00000033  isolinux_id
+00000034  extlinux_id
+00000078  fdctab
+00000800  BSS_START
+00009000  TEXT_START
+00000032  my_id
+00000007  FILENAME_MAX_LG2
+00000080  FILENAME_MAX
+00000000  NULLFILE
+00000004  NULLOFFSET
+0000012C  REBOOT_TIME
+00000005  MAX_OPEN_LG2
+00000020  MAX_OPEN
+00000800  PKTBUF_SIZE
+00004500  TFTP_PORT
+00000006  PKT_RETRY
+0000000C  PKT_TIMEOUT
+000005C0  TFTP_MTU
+000005A0  TFTP_LARGEBLK
+00000009  TFTP_BLOCKSIZE_LG2
+00000200  TFTP_BLOCKSIZE
+00000009  SECTOR_SHIFT
+00000200  SECTOR_SIZE
+00000100  TFTP_RRQ
+00000200  TFTP_WRQ
+00000300  TFTP_DATA
+00000400  TFTP_ACK
+00000500  TFTP_ERROR
+00000600  TFTP_OACK
+00000000  TFTP_EUNDEF
+00000100  TFTP_ENOTFOUND
+00000200  TFTP_EACCESS
+00000300  TFTP_ENOSPACE
+00000400  TFTP_EBADOP
+00000500  TFTP_EBADID
+00000600  TFTP_EEXISTS
+00000700  TFTP_ENOUSER
+00000800  TFTP_EOPTNEG
+00000304  vk_end
+00004000  real_mode_seg
+00003000  vk_seg
+00002000  xfer_buf_seg
+00001000  pktbuf_seg
+00004000  comboot_seg
+63538263  BOOTP_OPTION_MAGIC
+00002000  trackbufsize
+00000016  pxe_unload_stack_pkt_len
+00000800  packet_buf_size
+00000000  xbs_textbuf
+00002000  xbs_vgabuf
+00004000  xbs_vgatmpbuf
+0000000B  linuxauto_len
+00000140  dosram_k
+0000000B  boot_image_len
+00000002  numIPAppends
+0000000A  int21_count
+00000014  int22_count
+00100000  pm_idt
+00101000  pm_entry
+00000304  vk_size
+00000030  bcopy_gdt_size
+0000000A  a20_adjust_cnt
+0000020C  __bcopy_size
+00003500  DNS_PORT
+00000200  DNS_MAX_PACKET
+000095EA  DNS_LOCAL_PORT
+00000004  DNS_MAX_SERVERS
+0000000A  dnsrr.rdata
+00000008  default_len
+0000000D  cfgprefix_len
+00000007  initrd_cmd_len
+00000007  bootif_str_len
+00000023  hash_hash
+003719B5  hash_menu
+C53999A4  hash_append
+CC5159ED  hash_default
+D509BC40  hash_display
+0032B1B4  hash_font
+A6F50207  hash_implicit
+C5399AF0  hash_ipappend
+D013B850  hash_kbdmap
+D068B4CC  hash_kernel
+06F104CC  hash_label
+04F0DEF4  hash_localboot
+E7163A74  hash_prompt
+0001C059  hash_say
+E068A84C  hash_serial
+18D831FD  hash_console
+D4E332C9  hash_timeout
+1648DD10  hash_allowoptions
+D4E35EB9  hash_ontimeout
+1A68C589  hash_onerror
+0D00090E  hash_noescape
+00000CF0  hash_f0
+00000CF1  hash_f1
+00000CF2  hash_f2
+00000CF3  hash_f3
+00000CF4  hash_f4
+00000CF5  hash_f5
+00000CF6  hash_f6
+00000CF7  hash_f7
+00000CF8  hash_f8
+00000CF9  hash_f9
+00019E10  hash_f10
+00019E11  hash_f11
+00019E12  hash_f12
+00000008  keywd_size
+00000020  keywd_count
+00000006  tsize_len
+00000008  blksize_len
+0000001B  tftp_tail_len
+00000002  tftp_opts
+0000001A  tftp_opt_err_len
+0000000D  CR
+0000000A  LF
+0000000C  FF
+00000008  BS
+000001FF  max_cmd_len
+37FFFFFF  HIGHMEM_MAX
+00002580  DEFAULT_BAUD
+0001C200  BAUD_DIVISOR
+00000000  real_mode_seg_t
+00000020  kern_cmd_magic
+00000022  kern_cmd_offset
+000001F1  bs_setupsecs
+000001F2  bs_rootflags
+000001F4  bs_syssize
+000001F6  bs_swapdev
+000001F8  bs_ramsize
+000001FA  bs_vidmode
+000001FC  bs_rootdev
+000001FE  bs_bootsign
+00000200  su_jump
+00000201  su_jump2
+00000202  su_header
+00000206  su_version
+00000208  su_switch
+0000020A  su_setupseg
+0000020C  su_startsys
+0000020E  su_kver
+00000210  su_loader
+00000211  su_loadflags
+00000212  su_movesize
+00000214  su_code32start
+00000218  su_ramdiskat
+0000021C  su_ramdisklen
+00000220  su_bsklugeoffs
+00000222  su_bsklugeseg
+00000224  su_heapend
+00000226  su_pad1
+00000228  su_cmd_line_ptr
+0000022C  su_ramdisk_max
+00008FF4  linux_stack
+00008FF4  linux_fdctab
+00009000  cmd_line_here
+00009000  real_mode_seg_t_size
+0000A33F  CMD_MAGIC
+53726448  HEADER_ID
+00000001  LOAD_HIGH
+00000080  CAN_USE_HEAP
+00000031  syslinux_id
+00000032  pxelinux_id
+00000033  isolinux_id
+00000034  extlinux_id
+00000078  fdctab
+00000078  fdctab1
+0000007A  fdctab2
+00000400  serial_base
+00000413  BIOS_fbm
+00000462  BIOS_page
+0000046C  BIOS_timer
+00000472  BIOS_magic
+00000484  BIOS_vidrows
+00000800  BSS_START
+00009000  TEXT_START
+00000032  my_id
+00000007  FILENAME_MAX_LG2
+00000080  FILENAME_MAX
+00000000  NULLFILE
+00000004  NULLOFFSET
+0000012C  REBOOT_TIME
+00000005  MAX_OPEN_LG2
+00000020  MAX_OPEN
+00000800  PKTBUF_SIZE
+00004500  TFTP_PORT
+00000006  PKT_RETRY
+0000000C  PKT_TIMEOUT
+000005C0  TFTP_MTU
+000005A0  TFTP_LARGEBLK
+00000009  TFTP_BLOCKSIZE_LG2
+00000200  TFTP_BLOCKSIZE
+00000009  SECTOR_SHIFT
+00000200  SECTOR_SIZE
+00000100  TFTP_RRQ
+00000200  TFTP_WRQ
+00000300  TFTP_DATA
+00000400  TFTP_ACK
+00000500  TFTP_ERROR
+00000600  TFTP_OACK
+00000000  TFTP_EUNDEF
+00000100  TFTP_ENOTFOUND
+00000200  TFTP_EACCESS
+00000300  TFTP_ENOSPACE
+00000400  TFTP_EBADOP
+00000500  TFTP_EBADID
+00000600  TFTP_EEXISTS
+00000700  TFTP_ENOUSER
+00000800  TFTP_EOPTNEG
+00000000  vkernel
+00000000  vk_vname
+00000080  vk_rname
+00000100  vk_ipappend
+00000102  vk_appendlen
+00000104  vk_append
+00000304  vk_end
+00000304  vkernel_size
+00004000  real_mode_seg
+00003000  vk_seg
+00002000  xfer_buf_seg
+00001000  pktbuf_seg
+00004000  comboot_seg
+00000000  bootp_t
+00000000  bootp
+00000000  bootp.opcode
+00000001  bootp.hardware
+00000002  bootp.hardlen
+00000003  bootp.gatehops
+00000004  bootp.ident
+00000008  bootp.seconds
+0000000A  bootp.flags
+0000000C  bootp.cip
+00000010  bootp.yip
+00000014  bootp.sip
+00000018  bootp.gip
+0000001C  bootp.macaddr
+0000002C  bootp.sname
+0000006C  bootp.bootfile
+000000EC  bootp.option_magic
+000000F0  bootp.options
+000005DC  bootp_t_size
+63538263  BOOTP_OPTION_MAGIC
+00000000  open_file_t
+00000000  tftp_localport
+00000002  tftp_remoteport
+00000004  tftp_remoteip
+00000008  tftp_filepos
+0000000C  tftp_filesize
+00000010  tftp_blksize
+00000014  tftp_bytesleft
+00000016  tftp_lastpkt
+00000018  tftp_dataptr
+0000001E  tftp_pktbuf
+00000020  open_file_t_size
+00002000  trackbufsize
+00000016  pxe_unload_stack_pkt_len
+00000800  packet_buf_size
+00000000  xbs_textbuf
+00002000  xbs_vgabuf
+00004000  xbs_vgatmpbuf
+0000000B  linuxauto_len
+00000140  dosram_k
+0000000B  boot_image_len
+00000002  numIPAppends
+0000000A  int21_count
+00000014  int22_count
+00100000  pm_idt
+00101000  pm_entry
+00000304  vk_size
+00000030  bcopy_gdt_size
+0000000A  a20_adjust_cnt
+0000020C  __bcopy_size
+00003500  DNS_PORT
+00000200  DNS_MAX_PACKET
+000095EA  DNS_LOCAL_PORT
+00000004  DNS_MAX_SERVERS
+00000000  dnshdr
+00000000  dnshdr.id
+00000002  dnshdr.flags
+00000004  dnshdr.qdcount
+00000006  dnshdr.ancount
+00000008  dnshdr.nscount
+0000000A  dnshdr.arcount
+0000000C  dnshdr_size
+00000000  dnsquery
+00000000  dnsquery.qtype
+00000002  dnsquery.qclass
+00000004  dnsquery_size
+00000000  dnsrr
+00000000  dnsrr.type
+00000002  dnsrr.class
+00000004  dnsrr.ttl
+00000008  dnsrr.rdlength
+0000000A  dnsrr.rdata
+0000000A  dnsrr_size
+00000008  default_len
+0000000D  cfgprefix_len
+00000007  initrd_cmd_len
+00000007  bootif_str_len
+00000023  hash_hash
+003719B5  hash_menu
+C53999A4  hash_append
+CC5159ED  hash_default
+D509BC40  hash_display
+0032B1B4  hash_font
+A6F50207  hash_implicit
+C5399AF0  hash_ipappend
+D013B850  hash_kbdmap
+D068B4CC  hash_kernel
+06F104CC  hash_label
+04F0DEF4  hash_localboot
+E7163A74  hash_prompt
+0001C059  hash_say
+E068A84C  hash_serial
+18D831FD  hash_console
+D4E332C9  hash_timeout
+1648DD10  hash_allowoptions
+D4E35EB9  hash_ontimeout
+1A68C589  hash_onerror
+0D00090E  hash_noescape
+00000CF0  hash_f0
+00000CF1  hash_f1
+00000CF2  hash_f2
+00000CF3  hash_f3
+00000CF4  hash_f4
+00000CF5  hash_f5
+00000CF6  hash_f6
+00000CF7  hash_f7
+00000CF8  hash_f8
+00000CF9  hash_f9
+00019E10  hash_f10
+00019E11  hash_f11
+00019E12  hash_f12
+00000008  keywd_size
+00000020  keywd_count
+00000006  tsize_len
+00000008  blksize_len
+0000001B  tftp_tail_len
+00000002  tftp_opts
+0000001A  tftp_opt_err_len
+
+
+---- Section .text ------------------------------------------------------------
+
+Real      Virtual   Name
+00009000  00009000  StackBuf
+00009000  00009000  bootsec
+00009000  00009000  _start
+0000902B  0000902B  _start1
+000090A2  000090A2  no_pxe
+000090AB  000090AB  have_pxenv
+000090F0  000090F0  old_api
+00009158  00009158  old_api.use_data
+0000915C  0000915C  old_api.combine
+00009187  00009187  have_pxe
+000091F3  000091F3  have_pxe.use_data
+000091F7  000091F7  have_pxe.combine
+0000921B  0000921B  have_entrypoint
+00009222  00009222  query_bootp
+00009236  00009236  query_bootp.pxe_err1
+00009241  00009241  query_bootp.pxe_size
+0000924A  0000924A  query_bootp.pxe_err
+00009262  00009262  query_bootp.pxe_ok
+0000926A  0000926A  query_bootp.save_mac
+0000929E  0000929E  query_bootp.hexify_mac
+0000930E  0000930E  check_dhcp_magic
+0000931A  0000931A  check_dhcp_magic.got_magic
+0000931A  0000931A  udp_init
+00009334  00009334  udp_init.failed
+0000933D  0000933D  udp_init.success
+0000933D  0000933D  common_init
+0000935C  0000935C  mkkeymap
+00009373  00009373  mkkeymap.setbufptr
+0000937D  0000937D  check_escapes
+00009398  00009398  enough_ram
+00009398  00009398  skip_checks
+000093A4  000093A4  prefix
+000093BF  000093BF  prefix.find_alnum
+000093DA  000093DA  prefix.alnum
+000093DD  000093DD  prefix.notalnum
+000093E2  000093E2  prefix.got_prefix
+000093F1  000093F1  find_config
+000093F1  000093F1  config_scan
+00009418  00009418  config_scan.no_option
+00009446  00009446  config_scan.scan_ip
+00009455  00009455  config_scan.hexify_loop
+00009461  00009461  config_scan.low
+00009465  00009465  config_scan.high
+00009467  00009467  config_scan.char
+0000946F  0000946F  config_scan.tryagain
+00009481  00009481  config_scan.not_default
+000094A1  000094A1  config_scan.success
+000094A4  000094A4  no_config_file
+000094A4  000094A4  check_for_key
+000094B4  000094B4  enter_command
+000094C2  000094C2  clear_buffer
+000094CE  000094CE  get_char_time
+000094DD  000094DD  time_loop
+000094DE  000094DE  tick_loop
+000094FF  000094FF  tick_loop.stddefault
+00009502  00009502  get_char_pop
+00009504  00009504  get_char
+00009511  00009511  got_ascii
+00009521  00009521  enter_char
+00009537  00009537  enter_char.not_ctrl_f
+00009543  00009543  not_ascii
+00009562  00009562  backspace
+00009571  00009571  kill_command
+00009577  00009577  force_text_mode
+0000957D  0000957D  set_func_flag
+00009582  00009582  get_char_2
+00009584  00009584  ctrl_f_0
+00009586  00009586  ctrl_f
+0000958C  0000958C  func_key
+00009596  00009596  show_help
+000095B3  000095B3  print_version
+000095C0  000095C0  fk_wrcmd
+000095D1  000095D1  fk_nofile
+000095D4  000095D4  auto_boot
+000095E2  000095E2  command_done
+000095EE  000095EE  load_kernel
+000095FB  000095FB  clin_non_wsp
+00009600  00009600  clin_is_wsp
+00009609  00009609  clin_opt_ptr
+00009617  00009617  clin_opt_ok
+00009617  00009617  vk_check
+00009619  00009619  vk_check.scan
+0000963C  0000963C  vk_check.found
+00009674  00009674  vk_check.not_vk
+00009696  00009696  get_kernel
+000096A8  000096A8  get_kernel.no_skip
+000096AF  000096AF  get_kernel.search_loop
+000096D0  000096D0  bad_implicit
+000096D0  000096D0  bad_kernel
+000096D8  000096D8  bad_kernel.really
+000096F2  000096F2  on_error
+0000971E  0000971E  kernel_corrupt
+00009724  00009724  kernel_good
+00009746  00009746  kernel_good.one_step
+000097A5  000097A5  is_linux_kernel
+000097B8  000097B8  kernel_sane
+000097F7  000097F7  kernel_sane.normalkernel
+00009811  00009811  construct_cmdline
+0000983C  0000983C  construct_cmdline.noipappend1
+0000984E  0000984E  construct_cmdline.noipappend2
+0000985F  0000985F  get_next_opt
+0000989C  0000989C  get_next_opt.notkeep
+000098B4  000098B4  get_next_opt.noramdisk
+000098BA  000098BA  get_next_opt.not_initrd
+000098BB  000098BB  skip_this_opt
+000098C3  000098C3  is_vga_cmd
+000098EC  000098EC  vc0
+000098F2  000098F2  is_mem_cmd
+00009909  00009909  cmdline_end
+0000995D  0000995D  new_kernel
+0000997B  0000997B  read_kernel
+000099DC  000099DC  high_load_done
+000099EC  000099EC  load_initrd
+000099F6  000099F6  nk_noinitrd
+00009A27  00009A27  need_high_cmdline
+00009A4A  00009A4A  need_high_cmdline.len_ok
+00009A97  00009A97  in_proper_place
+00009AA6  00009AA6  root_not_floppy
+00009AA6  00009AA6  kill_motor
+00009AC1  00009AC1  old_kernel
+00009ACE  00009ACE  load_old_kernel
+00009ADC  00009ADC  parse_load_initrd
+00009AEA  00009AEA  parse_load_initrd.find_end
+00009AEF  00009AEF  parse_load_initrd.get_chunk
+00009AF6  00009AF6  parse_load_initrd.find_start
+00009B04  00009B04  parse_load_initrd.got_start
+00009B1D  00009B1D  loadinitrd
+00009B61  00009B61  loadinitrd.nopadding
+00009B7A  00009B7A  loadinitrd.memsize_ok
+00009BBD  00009BBD  loadinitrd.notthere
+00009BCF  00009BCF  no_high_mem
+00009BD6  00009BD6  comboot_too_large
+00009BDF  00009BDF  is_comboot_image
+00009C1B  00009C1B  is_comboot_image.loop
+00009C24  00009C24  is_comboot_image.done
+00009C50  00009C50  comboot_return
+00009C55  00009C55  comboot_setup_api
+00009C74  00009C74  comboot_int21
+00009C8F  00009C8F  comboot_int21.again
+00009C99  00009C99  comboot_resume
+00009CA6  00009CA6  comboot_bogus
+00009CAA  00009CAA  comboot_exit
+00009CAD  00009CAD  comboot_exit_special
+00009CCB  00009CCB  comboot_exit_special.nomsg
+00009CCD  00009CCD  comboot_getkey
+00009CDB  00009CDB  comboot_writechr
+00009CE3  00009CE3  comboot_writeserial
+00009CEB  00009CEB  comboot_getkeynoecho
+00009CF0  00009CF0  comboot_writestr
+00009CF6  00009CF6  comboot_writestr.loop
+00009D01  00009D01  comboot_writestr.done
+00009D03  00009D03  comboot_checkkey
+00009D0D  00009D0D  comboot_checkkey.waiting
+00009D17  00009D17  comboot_checkver
+00009D38  00009D38  comboot_getchar
+00009D4E  00009D4E  comboot_getchar.done
+00009D52  00009D52  comboot_getchar.queued
+00009D5B  00009D5B  comboot_int22
+00009D77  00009D77  comboot_int22.ok
+00009D81  00009D81  comapi_err
+00009D83  00009D83  comapi_get_version
+00009DA2  00009DA2  comapi_nop
+00009DA4  00009DA4  comapi_writestr
+00009DAF  00009DAF  comapi_run
+00009DC3  00009DC3  comapi_run_default
+00009DC9  00009DC9  comapi_textmode
+00009DCE  00009DCE  comapi_open
+00009DF3  00009DF3  comapi_open.err
+00009DF5  00009DF5  comapi_read
+00009E08  00009E08  comapi_read.noteof
+00009E0C  00009E0C  comapi_close
+00009E0E  00009E0E  comapi_pxecall
+00009E1F  00009E1F  comapi_derinfo
+00009E43  00009E43  comapi_serialcfg
+00009E65  00009E65  comapi_serialcfg.normalconsole
+00009E6A  00009E6A  comapi_cleanup
+00009E81  00009E81  comapi_chainboot
+00009EB0  00009EB0  comapi_configfile
+00009EBA  00009EBA  comapi_ipappend
+00009EC9  00009EC9  is_com32_image
+00009EFB  00009EFB  com32_start
+00009F01  00009F01  com32_enter_pm
+00009F17  00009F17  com32_enter_pm.a20ok
+00009F2E  00009F2E  com32_enter_pm.in_pm
+00009F44  00009F44  com32_call_start
+00009F5D  00009F5D  com32_call_start.make_idt
+00009F71  00009F71  com32_call_start.make_ijb
+00009F9E  00009F9E  com32_exit
+00009FA2  00009FA2  com32_enter_rm
+00009FB3  00009FB3  com32_enter_rm.in_pm16
+00009FD2  00009FD2  com32_enter_rm.in_rm
+00009FE3  00009FE3  com32_done
+00009FEA  00009FEA  com32_int_rm
+00009FF2  00009FF2  com32_int_rm.cont
+00009FFB  00009FFB  com32_sys_rm
+0000A00B  0000A00B  com32_sys_rm.return
+0000A023  0000A023  com32_handle_interrupt
+0000A034  0000A034  com32_int_resume
+0000A036  0000A036  com32_farcall
+0000A03E  0000A03E  com32_intcall
+0000A04C  0000A04C  com32_syscall
+0000A08E  0000A08E  com32_sys_resume
+0000A0A7  0000A0A7  com32_sys_resume.no_copy
+0000A0A9  0000A0A9  com32_sys_resume.do_copy
+0000A0B8  0000A0B8  make_plain_cmdline
+0000A0C6  0000A0C6  make_plain_cmdline.loop
+0000A0D3  0000A0D3  is_bootsector
+0000A0D3  0000A0D3  load_bootsec
+0000A118  0000A118  replace_bootstrap_one
+0000A11D  0000A11D  replace_bootstrap
+0000A133  0000A133  replace_bootstrap.stdstack
+0000A13D  0000A13D  replace_bootstrap.stackok
+0000A159  0000A159  is_bss_sector
+0000A162  0000A162  local_boot
+0000A18C  0000A18C  abort_check
+0000A19D  0000A19D  ac_kill
+0000A1A0  0000A1A0  abort_load
+0000A1B0  0000A1B0  al_ok
+0000A1B3  0000A1B3  ac_ret2
+0000A1B4  0000A1B4  ac_ret1
+0000A1B5  0000A1B5  kaboom
+0000A1C2  0000A1C2  kaboom.patch
+0000A1C8  0000A1C8  kaboom.drain
+0000A1D2  0000A1D2  kaboom.drained
+0000A1E6  0000A1E6  kaboom.time_set
+0000A1E9  0000A1E9  kaboom.wait1
+0000A1ED  0000A1ED  kaboom.wait2
+0000A1F1  0000A1F1  kaboom.wait3
+0000A207  0000A207  kaboom.keypress
+0000A215  0000A215  memory_scan_for_pxe_struct
+0000A228  0000A228  memory_scan_for_pxe_struct.mismatch
+0000A258  0000A258  memory_scan_for_pxe_struct.checksum
+0000A261  0000A261  memory_scan_for_pxe_struct.found
+0000A274  0000A274  memory_scan_for_pxe_struct.not_found
+0000A27E  0000A27E  memory_scan_for_pxenv_struct
+0000A289  0000A289  memory_scan_for_pxenv_struct.mismatch
+0000A2BA  0000A2BA  memory_scan_for_pxenv_struct.checksum
+0000A2C4  0000A2C4  memory_scan_for_pxenv_struct.found
+0000A2D3  0000A2D3  memory_scan_for_pxenv_struct.not_found
+0000A2DD  0000A2DD  searchdir
+0000A2F7  0000A2F7  searchdir.sendreq
+0000A318  0000A318  searchdir.noprefix
+0000A33C  0000A33C  searchdir.nogwneeded
+0000A370  0000A370  searchdir.getpacket
+0000A378  0000A378  searchdir.pkt_loop
+0000A3AB  0000A3AB  searchdir.no_packet
+0000A3C5  0000A3C5  searchdir.got_packet
+0000A40C  0000A40C  searchdir.parse_oack
+0000A40E  0000A40E  searchdir.get_opt_name
+0000A412  0000A412  searchdir.opt_name_loop
+0000A41E  0000A41E  searchdir.got_opt_name
+0000A42B  0000A42B  searchdir.opt_loop
+0000A441  0000A441  searchdir.get_value
+0000A44F  0000A44F  searchdir.value_loop
+0000A468  0000A468  searchdir.got_value
+0000A46B  0000A46B  searchdir.done_pkt
+0000A488  0000A488  searchdir.no_tsize
+0000A488  0000A488  searchdir.err_reply
+0000A4AF  0000A4AF  searchdir.bailnow
+0000A4B4  0000A4B4  searchdir.failure
+0000A4BD  0000A4BD  searchdir.error
+0000A4BF  0000A4BF  searchdir.error_si
+0000A4C5  0000A4C5  allocate_socket
+0000A4CC  0000A4CC  allocate_socket.check
+0000A4DA  0000A4DA  allocate_socket.found
+0000A4F2  0000A4F2  free_socket
+0000A504  0000A504  parse_dotquad
+0000A50B  0000A50B  parse_dotquad.parseloop
+0000A51E  0000A51E  parse_dotquad.notnumeric
+0000A532  0000A532  parse_dotquad.error
+0000A537  0000A537  parse_dotquad.realerror
+0000A538  0000A538  parse_dotquad.done
+0000A53B  0000A53B  mangle_name
+0000A54B  0000A54B  mangle_name.more
+0000A557  0000A557  mangle_name.here
+0000A564  0000A564  mangle_name.notdq
+0000A574  0000A574  mangle_name.noip
+0000A57A  0000A57A  mangle_name.gotprefix
+0000A57D  0000A57D  mangle_name.prefix_done
+0000A582  0000A582  mangle_name.mn_loop
+0000A58A  0000A58A  mangle_name.mn_end
+0000A590  0000A590  unmangle_name
+0000A5A0  0000A5A0  unmangle_name.noip
+0000A5A7  0000A5A7  pxenv
+0000A5A7  0000A5A7  pxenv.jump
+0000A5A8  0000A5A8  PXENVEntry
+0000A5AE  0000A5AE  pxe_thunk
+0000A5B1  0000A5B1  pxe_thunk.jump
+0000A5B2  0000A5B2  PXEEntry
+0000A5BE  0000A5BE  getfssec
+0000A5D4  0000A5D4  getfssec.need_more
+0000A5E5  0000A5E5  getfssec.ok_size
+0000A5FA  0000A5FA  getfssec.hit_eof
+0000A610  0000A610  getfssec.bytes_left
+0000A611  0000A611  getfssec.need_packet
+0000A62A  0000A62A  get_packet
+0000A62E  0000A62E  get_packet.packet_loop
+0000A637  0000A637  get_packet.send_ack
+0000A63E  0000A63E  get_packet.send_ok
+0000A646  0000A646  get_packet.wait_data
+0000A699  0000A699  get_packet.recv_ok
+0000A6C4  0000A6C4  get_packet.right_packet
+0000A6F2  0000A6F2  get_packet.last_block
+0000A702  0000A702  ack_packet
+0000A72A  0000A72A  ack_packet.nogw
+0000A749  0000A749  unload_pxe
+0000A767  0000A767  unload_pxe.new_api
+0000A767  0000A767  unload_pxe.call_loop
+0000A78A  0000A78A  unload_pxe.call_done
+0000A7B9  0000A7B9  unload_pxe.ok
+0000A7BD  0000A7BD  unload_pxe.pop_ret
+0000A7C0  0000A7C0  unload_pxe.cant_free
+0000A7E5  0000A7E5  reset_pxe
+0000A7F3  0000A7F3  gendotquad
+0000A7F9  0000A7F9  gendotquad.genchar
+0000A80C  0000A80C  gendotquad.lt100
+0000A815  0000A815  gendotquad.lt10
+0000A82C  0000A82C  parse_dhcp
+0000A842  0000A842  parse_dhcp.noyip
+0000A853  0000A853  parse_dhcp.nosip
+0000A869  0000A869  parse_dhcp.nooptions
+0000A87B  0000A87B  parse_dhcp.nofileoverload
+0000A88C  0000A88C  parse_dhcp.parsed_file
+0000A89C  0000A89C  parse_dhcp.nosnameoverload
+0000A89D  0000A89D  parse_dhcp_options
+0000A89F  0000A89F  parse_some_dhcp_options
+0000A89F  0000A89F  parse_some_dhcp_options.loop
+0000A8D7  0000A8D7  parse_some_dhcp_options.not_subnet
+0000A8E7  0000A8E7  parse_some_dhcp_options.not_router
+0000A8F9  0000A8F9  parse_some_dhcp_options.oklen
+0000A907  0000A907  parse_some_dhcp_options.not_dns
+0000A920  0000A920  parse_some_dhcp_options.not_localdomain
+0000A930  0000A930  parse_some_dhcp_options.not_vendor
+0000A93D  0000A93D  parse_some_dhcp_options.not_overload
+0000A947  0000A947  parse_some_dhcp_options.done
+0000A948  0000A948  parse_some_dhcp_options.not_bootfile
+0000A961  0000A961  parse_some_dhcp_options.not_pl_magic
+0000A970  0000A970  parse_some_dhcp_options.not_pl_config
+0000A97F  0000A97F  parse_some_dhcp_options.not_pl_prefix
+0000A99D  0000A99D  parse_some_dhcp_options.not_pl_timeout
+0000A99D  0000A99D  parse_some_dhcp_options.opt_done
+0000A99F  0000A99F  parse_some_dhcp_options.opt_done_noskip
+0000A9A2  0000A9A2  parse_some_dhcp_options.copyoption
+0000A9A9  0000A9A9  genipopt
+0000A9E7  0000A9E7  reset_idle
+0000A9F2  0000A9F2  check_for_arp
+0000AA03  0000AA03  check_for_arp.need_poll
+0000AA40  0000AA40  open
+0000AA45  0000AA45  openfd
+0000AA6A  0000AA6A  openfd.ret
+0000AA6B  0000AA6B  getc
+0000AA8F  0000AA8F  getc.oksize
+0000AAA8  0000AAA8  getc.loaded
+0000AAB3  0000AAB3  getc.ret
+0000AAB4  0000AAB4  ungetc
+0000AAC5  0000AAC5  skipspace
+0000AAC5  0000AAC5  skipspace.loop
+0000AAD7  0000AAD7  skipspace.eof
+0000AADB  0000AADB  skipspace.eoln
+0000AADE  0000AADE  getint
+0000AAE1  0000AAE1  getint.getnum
+0000AAF6  0000AAF6  getint.loaded
+0000AAFC  0000AAFC  parseint
+0000AB0C  0000AB0C  parseint.begin
+0000AB16  0000AB16  parseint.not_minus
+0000AB24  0000AB24  parseint.octhex
+0000AB37  0000AB37  parseint.ishex
+0000AB3B  0000AB3B  parseint.foundbase
+0000AB4E  0000AB4E  parseint.km
+0000AB5B  0000AB5B  parseint.fini
+0000AB62  0000AB62  parseint.done
+0000AB63  0000AB63  parseint.ret
+0000AB69  0000AB69  parseint.err
+0000AB6C  0000AB6C  parseint.isk
+0000AB72  0000AB72  parseint.ism
+0000AB78  0000AB78  unhexchar
+0000AB83  0000AB83  unhexchar.notdigit
+0000AB90  0000AB90  unhexchar.err
+0000AB91  0000AB91  unhexchar.ret
+0000AB92  0000AB92  getline
+0000AB9E  0000AB9E  getline.fillloop
+0000ABAD  0000ABAD  getline.store
+0000ABB0  0000ABB0  getline.ctrl
+0000ABC1  0000ABC1  getline.eoln
+0000ABC4  0000ABC4  getline.eof
+0000ABC5  0000ABC5  getline.ret
+0000ABCD  0000ABCD  getline.xret
+0000ABCF  0000ABCF  loadkeys
+0000ABED  0000ABED  loadkeys_ret
+0000ABEE  0000ABEE  get_msg_file
+0000AC07  0000AC07  get_msg_chunk
+0000AC1B  0000AC1B  print_msg_file
+0000AC3C  0000AC3C  msg_done_pop
+0000AC3F  0000AC3F  msg_done
+0000AC42  0000AC42  msg_putchar
+0000AC6C  0000AC6C  msg_putchar.not_modectl
+0000AC6C  0000AC6C  msg_normal
+0000AC98  0000AC98  msg_gotoxy
+0000ACA4  0000ACA4  msg_ignore
+0000ACA5  0000ACA5  msg_beep
+0000ACAD  0000ACAD  msg_ctrl_o
+0000ACB4  0000ACB4  msg_newline
+0000ACBA  0000ACBA  msg_line_wrap
+0000ACD4  0000ACD4  msg_scroll
+0000ACE9  0000ACE9  msg_formfeed
+0000AD0A  0000AD0A  msg_setbg
+0000AD1B  0000AD1B  msg_setbg.dontset
+0000AD22  0000AD22  msg_setfg
+0000AD31  0000AD31  msg_setfg.dontset
+0000AD33  0000AD33  msg_vga
+0000AD3E  0000AD3E  msg_color_bad
+0000AD43  0000AD43  msg_putcharnext
+0000AD4A  0000AD4A  msg_filename
+0000AD5F  0000AD5F  msg_setvgafileptr
+0000AD63  0000AD63  msg_ret
+0000AD64  0000AD64  msg_novga
+0000AD69  0000AD69  msg_viewimage
+0000AD80  0000AD80  msg_initvars
+0000AD90  0000AD90  msg_modectl
+0000AD97  0000AD97  write_serial_displaymask
+0000AD9E  0000AD9E  write_serial
+0000ADAF  0000ADAF  write_serial.waitspace
+0000ADBF  0000ADBF  write_serial.no_flow
+0000ADC5  0000ADC5  write_serial.noserial
+0000ADC9  0000ADC9  write_serial.end
+0000ADCA  0000ADCA  write_serial_str_displaymask
+0000ADD1  0000ADD1  write_serial_str
+0000ADD1  0000ADD1  write_serial_str.loop
+0000ADDB  0000ADDB  write_serial_str.end
+0000ADDC  0000ADDC  pollchar
+0000AE03  0000AE03  pollchar.done
+0000AE06  0000AE06  getchar
+0000AE09  0000AE09  getchar.again
+0000AE2E  0000AE2E  getchar.serial
+0000AE34  0000AE34  getchar.kbd
+0000AE3E  0000AE3E  getchar.not_ext
+0000AE46  0000AE46  getchar.func_key
+0000AE47  0000AE47  crlf
+0000AE54  0000AE54  cwritestr
+0000AE58  0000AE58  cwritestr.top
+0000AE62  0000AE62  cwritestr.end
+0000AE54  0000AE54  writestr
+0000AE67  0000AE67  writehex2
+0000AE74  0000AE74  writehex4
+0000AE81  0000AE81  writehex8
+0000AE88  0000AE88  writehex_common
+0000AE88  0000AE88  writehex_common.loop
+0000AE94  0000AE94  writehex_common.low
+0000AE98  0000AE98  writehex_common.high
+0000AE9A  0000AE9A  writehex_common.ischar
+0000AEA6  0000AEA6  pc_default
+0000AEB1  0000AEB1  pc_ontimeout
+0000AEC0  0000AEC0  pc_onerror
+0000AECF  0000AECF  pc_append
+0000AEE0  0000AEE0  pc_append.app1
+0000AEE5  0000AEE5  pc_append.vk
+0000AEFD  0000AEFD  pc_append.app2
+0000AF02  0000AF02  pc_ipappend
+0000AF12  0000AF12  pc_ipappend.err
+0000AF13  0000AF13  pc_ipappend.vk
+0000AF18  0000AF18  pc_localboot
+0000AF30  0000AF30  pc_localboot.err
+0000AF31  0000AF31  pc_kernel
+0000AF41  0000AF41  pc_kernel.err
+0000AF42  0000AF42  pc_timeout
+0000AF52  0000AF52  pc_timeout.err
+0000AF53  0000AF53  pc_setint16
+0000AF5C  0000AF5C  pc_setint16.err
+0000AF5D  0000AF5D  pc_filecmd
+0000AF6F  0000AF6F  pc_filecmd.ok
+0000AF70  0000AF70  pc_serial
+0000AF7C  0000AF7C  pc_serial.err
+0000AF7D  0000AF7D  pc_serial.ok
+0000AF8B  0000AF8B  pc_serial.valid_baud
+0000AF9A  0000AF9A  pc_serial.no_flow
+0000AF9C  0000AF9C  pc_serial.valid_flow
+0000AFB4  0000AFB4  pc_serial.nobaud
+0000AFBA  0000AFBA  pc_serial.parse_baud
+0000AFDB  0000AFDB  pc_serial.port_is_io
+0000B020  0000B020  pc_serial.serial_port_bad
+0000B027  0000B027  pc_fkey
+0000B030  0000B030  pc_label
+0000B06D  0000B06D  pc_say
+0000B076  0000B076  pc_noescape
+0000B07B  0000B07B  pc_comment
+0000B07B  0000B07B  pc_getline
+0000B087  0000B087  parse_config
+0000B091  0000B091  parse_config.again
+0000B096  0000B096  commit_vk
+0000B0CD  0000B0CD  commit_vk.overflow
+0000B0D4  0000B0D4  rllpack
+0000B0D9  0000B0D9  rllpack.startseq
+0000B0E2  0000B0E2  rllpack.stdbyte
+0000B0E9  0000B0E9  rllpack.diff
+0000B0ED  0000B0ED  rllpack.plainbyte
+0000B0F8  0000B0F8  rllpack.same
+0000B104  0000B104  rllpack.normal
+0000B111  0000B111  rllpack.getrun
+0000B125  0000B125  rllpack.nomatch
+0000B128  0000B128  rllpack.done
+0000B12B  0000B12B  rllpack.done_null
+0000B135  0000B135  rllunpack
+0000B139  0000B139  rllunpack.header
+0000B148  0000B148  rllunpack.isrun
+0000B151  0000B151  rllunpack.done
+0000B158  0000B158  getcommand
+0000B158  0000B158  getcommand.find
+0000B165  0000B165  getcommand.read_loop
+0000B17C  0000B17C  getcommand.done
+0000B18F  0000B18F  getcommand.table_search
+0000B19F  0000B19F  getcommand.noparm
+0000B1A4  0000B1A4  getcommand.error
+0000B1A9  0000B1A9  getcommand.found_keywd
+0000B1AE  0000B1AE  getcommand.eof
+0000B1B0  0000B1B0  getcommand.skipline
+0000B1BB  0000B1BB  load_high
+0000B1C1  0000B1C1  load_high.read_loop
+0000B1E0  0000B1E0  load_high.size_ok
+0000B1FD  0000B1FD  load_high.fix_slop
+0000B20A  0000B20A  load_high.noslop
+0000B225  0000B225  load_high.eof
+0000B227  0000B227  loadfont
+0000B263  0000B263  use_font
+0000B27A  0000B27A  use_font.graphics
+0000B294  0000B294  use_font.lf_ret
+0000B295  0000B295  use_font.text
+0000B294  0000B294  lf_ret
+0000B2A6  0000B2A6  adjust_screen
+0000B2B0  0000B2B0  vidrows_ok
+0000B2BF  0000B2BF  vgadisplayfile
+0000B2CC  0000B2CC  vgadisplayfile.graphalready
+0000B2E0  0000B2E0  vgadisplayfile.error_nz
+0000B2F6  0000B2F6  vgadisplayfile.movecursor
+0000B310  0000B310  vgadisplayfile.rowsok
+0000B326  0000B326  vgadisplayfile.drawpixelrow
+0000B35F  0000B35F  vgadisplayfile.error
+0000B361  0000B361  rledecode
+0000B366  0000B366  rledecode.loop
+0000B373  0000B373  rledecode.done
+0000B37A  0000B37A  rledecode.run
+0000B385  0000B385  rledecode.dorun
+0000B393  0000B393  rledecode.longrun
+0000B3A7  0000B3A7  rledecode.getnybble
+0000B3B6  0000B3B6  rledecode.high
+0000B3C5  0000B3C5  rledecode.nonewchunk
+0000B3C9  0000B3C9  vgagetchunk
+0000B3E1  0000B3E1  vgagetchunk.noteof
+0000B3E5  0000B3E5  vgagetchunk.eof
+0000B3E8  0000B3E8  packedpixel2vga
+0000B3F3  0000B3F3  packedpixel2vga.planeloop
+0000B3F5  0000B3F5  packedpixel2vga.loop1
+0000B3F8  0000B3F8  packedpixel2vga.loop2
+0000B417  0000B417  vgasetmode
+0000B444  0000B444  vgasetmode.error
+0000B445  0000B445  vgaclearmode
+0000B468  0000B468  vgaclearmode.done
+0000B46D  0000B46D  vgashowcursor
+0000B473  0000B473  vgahidecursor
+0000B477  0000B477  vgacursorcommon
+0000B488  0000B488  vgacursorcommon.done
+0000B48B  0000B48B  highmemsize
+0000B48E  0000B48E  get_e820
+0000B4A3  0000B4A3  get_e820.int_loop
+0000B4A8  0000B4A8  get_e820.do_e820
+0000B4C7  0000B4C7  get_e820.no_carry
+0000B4FD  0000B4FD  get_e820.ram_range
+0000B50D  0000B50D  get_e820.huge
+0000B520  0000B520  get_e820.e820_done
+0000B536  0000B536  no_e820
+0000B552  0000B552  no_e801
+0000B55E  0000B55E  e801_hole
+0000B568  0000B568  got_highmem_add1mb
+0000B56E  0000B56E  got_highmem
+0000B57C  0000B57C  strcpy
+0000B57D  0000B57D  strcpy.loop
+0000B585  0000B585  writechr
+0000B5C5  0000B5C5  writechr.lf
+0000B5CD  0000B5CD  writechr.curxyok
+0000B5D5  0000B5D5  writechr.ret
+0000B5D7  0000B5D7  writechr.nothing
+0000B5DB  0000B5DB  writechr.scroll
+0000B5F6  0000B5F6  writechr.cr
+0000B5FA  0000B5FA  writechr.bs
+0000B60C  0000B60C  dns_mangle
+0000B610  0000B610  dns_mangle.isdot
+0000B616  0000B616  dns_mangle.getbyte
+0000B629  0000B629  dns_mangle.endstring
+0000B634  0000B634  dns_mangle.done
+0000B637  0000B637  dns_compare
+0000B63C  0000B63C  dns_skiplabel
+0000B63F  0000B63F  dns_skiplabel.loop
+0000B64C  0000B64C  dns_skiplabel.ptr
+0000B64D  0000B64D  dns_skiplabel.done
+0000B64F  0000B64F  dns_resolv
+0000B683  0000B683  dns_resolv.fqdn
+0000B696  0000B696  dns_resolv.backoff
+0000B699  0000B699  dns_resolv.servers
+0000B69F  0000B69F  dns_resolv.nomoreservers
+0000B6A6  0000B6A6  dns_resolv.done
+0000B6AD  0000B6AD  dns_resolv.moreservers
+0000B6D0  0000B6D0  dns_resolv.nogw
+0000B6EE  0000B6EE  dns_resolv.waitrecv
+0000B737  0000B737  dns_resolv.skipq
+0000B73F  0000B73F  dns_resolv.qskipped
+0000B742  0000B742  dns_resolv.parseanswer
+0000B766  0000B766  dns_resolv.gotresult
+0000B76C  0000B76C  dns_resolv.notsame
+0000B773  0000B773  dns_resolv.badness
+0000B780  0000B780  dns_resolv.timeout
+
+---- Section .data ------------------------------------------------------------
+
+Real      Virtual   Name
+0000B790  0000B790  linuxauto_cmd
+0000B79B  0000B79B  boot_image
+0000B7A6  0000B7A6  IPAppends
+0000B7AA  0000B7AA  comapi_dnsresolv
+0000B7B8  0000B7B8  comapi_maxshuffle
+0000B7BE  0000B7BE  comapi_shuffle
+0000B7F3  0000B7F3  comapi_shuffle.error
+0000B7F5  0000B7F5  comapi_idle
+0000B7FA  0000B7FA  int21_table
+0000B818  0000B818  int22_table
+0000B840  0000B840  APIKeyWait
+0000B841  0000B841  APIKeyFlag
+0000B842  0000B842  com32_pmidt
+0000B848  0000B848  com32_rmidt
+0000B84E  0000B84E  DisplayCon
+0000B850  0000B850  ScrollAttribute
+0000B851  0000B851  vk_overflow_msg
+0000B876  0000B876  AppendLen
+0000B878  0000B878  OntimeoutLen
+0000B87A  0000B87A  OnerrorLen
+0000B87C  0000B87C  KbdTimeOut
+0000B87E  0000B87E  CmdLinePtr
+0000B880  0000B880  ForcePrompt
+0000B882  0000B882  AllowImplicit
+0000B884  0000B884  AllowOptions
+0000B886  0000B886  SerialPort
+0000B888  0000B888  VKernelBytes
+0000B88A  0000B88A  VKernel
+0000B88C  0000B88C  VGAFontSize
+0000B88E  0000B88E  UserFont
+0000B88F  0000B88F  linear_color
+0000B8A0  0000B8A0  UsingVGA
+0000B8A1  0000B8A1  pxe_udp_write_pkt_dns
+0000B8A1  0000B8A1  pxe_udp_write_pkt_dns.status
+0000B8A3  0000B8A3  pxe_udp_write_pkt_dns.sip
+0000B8A7  0000B8A7  pxe_udp_write_pkt_dns.gip
+0000B8AB  0000B8AB  pxe_udp_write_pkt_dns.lport
+0000B8AD  0000B8AD  pxe_udp_write_pkt_dns.rport
+0000B8AF  0000B8AF  pxe_udp_write_pkt_dns.buffersize
+0000B8B1  0000B8B1  pxe_udp_write_pkt_dns.buffer
+0000B8B5  0000B8B5  pxe_udp_read_pkt_dns
+0000B8B5  0000B8B5  pxe_udp_read_pkt_dns.status
+0000B8B7  0000B8B7  pxe_udp_read_pkt_dns.sip
+0000B8BB  0000B8BB  pxe_udp_read_pkt_dns.dip
+0000B8BF  0000B8BF  pxe_udp_read_pkt_dns.rport
+0000B8C1  0000B8C1  pxe_udp_read_pkt_dns.lport
+0000B8C3  0000B8C3  pxe_udp_read_pkt_dns.buffersize
+0000B8C5  0000B8C5  pxe_udp_read_pkt_dns.buffer
+0000B8C9  0000B8C9  LastDNSServer
+0000B8CB  0000B8CB  hextbl_lower
+0000B8DB  0000B8DB  copyright_str
+0000B905  0000B905  boot_prompt
+0000B90C  0000B90C  wipe_char
+0000B910  0000B910  err_notfound
+0000B92E  0000B92E  err_notkernel
+0000B953  0000B953  err_noram
+0000BA2E  0000BA2E  err_badcfg
+0000BA50  0000BA50  err_noparm
+0000BA74  0000BA74  err_noinitrd
+0000BA95  0000BA95  err_nohighmem
+0000BAC3  0000BAC3  err_highload
+0000BAE0  0000BAE0  err_oldkernel
+0000BB12  0000BB12  err_notdos
+0000BB30  0000BB30  err_comlarge
+0000BB4B  0000BB4B  err_bssimage
+0000BB67  0000BB67  err_a20
+0000BB84  0000BB84  err_bootfailed
+0000BB84  0000BB84  bailmsg
+0000BBC0  0000BBC0  err_nopxe
+0000BBED  0000BBED  err_pxefailed
+0000BC09  0000BC09  err_udpinit
+0000BC2A  0000BC2A  err_oldtftp
+0000BC5A  0000BC5A  found_pxenv
+0000BC73  0000BC73  using_pxenv_msg
+0000BCA2  0000BCA2  apiver_str
+0000BCB6  0000BCB6  pxeentry_msg
+0000BCDA  0000BCDA  pxenventry_msg
+0000BD00  0000BD00  trymempxe_msg
+0000BD27  0000BD27  trymempxenv_msg
+0000BD50  0000BD50  undi_data_msg
+0000BD69  0000BD69  undi_data_len_msg
+0000BD82  0000BD82  undi_code_msg
+0000BD9B  0000BD9B  undi_code_len_msg
+0000BDB4  0000BDB4  cant_free_msg
+0000BDD7  0000BDD7  notfound_msg
+0000BDE3  0000BDE3  myipaddr_msg
+0000BDFE  0000BDFE  tftpprefix_msg
+0000BE0C  0000BE0C  localboot_msg
+0000BE29  0000BE29  cmdline_msg
+0000BE3A  0000BE3A  ready_msg
+0000BE43  0000BE43  trying_msg
+0000BE54  0000BE54  crlfloading_msg
+0000BE56  0000BE56  loading_msg
+0000BE5F  0000BE5F  dotdot_msg
+0000BE60  0000BE60  dot_msg
+0000BE62  0000BE62  fourbs_msg
+0000BE67  0000BE67  aborted_msg
+0000BE70  0000BE70  crlf_msg
+0000BE72  0000BE72  null_msg
+0000BE73  0000BE73  crff_msg
+0000BE76  0000BE76  default_str
+0000BE7E  0000BE7E  syslinux_banner
+0000BE9A  0000BE9A  cfgprefix
+0000BEA7  0000BEA7  initrd_cmd
+0000BEAE  0000BEAE  bootif_str
+0000BEB8  0000BEB8  keywd_table
+0000BFB8  0000BFB8  exten_table
+0000BFC8  0000BFC8  exten_table_end
+0000BFD0  0000BFD0  new_api_unload
+0000BFD5  0000BFD5  old_api_unload
+0000BFDA  0000BFDA  pxe_bootp_query_pkt_2
+0000BFDA  0000BFDA  pxe_bootp_query_pkt_2.status
+0000BFDC  0000BFDC  pxe_bootp_query_pkt_2.packettype
+0000BFDE  0000BFDE  pxe_bootp_query_pkt_2.buffersize
+0000BFE0  0000BFE0  pxe_bootp_query_pkt_2.buffer
+0000BFE4  0000BFE4  pxe_bootp_query_pkt_2.bufferlimit
+0000BFE6  0000BFE6  pxe_bootp_query_pkt_3
+0000BFE6  0000BFE6  pxe_bootp_query_pkt_3.status
+0000BFE8  0000BFE8  pxe_bootp_query_pkt_3.packettype
+0000BFEA  0000BFEA  pxe_bootp_query_pkt_3.buffersize
+0000BFEC  0000BFEC  pxe_bootp_query_pkt_3.buffer
+0000BFF0  0000BFF0  pxe_bootp_query_pkt_3.bufferlimit
+0000BFF2  0000BFF2  pxe_bootp_size_query_pkt
+0000BFF2  0000BFF2  pxe_bootp_size_query_pkt.status
+0000BFF4  0000BFF4  pxe_bootp_size_query_pkt.packettype
+0000BFF6  0000BFF6  pxe_bootp_size_query_pkt.buffersize
+0000BFF8  0000BFF8  pxe_bootp_size_query_pkt.buffer
+0000BFFC  0000BFFC  pxe_bootp_size_query_pkt.bufferlimit
+0000BFFE  0000BFFE  pxe_udp_open_pkt
+0000BFFE  0000BFFE  pxe_udp_open_pkt.status
+0000C000  0000C000  pxe_udp_open_pkt.sip
+0000C004  0000C004  pxe_udp_close_pkt
+0000C004  0000C004  pxe_udp_close_pkt.status
+0000C006  0000C006  pxe_udp_write_pkt
+0000C006  0000C006  pxe_udp_write_pkt.status
+0000C008  0000C008  pxe_udp_write_pkt.sip
+0000C00C  0000C00C  pxe_udp_write_pkt.gip
+0000C010  0000C010  pxe_udp_write_pkt.lport
+0000C012  0000C012  pxe_udp_write_pkt.rport
+0000C014  0000C014  pxe_udp_write_pkt.buffersize
+0000C016  0000C016  pxe_udp_write_pkt.buffer
+0000C01A  0000C01A  pxe_udp_read_pkt
+0000C01A  0000C01A  pxe_udp_read_pkt.status
+0000C01C  0000C01C  pxe_udp_read_pkt.sip
+0000C020  0000C020  pxe_udp_read_pkt.dip
+0000C024  0000C024  pxe_udp_read_pkt.rport
+0000C026  0000C026  pxe_udp_read_pkt.lport
+0000C028  0000C028  pxe_udp_read_pkt.buffersize
+0000C02A  0000C02A  pxe_udp_read_pkt.buffer
+0000C030  0000C030  BaseStack
+0000C034  0000C034  NextSocket
+0000C036  0000C036  KeepPXE
+0000C037  0000C037  tftp_tail
+0000C03D  0000C03D  tsize_str
+0000C045  0000C045  blksize_str
+0000C052  0000C052  tftp_opt_table
+0000C05E  0000C05E  tftp_opt_err
+0000C078  0000C078  ack_packet_buf
+0000C07C  0000C07C  MyIP
+0000C080  0000C080  ServerIP
+0000C084  0000C084  Netmask
+0000C088  0000C088  Gateway
+0000C08C  0000C08C  ServerPort
+0000C090  0000C090  BufSafe
+0000C092  0000C092  BufSafeSec
+0000C094  0000C094  BufSafeBytes
+0000C096  0000C096  EndOfGetCBuf
+0000C098  0000C098  IPAppend
+0000C099  0000C099  DHCPMagic
+
+---- Section .bcopy32 ---------------------------------------------------------
+
+Real      Virtual   Name
+0000C09C  00005D70  __bcopy_start
+0000C09C  00005D70  bcopy_gdt
+0000C0CC  00005DA0  bcopy
+0000C0EF  00005DC3  bcopy.in_pm
+0000C0FB  00005DCF  bcopy.forward
+0000C10E  00005DE2  bcopy.reverse
+0000C139  00005E0D  bcopy.exit
+0000C14D  00005E21  bcopy.in_rm
+0000C162  00005E36  slow_out
+0000C163  00005E37  _io_delay
+0000C168  00005E3C  enable_a20
+0000C170  00005E44  try_enable_a20
+0000C17A  00005E4E  a20_dunno
+0000C17A  00005E4E  a20_none
+0000C185  00005E59  a20_bios
+0000C197  00005E6B  a20_kbc
+0000C1B2  00005E86  a20_kbc.kbc_wait
+0000C1B5  00005E89  a20_kbc.kbc_wait_loop
+0000C1BD  00005E91  a20_fast
+0000C1CB  00005E9F  a20_fast.fast_wait
+0000C1CE  00005EA2  a20_fast.fast_wait_loop
+0000C1E3  00005EB7  a20_done_pop
+0000C1E4  00005EB8  a20_done
+0000C1E7  00005EBB  a20_test
+0000C1F6  00005ECA  a20_test.a20_wait
+0000C205  00005ED9  a20_test.a20_done
+0000C209  00005EDD  disable_a20
+0000C215  00005EE9  a20d_bios
+0000C21E  00005EF2  a20d_fast
+0000C226  00005EFA  a20d_kbc
+0000C237  00005F0B  a20d_snooze
+0000C23B  00005F0F  a20d_snooze.delayloop
+0000C242  00005F16  a20d_snooze.disabled
+0000C243  00005F17  a20d_dunno
+0000C243  00005F17  a20d_none
+0000C246  00005F1A  empty_8042_uncond
+0000C248  00005F1C  empty_8042
+0000C251  00005F25  empty_8042.a20_on
+0000C261  00005F35  empty_8042.no_output
+0000C268  00005F3C  empty_8042.done
+0000C269  00005F3D  shuffle_and_boot
+0000C26D  00005F41  shuffle_and_boot.loop
+0000C281  00005F55  shuffle_and_boot.done
+0000C290  00005F64  A20List
+0000C29A  00005F6E  A20DList
+0000C2A4  00005F78  A20Type
+
+---- Section .earlybss --------------------------------------------------------
+
+Real      Virtual   Name
+00000800  00000800  trackbuf
+00002800  00002800  getcbuf
+00004800  00004800  Files
+00004C00  00004C00  BootFile
+00004D00  00004D00  ConfigServer
+00004D04  00004D04  ConfigName
+00004E00  00004E00  PathPrefix
+00004F00  00004F00  DotQuadBuf
+00004F10  00004F10  IPOption
+00004F60  00004F60  InitStack
+00004F64  00004F64  RBFG_brainfuck
+00005D64  00005D64  EntryPoint
+00005D68  00005D68  SavedSSSP
+00005D6C  00005D6C  A20Test
+00005D6E  00005D6E  A20Tries
+
+---- Section .bss -------------------------------------------------------------
+
+Real      Virtual   Name
+00006000  00006000  RebootTime
+00006004  00006004  StrucPtr
+00006008  00006008  APIVer
+0000600A  0000600A  IPOptionLen
+0000600C  0000600C  IdleTimer
+0000600E  0000600E  LocalBootType
+00006010  00006010  PktTimeout
+00006012  00006012  RealBaseMem
+00006014  00006014  OverLoad
+00006015  00006015  MACLen
+00006016  00006016  MACType
+00006017  00006017  MAC
+00006027  00006027  BOOTIFStr
+0000602E  0000602E  MACStr
+00006064  00006064  pxe_unload_stack_pkt
+00006064  00006064  pxe_unload_stack_pkt.status
+00006066  00006066  pxe_unload_stack_pkt.reserved
+00006080  00006080  packet_buf
+00006880  00006880  KernelExtPtr
+00006882  00006882  CmdOptPtr
+00006884  00006884  KbdFlags
+00006885  00006885  FuncFlag
+00006888  00006888  RamdiskMax
+0000688C  0000688C  KernelSize
+00006890  00006890  KernelSects
+00006894  00006894  KernelEnd
+00006898  00006898  CmdLineLen
+0000689A  0000689A  SetupSecs
+0000689C  0000689C  InitRDPtr
+0000689E  0000689E  LoadFlags
+000068A0  000068A0  PMESP
+000068A4  000068A4  Com32SysSP
+000068A8  000068A8  NumBuf
+000068B7  000068B7  NumBufEnd
+000068B8  000068B8  FBytes
+000068BC  000068BC  FSectors
+000068C0  000068C0  FNextClust
+000068C2  000068C2  FPtr
+000068C4  000068C4  NextCharJump
+000068C6  000068C6  CursorDX
+000068C6  000068C6  CursorCol
+000068C7  000068C7  CursorRow
+000068C8  000068C8  ScreenSize
+000068C8  000068C8  VidCols
+000068C9  000068C9  VidRows
+000068CA  000068CA  BaudDivisor
+000068CC  000068CC  FlowControl
+000068CC  000068CC  FlowOutput
+000068CD  000068CD  FlowInput
+000068CE  000068CE  FlowIgnore
+000068CF  000068CF  TextAttribute
+000068D0  000068D0  DisplayMask
+000068D4  000068D4  command_line
+00006AD8  00006AD8  default_cmd
+00006CD8  00006CD8  VKernelBuf
+00006FDC  00006FDC  AppendBuf
+000071DC  000071DC  Ontimeout
+000073DC  000073DC  Onerror
+000075DC  000075DC  KbdMap
+000076DC  000076DC  FKeyName
+00007BDC  00007BDC  KernelCNameLen
+00007BDE  00007BDE  InitRDCNameLen
+00007BE0  00007BE0  KernelName
+00007C60  00007C60  KernelCName
+00007CE0  00007CE0  InitRDCName
+00007D60  00007D60  MNameBuf
+00007DE0  00007DE0  InitRD
+00007E60  00007E60  GraphXSize
+00007E62  00007E62  VGAPos
+00007E64  00007E64  VGACluster
+00007E66  00007E66  VGAFilePtr
+00007E68  00007E68  TextColorReg
+00007E79  00007E79  VGAFileBuf
+00007EF9  00007EF9  VGAFileBufEnd
+00007EF9  00007EF9  VGAFileMBuf
+00007F7C  00007F7C  E820Buf
+00007F90  00007F90  E820Mem
+00007F94  00007F94  E820Max
+00007F98  00007F98  HighMemSize
+00007F9C  00007F9C  DNSSendBuf
+0000819C  0000819C  DNSRecvBuf
+0000839C  0000839C  LocalDomain
+0000849C  0000849C  DNSServers
+
+---- Section .latebss ---------------------------------------------------------
+
+Real      Virtual   Name
+0000E000  0000E000  vgafontbuf
+

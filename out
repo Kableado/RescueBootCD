@@ -1,0 +1,216 @@
+4096+0 records in
+4096+0 records out
+4194304 bytes (4,2 MB) copied, 0,080882 seconds, 51,9 MB/s
+mke2fs 1.38 (30-Jun-2005)
+Etiqueta del sistema de ficheros=
+Tipo de SO: Linux
+Tamaño del bloque=1024 (bitácora=0)
+Tamaño del fragmento=1024 (bitácora=0)
+2000 nodos i, 4096 bloques
+0 bloques (0.00%) reservados para el súper usuario
+Primer bloque de datos=1
+1 bloque de grupo
+8192 bloques por grupo, 8192 fragmentos por grupo
+2000 nodos i por grupo
+
+Mientras se escribían las tablas de nodos i: 0/1terminado                                    
+Escribiendo superbloques y la información contable del sistema de ficheros: hecho
+
+Este sistema de ficheros se revisará automáticamente cada 38 meses o
+180 dias, lo que suceda primero.  Utilice tune2fs -c o -i para cambiarlo.
+mount: no se puede encontrar ningún dispositivo /dev/loop#
+«rootfs/bin/dd» -> «tmp.mountp/bin/dd»
+«rootfs/bin/cp» -> «tmp.mountp/bin/cp»
+«rootfs/bin/df» -> «tmp.mountp/bin/df»
+«rootfs/bin/ip» -> «tmp.mountp/bin/ip»
+«rootfs/bin/ln» -> «tmp.mountp/bin/ln»
+«rootfs/bin/ls» -> «tmp.mountp/bin/ls»
+«rootfs/bin/mt» -> «tmp.mountp/bin/mt»
+«rootfs/bin/mv» -> «tmp.mountp/bin/mv»
+«rootfs/bin/ps» -> «tmp.mountp/bin/ps»
+«rootfs/bin/rm» -> «tmp.mountp/bin/rm»
+«rootfs/bin/sh» -> «tmp.mountp/bin/sh»
+«rootfs/bin/su» -> «tmp.mountp/bin/su»
+«rootfs/bin/vi» -> «tmp.mountp/bin/vi»
+«rootfs/bin/ash» -> «tmp.mountp/bin/ash»
+«rootfs/bin/cat» -> «tmp.mountp/bin/cat»
+«rootfs/bin/pwd» -> «tmp.mountp/bin/pwd»
+«rootfs/bin/sed» -> «tmp.mountp/bin/sed»
+«rootfs/bin/tar» -> «tmp.mountp/bin/tar»
+«rootfs/bin/date» -> «tmp.mountp/bin/date»
+«rootfs/bin/cpio» -> «tmp.mountp/bin/cpio»
+«rootfs/bin/echo» -> «tmp.mountp/bin/echo»
+«rootfs/bin/grep» -> «tmp.mountp/bin/grep»
+«rootfs/bin/gzip» -> «tmp.mountp/bin/gzip»
+«rootfs/bin/kill» -> «tmp.mountp/bin/kill»
+«rootfs/bin/more» -> «tmp.mountp/bin/more»
+«rootfs/bin/ping» -> «tmp.mountp/bin/ping»
+«rootfs/bin/stty» -> «tmp.mountp/bin/stty»
+«rootfs/bin/sync» -> «tmp.mountp/bin/sync»
+«rootfs/bin/true» -> «tmp.mountp/bin/true»
+«rootfs/bin/zcat» -> «tmp.mountp/bin/zcat»
+«rootfs/bin/deluser» -> «tmp.mountp/bin/deluser»
+«rootfs/bin/chgrp» -> «tmp.mountp/bin/chgrp»
+«rootfs/bin/chmod» -> «tmp.mountp/bin/chmod»
+«rootfs/bin/chown» -> «tmp.mountp/bin/chown»
+«rootfs/bin/dmesg» -> «tmp.mountp/bin/dmesg»
+«rootfs/bin/egrep» -> «tmp.mountp/bin/egrep»
+«rootfs/bin/false» -> «tmp.mountp/bin/false»
+«rootfs/bin/fgrep» -> «tmp.mountp/bin/fgrep»
+«rootfs/bin/login» -> «tmp.mountp/bin/login»
+«rootfs/bin/mkdir» -> «tmp.mountp/bin/mkdir»
+«rootfs/bin/mknod» -> «tmp.mountp/bin/mknod»
+«rootfs/bin/mount» -> «tmp.mountp/bin/mount»
+«rootfs/bin/pidof» -> «tmp.mountp/bin/pidof»
+«rootfs/bin/rmdir» -> «tmp.mountp/bin/rmdir»
+«rootfs/bin/sleep» -> «tmp.mountp/bin/sleep»
+«rootfs/bin/touch» -> «tmp.mountp/bin/touch»
+«rootfs/bin/uname» -> «tmp.mountp/bin/uname»
+«rootfs/bin/uncompress» -> «tmp.mountp/bin/uncompress»
+«rootfs/bin/iptunnel» -> «tmp.mountp/bin/iptunnel»
+«rootfs/bin/fdflush» -> «tmp.mountp/bin/fdflush»
+«rootfs/bin/netstat» -> «tmp.mountp/bin/netstat»
+«rootfs/bin/gunzip» -> «tmp.mountp/bin/gunzip»
+«rootfs/bin/ipaddr» -> «tmp.mountp/bin/ipaddr»
+«rootfs/bin/ipcalc» -> «tmp.mountp/bin/ipcalc»
+«rootfs/bin/iplink» -> «tmp.mountp/bin/iplink»
+«rootfs/bin/hostname» -> «tmp.mountp/bin/hostname»
+«rootfs/bin/addgroup» -> «tmp.mountp/bin/addgroup»
+«rootfs/bin/mktemp» -> «tmp.mountp/bin/mktemp»
+«rootfs/bin/delgroup» -> «tmp.mountp/bin/delgroup»
+«rootfs/bin/adduser» -> «tmp.mountp/bin/adduser»
+«rootfs/bin/umount» -> «tmp.mountp/bin/umount»
+«rootfs/bin/usleep» -> «tmp.mountp/bin/usleep»
+«rootfs/bin/iproute» -> «tmp.mountp/bin/iproute»
+«rootfs/bin/dumpkmap» -> «tmp.mountp/bin/dumpkmap»
+«rootfs/bin/busybox» -> «tmp.mountp/bin/busybox»
+«rootfs/dodeeds.sh» -> «tmp.mountp/dodeeds.sh»
+«rootfs/etc/mtab» -> «tmp.mountp/etc/mtab»
+«rootfs/etc/fstab» -> «tmp.mountp/etc/fstab»
+«rootfs/etc/rc.sysuninit» -> «tmp.mountp/etc/rc.sysuninit»
+«rootfs/etc/inittab» -> «tmp.mountp/etc/inittab»
+«rootfs/etc/rc.sysinit» -> «tmp.mountp/etc/rc.sysinit»
+«rootfs/linuxrc» -> «tmp.mountp/linuxrc»
+«rootfs/restaurar.sh» -> «tmp.mountp/restaurar.sh»
+«rootfs/sbin/halt» -> «tmp.mountp/sbin/halt»
+«rootfs/sbin/init» -> «tmp.mountp/sbin/init»
+«rootfs/sbin/fdisk» -> «tmp.mountp/sbin/fdisk»
+«rootfs/sbin/getty» -> «tmp.mountp/sbin/getty»
+«rootfs/sbin/klogd» -> «tmp.mountp/sbin/klogd»
+«rootfs/sbin/lsmod» -> «tmp.mountp/sbin/lsmod»
+«rootfs/sbin/rmmod» -> «tmp.mountp/sbin/rmmod»
+«rootfs/sbin/route» -> «tmp.mountp/sbin/route»
+«rootfs/sbin/freeramdisk» -> «tmp.mountp/sbin/freeramdisk»
+«rootfs/sbin/modprobe» -> «tmp.mountp/sbin/modprobe»
+«rootfs/sbin/losetup» -> «tmp.mountp/sbin/losetup»
+«rootfs/sbin/makedevs» -> «tmp.mountp/sbin/makedevs»
+«rootfs/sbin/sulogin» -> «tmp.mountp/sbin/sulogin»
+«rootfs/sbin/poweroff» -> «tmp.mountp/sbin/poweroff»
+«rootfs/sbin/devfsd» -> «tmp.mountp/sbin/devfsd»
+«rootfs/sbin/swapoff» -> «tmp.mountp/sbin/swapoff»
+«rootfs/sbin/hdparm» -> «tmp.mountp/sbin/hdparm»
+«rootfs/sbin/syslogd» -> «tmp.mountp/sbin/syslogd»
+«rootfs/sbin/insmod» -> «tmp.mountp/sbin/insmod»
+«rootfs/sbin/watchdog» -> «tmp.mountp/sbin/watchdog»
+«rootfs/sbin/mkswap» -> «tmp.mountp/sbin/mkswap»
+«rootfs/sbin/nameif» -> «tmp.mountp/sbin/nameif»
+«rootfs/sbin/ifconfig» -> «tmp.mountp/sbin/ifconfig»
+«rootfs/sbin/reboot» -> «tmp.mountp/sbin/reboot»
+«rootfs/sbin/adjtimex» -> «tmp.mountp/sbin/adjtimex»
+«rootfs/sbin/pivot_root» -> «tmp.mountp/sbin/pivot_root»
+«rootfs/sbin/loadkmap» -> «tmp.mountp/sbin/loadkmap»
+«rootfs/sbin/swapon» -> «tmp.mountp/sbin/swapon»
+«rootfs/sbin/udhcpc» -> «tmp.mountp/sbin/udhcpc»
+«rootfs/sbin/sysctl» -> «tmp.mountp/sbin/sysctl»
+«rootfs/sbin/hwclock» -> «tmp.mountp/sbin/hwclock»
+«rootfs/sbin/fsck.minix» -> «tmp.mountp/sbin/fsck.minix»
+«rootfs/sbin/mkfs.minix» -> «tmp.mountp/sbin/mkfs.minix»
+«rootfs/usr/bin/[» -> «tmp.mountp/usr/bin/[»
+«rootfs/usr/bin/ar» -> «tmp.mountp/usr/bin/ar»
+«rootfs/usr/bin/dc» -> «tmp.mountp/usr/bin/dc»
+«rootfs/usr/bin/du» -> «tmp.mountp/usr/bin/du»
+«rootfs/usr/bin/id» -> «tmp.mountp/usr/bin/id»
+«rootfs/usr/bin/nc» -> «tmp.mountp/usr/bin/nc»
+«rootfs/usr/bin/od» -> «tmp.mountp/usr/bin/od»
+«rootfs/usr/bin/rx» -> «tmp.mountp/usr/bin/rx»
+«rootfs/usr/bin/tr» -> «tmp.mountp/usr/bin/tr»
+«rootfs/usr/bin/wc» -> «tmp.mountp/usr/bin/wc»
+«rootfs/usr/bin/awk» -> «tmp.mountp/usr/bin/awk»
+«rootfs/usr/bin/cmp» -> «tmp.mountp/usr/bin/cmp»
+«rootfs/usr/bin/cut» -> «tmp.mountp/usr/bin/cut»
+«rootfs/usr/bin/env» -> «tmp.mountp/usr/bin/env»
+«rootfs/usr/bin/seq» -> «tmp.mountp/usr/bin/seq»
+«rootfs/usr/bin/tee» -> «tmp.mountp/usr/bin/tee»
+«rootfs/usr/bin/top» -> «tmp.mountp/usr/bin/top»
+«rootfs/usr/bin/tty» -> «tmp.mountp/usr/bin/tty»
+«rootfs/usr/bin/who» -> «tmp.mountp/usr/bin/who»
+«rootfs/usr/bin/yes» -> «tmp.mountp/usr/bin/yes»
+«rootfs/usr/bin/chvt» -> «tmp.mountp/usr/bin/chvt»
+«rootfs/usr/bin/find» -> «tmp.mountp/usr/bin/find»
+«rootfs/usr/bin/expr» -> «tmp.mountp/usr/bin/expr»
+«rootfs/usr/bin/fold» -> «tmp.mountp/usr/bin/fold»
+«rootfs/usr/bin/free» -> «tmp.mountp/usr/bin/free»
+«rootfs/usr/bin/head» -> «tmp.mountp/usr/bin/head»
+«rootfs/usr/bin/last» -> «tmp.mountp/usr/bin/last»
+«rootfs/usr/bin/mesg» -> «tmp.mountp/usr/bin/mesg»
+«rootfs/usr/bin/deallocvt» -> «tmp.mountp/usr/bin/deallocvt»
+«rootfs/usr/bin/tail» -> «tmp.mountp/usr/bin/tail»
+«rootfs/usr/bin/sort» -> «tmp.mountp/usr/bin/sort»
+«rootfs/usr/bin/test» -> «tmp.mountp/usr/bin/test»
+«rootfs/usr/bin/time» -> «tmp.mountp/usr/bin/time»
+«rootfs/usr/bin/uniq» -> «tmp.mountp/usr/bin/uniq»
+«rootfs/usr/bin/wget» -> «tmp.mountp/usr/bin/wget»
+«rootfs/usr/bin/dos2unix» -> «tmp.mountp/usr/bin/dos2unix»
+«rootfs/usr/bin/dirname» -> «tmp.mountp/usr/bin/dirname»
+«rootfs/usr/bin/partimage» -> «tmp.mountp/usr/bin/partimage»
+«rootfs/usr/bin/killall» -> «tmp.mountp/usr/bin/killall»
+«rootfs/usr/bin/unix2dos» -> «tmp.mountp/usr/bin/unix2dos»
+«rootfs/usr/bin/clear» -> «tmp.mountp/usr/bin/clear»
+«rootfs/usr/bin/bzcat» -> «tmp.mountp/usr/bin/bzcat»
+«rootfs/usr/bin/patch» -> «tmp.mountp/usr/bin/patch»
+«rootfs/usr/bin/reset» -> «tmp.mountp/usr/bin/reset»
+«rootfs/usr/bin/unzip» -> «tmp.mountp/usr/bin/unzip»
+«rootfs/usr/bin/vlock» -> «tmp.mountp/usr/bin/vlock»
+«rootfs/usr/bin/which» -> «tmp.mountp/usr/bin/which»
+«rootfs/usr/bin/xargs» -> «tmp.mountp/usr/bin/xargs»
+«rootfs/usr/bin/sha1sum» -> «tmp.mountp/usr/bin/sha1sum»
+«rootfs/usr/bin/traceroute» -> «tmp.mountp/usr/bin/traceroute»
+«rootfs/usr/bin/logname» -> «tmp.mountp/usr/bin/logname»
+«rootfs/usr/bin/arping» -> «tmp.mountp/usr/bin/arping»
+«rootfs/usr/bin/strings» -> «tmp.mountp/usr/bin/strings»
+«rootfs/usr/bin/dialog» -> «tmp.mountp/usr/bin/dialog»
+«rootfs/usr/bin/ftpget» -> «tmp.mountp/usr/bin/ftpget»
+«rootfs/usr/bin/ftpput» -> «tmp.mountp/usr/bin/ftpput»
+«rootfs/usr/bin/hostid» -> «tmp.mountp/usr/bin/hostid»
+«rootfs/usr/bin/length» -> «tmp.mountp/usr/bin/length»
+«rootfs/usr/bin/md5sum» -> «tmp.mountp/usr/bin/md5sum»
+«rootfs/usr/bin/fdformat» -> «tmp.mountp/usr/bin/fdformat»
+«rootfs/usr/bin/logger» -> «tmp.mountp/usr/bin/logger»
+«rootfs/usr/bin/mkfifo» -> «tmp.mountp/usr/bin/mkfifo»
+«rootfs/usr/bin/passwd» -> «tmp.mountp/usr/bin/passwd»
+«rootfs/usr/bin/openvt» -> «tmp.mountp/usr/bin/openvt»
+«rootfs/usr/bin/nslookup» -> «tmp.mountp/usr/bin/nslookup»
+«rootfs/usr/bin/printf» -> «tmp.mountp/usr/bin/printf»
+«rootfs/usr/bin/renice» -> «tmp.mountp/usr/bin/renice»
+«rootfs/usr/bin/hexdump» -> «tmp.mountp/usr/bin/hexdump»
+«rootfs/usr/bin/telnet» -> «tmp.mountp/usr/bin/telnet»
+«rootfs/usr/bin/loadfont» -> «tmp.mountp/usr/bin/loadfont»
+«rootfs/usr/bin/uptime» -> «tmp.mountp/usr/bin/uptime»
+«rootfs/usr/bin/whoami» -> «tmp.mountp/usr/bin/whoami»
+«rootfs/usr/bin/readlink» -> «tmp.mountp/usr/bin/readlink»
+«rootfs/usr/bin/install» -> «tmp.mountp/usr/bin/install»
+«rootfs/usr/bin/basename» -> «tmp.mountp/usr/bin/basename»
+«rootfs/usr/bin/realpath» -> «tmp.mountp/usr/bin/realpath»
+«rootfs/usr/bin/setkeycodes» -> «tmp.mountp/usr/bin/setkeycodes»
+«rootfs/usr/bin/bunzip2» -> «tmp.mountp/usr/bin/bunzip2»
+«rootfs/usr/sbin/fbset» -> «tmp.mountp/usr/sbin/fbset»
+«rootfs/usr/sbin/rdate» -> «tmp.mountp/usr/sbin/rdate»
+«rootfs/usr/sbin/chroot» -> «tmp.mountp/usr/sbin/chroot»
+«rootfs/usr/sbin/udhcpd» -> «tmp.mountp/usr/sbin/udhcpd»
+«rootfs/usr/share/terminfo/l/linux» -> «tmp.mountp/usr/share/terminfo/l/linux»
+«rootfs/var/run/utmp» -> «tmp.mountp/var/run/utmp»
+umount: tmp.mountp: no montado
+4096+0 records in
+4096+0 records out
+4194304 bytes (4,2 MB) copied, 0,236383 seconds, 17,7 MB/s
+ 99.9%

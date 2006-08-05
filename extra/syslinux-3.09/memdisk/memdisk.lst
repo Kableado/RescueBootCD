@@ -1,0 +1,764 @@
+     1                                  ; -*- fundamental -*- (asm-mode sucks)
+     2                                  ; $Id: memdisk.asm,v 1.29 2005/04/29 06:08:03 hpa Exp $
+     3                                  ; ****************************************************************************
+     4                                  ;
+     5                                  ;  memdisk.asm
+     6                                  ;
+     7                                  ;  A program to emulate an INT 13h disk BIOS from a "disk" in extended
+     8                                  ;  memory.
+     9                                  ;
+    10                                  ;   Copyright (C) 2001-2004  H. Peter Anvin
+    11                                  ;
+    12                                  ;  This program is free software; you can redistribute it and/or modify
+    13                                  ;  it under the terms of the GNU General Public License as published by
+    14                                  ;  the Free Software Foundation, Inc., 53 Temple Place Ste 330,
+    15                                  ;  Boston MA 02111-1307, USA; either version 2 of the License, or
+    16                                  ;  (at your option) any later version; incorporated herein by reference.
+    17                                  ; 
+    18                                  ; ****************************************************************************
+    19                                  
+    20                                  %ifndef DEPEND
+    21                                  %include	"../version.gen"
+    22                              <1> %define VERSION "3.09"
+    23                              <1> %define VER_MAJOR 3
+    24                              <1> %define VER_MINOR 9
+    25                                  %endif
+    26                                  
+    27                                  ; %define DEBUG_TRACERS			; Uncomment to get debugging tracers
+    28                                  
+    29                                  %ifdef DEBUG_TRACERS
+    30                                  
+    31                                  %macro TRACER	1
+    32                                  	call debug_tracer
+    33                                  	db %1
+    34                                  %endmacro
+    35                                  
+    36                                  %else	; DEBUG_TRACERS
+    37                                  
+    38                                  %macro	TRACER	1
+    39                                  %endmacro
+    40                                  
+    41                                  %endif	; DEBUG_TRACERS
+    42                                  
+    43                                  %define CONFIG_READONLY	0x01
+    44                                  %define CONFIG_RAW	0x02
+    45                                  %define CONFIG_BIGRAW	0x08		; MUST be 8!
+    46                                  
+    47                                  		org 0h
+    48                                  
+    49                                  %define SECTORSIZE_LG2	9		; log2(sector size)
+    50                                  %define	SECTORSIZE	(1 << SECTORSIZE_LG2)
+    51                                  
+    52                                  		; Parameter registers definition; this is the definition
+    53                                  		; of the stack frame.
+    54                                  %define		P_DS		word [bp+34]
+    55                                  %define		P_ES		word [bp+32]
+    56                                  %define		P_EAX		dword [bp+28]
+    57                                  %define		P_HAX		word [bp+30]
+    58                                  %define		P_AX		word [bp+28]
+    59                                  %define		P_AL		byte [bp+28]
+    60                                  %define		P_AH		byte [bp+29]
+    61                                  %define		P_ECX		dword [bp+24]
+    62                                  %define		P_HCX		word [bp+26]
+    63                                  %define		P_CX		word [bp+24]
+    64                                  %define		P_CL		byte [bp+24]
+    65                                  %define		P_CH		byte [bp+25]
+    66                                  %define		P_EDX		dword [bp+20]
+    67                                  %define		P_HDX		word [bp+22]
+    68                                  %define		P_DX		word [bp+20]
+    69                                  %define		P_DL		byte [bp+20]
+    70                                  %define		P_DH		byte [bp+21]
+    71                                  %define		P_EBX		dword [bp+16]
+    72                                  %define		P_HBX		word [bp+18]
+    73                                  %define		P_HBXL		byte [bp+18]
+    74                                  %define		P_BX		word [bp+16]
+    75                                  %define		P_BL		byte [bp+16]
+    76                                  %define		P_BH		byte [bp+17]
+    77                                  %define		P_EBP		dword [bp+8]
+    78                                  %define		P_BP		word [bp+8]
+    79                                  %define		P_ESI		dword [bp+4]
+    80                                  %define		P_SI		word [bp+4]
+    81                                  %define		P_EDI		dword [bp]
+    82                                  %define		P_DI		word [bp]
+    83                                  
+    84                                  		section .text
+    85                                  		; These pointers are used by the installer and
+    86                                  		; must be first in the binary
+    87 00000000 [0800]                  Pointers:	dw Int13Start
+    88 00000002 [8602]                  		dw Int15Start
+    89 00000004 [7C00]                  		dw PatchArea
+    90 00000006 [C800]                  		dw TotalSize
+    91                                  
+    92                                  Int13Start:
+    93                                  		; Swap stack
+    94 00000008 2E668926[C000]          		mov [cs:Stack],esp
+    95 0000000E 2EA3[C600]              		mov [cs:SavedAX],ax
+    96 00000012 8CD0                    		mov ax,ss
+    97 00000014 2EA3[C400]              		mov [cs:Stack+4],ax
+    98 00000018 8CC8                    		mov ax,cs
+    99 0000001A 8ED0                    		mov ss,ax
+   100 0000001C 2E8B26[AC00]            		mov sp,[cs:MyStack]
+   101                                  
+   102                                  		; See if DL points to our class of device (FD, HD)
+   103 00000021 52                      		push dx
+   104 00000022 52                      		push dx
+   105 00000023 2E3216[A800]            		xor dl,[cs:DriveNo]
+   106 00000028 5A                      		pop dx
+   107 00000029 780B                    		js .nomatch		; If SF=0, we have a class match here
+   108 0000002B 744D                    		jz .our_drive		; If ZF=1, we have an exact match
+   109 0000002D 2E3A16[A800]            		cmp dl,[cs:DriveNo]
+   110 00000032 7202                    		jb .nomatch		; Drive < Our drive
+   111 00000034 FECA                    		dec dl			; Drive > Our drive, adjust drive #
+   112                                  .nomatch:
+   113 00000036 2EA1[C600]              		mov ax,[cs:SavedAX]
+   114 0000003A 9C                      		pushf
+   115 0000003B 2EFF1E[8800]            		call far [cs:OldInt13]
+   116 00000040 9C                      		pushf
+   117 00000041 55                      		push bp
+   118 00000042 89E5                    		mov bp,sp
+   119 00000044 2E803E[C700]08          		cmp byte [cs:SavedAX+1],08h
+   120 0000004A 7411                    		je .norestoredl
+   121 0000004C 2E803E[C700]15          		cmp byte [cs:SavedAX+1],15h
+   122 00000052 7506                    		jne .restoredl
+   123 00000054 F6460480                		test byte [bp+4],80h	; Hard disk?
+   124 00000058 7503                    		jnz .norestoredl
+   125                                  .restoredl:
+   126 0000005A 8A5604                  		mov dl,[bp+4]
+   127                                  .norestoredl:
+   128 0000005D 50                      		push ax
+   129 0000005E 6653                    		push ebx
+   130 00000060 1E                      		push ds
+   131 00000061 8B4602                  		mov ax,[bp+2]		; Flags
+   132 00000064 2E66C51E[C000]          		lds ebx,[cs:Stack]
+   133 0000006A 884704                  		mov [bx+4],al		; Arithmetric flags
+   134 0000006D 1F                      		pop ds
+   135 0000006E 665B                    		pop ebx
+   136 00000070 58                      		pop ax
+   137 00000071 5D                      		pop bp
+   138 00000072 2E660FB226[C000]        		lss esp,[cs:Stack]
+   139 00000079 CF                      		iret
+   140                                  
+   141                                  .our_drive:
+   142                                  		; Set up standard entry frame
+   143 0000007A 1E                      		push ds
+   144 0000007B 06                      		push es
+   145 0000007C 8ED8                    		mov ds,ax
+   146 0000007E 8EC0                    		mov es,ax
+   147 00000080 A1[C600]                		mov ax,[SavedAX]
+   148 00000083 6660                    		pushad
+   149 00000085 89E5                    		mov bp,sp		; Point BP to the entry stack frame
+   150                                  		TRACER 'F'
+   151                                  		; Note: AH == P_AH here
+   152 00000087 80FC17                  		cmp ah,Int13FuncsMax
+   153 0000008A 7355                    		jae Invalid_jump
+   154 0000008C 30C0                    		xor al,al		; AL = 0 is standard entry condition
+   155 0000008E 89C7                    		mov di,ax
+   156 00000090 C1EF07                  		shr di,7		; Convert AH to an offset in DI
+   157 00000093 FF95[0000]              		call [Int13Funcs+di]
+   158                                  
+   159                                  Done:		; Standard routine for return
+   160 00000097 89461C                  		mov P_AX,ax
+   161                                  DoneWeird:
+   162                                  		TRACER 'D'
+   163 0000009A 31DB                    		xor bx,bx
+   164 0000009C 8EC3                    		mov es,bx
+   165 0000009E 8B1E[AE00]              		mov bx,[StatusPtr]
+   166 000000A2 268827                  		mov [es:bx],ah		; Save status
+   167 000000A5 20E4                    		and ah,ah
+   168                                  
+   169 000000A7 66C51E[C000]            		lds ebx,[Stack]
+   170                                  		; This sets the low byte (the arithmetric flags) of the
+   171                                  		; FLAGS on stack to either 00h (no flags) or 01h (CF)
+   172                                  		; depending on if AH was zero or not.
+   173 000000AC 0F954704                		setnz [bx+4]		; Set CF iff error
+   174 000000B0 6661                    		popad
+   175 000000B2 07                      		pop es
+   176 000000B3 1F                      		pop ds
+   177 000000B4 2E660FB226[C000]        		lss esp,[cs:Stack]
+   178 000000BB CF                      		iret
+   179                                  
+   180                                  Reset:
+   181                                  		; Reset affects multiple drives, so we need to pass it on
+   182                                  		TRACER 'R'
+   183 000000BC 84D2                    		test dl,dl		; Always pass it on if we are resetting HD
+   184 000000BE 780C                    		js .pass_on		; Bit 7 set
+   185                                  		; Some BIOSes get very unhappy if we pass a reset floppy
+   186                                  		; command to them and don't actually have any floppies.
+   187                                  		; This is a bug, but we have to deal with it nontheless.
+   188                                  		; Therefore, if we are the *ONLY* floppy drive, and the
+   189                                  		; user didn't request HD reset, then just drop the command.
+   190 000000C0 31C0                    		xor ax,ax		; Bottom of memory
+   191 000000C2 8EC0                    		mov es,ax
+   192                                  		; BIOS equipment byte, top two bits + 1 == total # of floppies
+   193 000000C4 26F6061004C0            		test byte [es:0x410],0C0h	
+   194 000000CA 7464                    		jz success
+   195                                  		; ... otherwise pass it to the BIOS
+   196                                  .pass_on:
+   197 000000CC 58                      		pop ax			; Drop return address
+   198 000000CD 6661                    		popad			; Restore all registers
+   199 000000CF 07                      		pop es
+   200 000000D0 1F                      		pop ds
+   201 000000D1 2E660FB226[C000]        		lss esp,[cs:Stack]	; Restore the stack
+   202 000000D8 80E280                  		and dl,80h		; Clear all but the type bit
+   203 000000DB 2EFF2E[8800]            		jmp far [cs:OldInt13]
+   204                                  
+   205                                  
+   206                                  Invalid:
+   207 000000E0 5A                      		pop dx			; Drop return address
+   208                                  Invalid_jump:
+   209                                  		TRACER 'I'
+   210 000000E1 B401                    		mov ah,01h		; Unsupported function
+   211 000000E3 EBB2                    		jmp short Done
+   212                                  
+   213                                  GetDriveType:
+   214 000000E5 F606[A800]80            		test byte [DriveNo],80h
+   215 000000EA B302                    		mov bl,02h		; Type 02h = floppy with changeline
+   216 000000EC 740F                    		jz .floppy
+   217                                  		; Hard disks only...
+   218 000000EE 43                      		inc bx			; Type = 03h
+   219 000000EF 8B16[8000]              		mov dx,[DiskSize]	; Return the disk size in sectors
+   220 000000F3 895614                  		mov P_DX,dx
+   221 000000F6 8B0E[8200]              		mov cx,[DiskSize+2]
+   222 000000FA 894E18                  		mov P_CX,cx
+   223                                  .floppy:
+   224 000000FD 885E1D                  		mov P_AH,bl		; 02h floppy, 03h hard disk
+   225 00000100 58                      		pop ax			; Drop return address
+   226 00000101 31C0                    		xor ax,ax		; Success...
+   227 00000103 EB95                    		jmp short DoneWeird	; But don't stick it into P_AX
+   228                                  
+   229                                  GetStatus:
+   230 00000105 31C0                    		xor ax,ax
+   231 00000107 8EC0                    		mov es,ax
+   232 00000109 8B1E[AE00]              		mov bx,[StatusPtr]
+   233 0000010D 8A27                    		mov ah,[bx]		; Copy last status
+   234 0000010F C3                      		ret
+   235                                  
+   236                                  ReadMult:
+   237                                  		TRACER 'm'
+   238                                  Read:
+   239                                  		TRACER 'R'
+   240 00000110 E88F00                  		call setup_regs
+   241                                  do_copy:
+   242                                  		TRACER '<'
+   243 00000113 E8B701                  		call bcopy
+   244                                  		TRACER '>'
+   245 00000116 0FB6461C                		movzx ax,P_AL		; AH = 0, AL = transfer count
+   246 0000011A C3                      		ret
+   247                                  
+   248                                  WriteMult:
+   249                                  		TRACER 'M'
+   250                                  Write:
+   251                                  		TRACER 'W'
+   252 0000011B F606[AB00]01            		test byte [ConfigFlags],CONFIG_READONLY
+   253 00000120 7508                    		jnz .readonly
+   254 00000122 E87D00                  		call setup_regs
+   255 00000125 6687F7                  		xchg esi,edi		; Opposite direction of a Read!
+   256 00000128 EBE9                    		jmp short do_copy
+   257 0000012A B403                    .readonly:	mov ah,03h		; Write protected medium
+   258 0000012C C3                      		ret
+   259                                  
+   260                                  		; Verify integrity; just bounds-check
+   261                                  Seek:
+   262                                  Verify:
+   263 0000012D E87200                  		call setup_regs		; Returns error if appropriate
+   264                                  		; And fall through to success
+   265                                  
+   266                                  CheckIfReady:				; These are always-successful noop functions
+   267                                  Recalibrate:
+   268                                  InitWithParms:
+   269                                  DetectChange:
+   270                                  SetMode:
+   271                                  success:
+   272 00000130 31C0                    		xor ax,ax		; Always successful
+   273 00000132 C3                      		ret
+   274                                  
+   275                                  GetParms:
+   276                                  		TRACER 'G'
+   277 00000133 8A16[AA00]              		mov dl,[DriveCnt]	; Cached data
+   278 00000137 885614                  		mov P_DL,dl
+   279 0000013A F606[A800]80            		test byte [DriveNo],80h
+   280 0000013F 750F                    		jnz .hd
+   281 00000141 C74600[B000]            		mov P_DI,DPT
+   282 00000146 8C4E20                  		mov P_ES,cs
+   283 00000149 8A1E[A900]              		mov bl,[DriveType]
+   284 0000014D 885E10                  		mov P_BL,bl
+   285                                  .hd:
+   286 00000150 A1[9800]                		mov ax,[Cylinders]
+   287 00000153 48                      		dec ax			; We report the highest #, not the count
+   288 00000154 86C4                    		xchg al,ah
+   289 00000156 C0E006                  		shl al,6
+   290 00000159 0A06[9C00]              		or al,[Sectors]
+   291 0000015D 894618                  		mov P_CX,ax
+   292 00000160 A1[9A00]                		mov ax,[Heads]
+   293 00000163 48                      		dec ax
+   294 00000164 884615                  		mov P_DH,al
+   295                                  
+   296                                  		;
+   297                                  		; Is this MEMDISK installation check?
+   298                                  		;
+   299 00000167 817E1E4D45              		cmp P_HAX,'ME'
+   300 0000016C 7531                    		jne .notic
+   301 0000016E 817E1A4D44              		cmp P_HCX,'MD'
+   302 00000173 752A                    		jne .notic
+   303 00000175 817E164953              		cmp P_HDX,'IS'
+   304 0000017A 7523                    		jne .notic
+   305 0000017C 817E124B3F              		cmp P_HBX,'K?'
+   306 00000181 751C                    		jne .notic
+   307                                  
+   308                                  		; MEMDISK installation check...
+   309 00000183 C7461E214D              		mov P_HAX,'!M'
+   310 00000188 C7461A454D              		mov P_HCX,'EM'
+   311 0000018D C746164449              		mov P_HDX,'DI'
+   312 00000192 C74612534B              		mov P_HBX,'SK'
+   313 00000197 8C4E20                  		mov P_ES,cs
+   314 0000019A C74600[7800]            		mov P_DI,MemDisk_Info
+   315                                  
+   316                                  .notic:
+   317 0000019F 31C0                    		xor ax,ax
+   318 000001A1 C3                      		ret
+   319                                  		
+   320                                  		; Set up registers as for a "Read", and compares against disk size
+   321                                  setup_regs:
+   322                                  
+   323                                  		; Convert a CHS address in P_CX/P_DH into an LBA in eax
+   324                                  		; CH = cyl[7:0]
+   325                                  		; CL[0:5] = sector (1-based)  CL[7:6] = cyl[9:8]
+   326                                  		; DH = head
+   327 000001A2 660FB74E18              		movzx ecx,P_CX
+   328 000001A7 660FB6D9                		movzx ebx,cl		; Sector number
+   329 000001AB 80E33F                  		and bl,3Fh
+   330 000001AE 664B                    		dec ebx			; Sector number is 1-based
+   331 000001B0 3B1E[9C00]              		cmp bx,[Sectors]
+   332 000001B4 734F                    		jae .overrun
+   333 000001B6 660FB67E15              		movzx edi,P_DH		; Head number
+   334 000001BB 660FB706[9A00]          		movzx eax,word [Heads]
+   335 000001C1 39C7                    		cmp di,ax
+   336 000001C3 7340                    		jae .overrun
+   337 000001C5 C0E906                  		shr cl,6
+   338 000001C8 86CD                    		xchg cl,ch		; Now (E)CX <- cylinder number
+   339 000001CA 66F7E1                  		mul ecx			; eax <- Heads*cyl# (edx <- 0)
+   340 000001CD 6601F8                  		add eax,edi
+   341 000001D0 66F726[9C00]            		mul dword [Sectors]
+   342 000001D5 6601D8                  		add eax,ebx
+   343                                  		; Now eax = LBA, edx = 0
+   344                                  
+   345                                  		;
+   346                                  		; setup_regs continues...
+   347                                  		;
+   348                                  		; Note: edi[31:16] and ecx[31:16] = 0 already
+   349 000001D8 8B7E10                  		mov di,P_BX		; Get linear address of target buffer
+   350 000001DB 8B4E20                  		mov cx,P_ES
+   351 000001DE 66C1E104                		shl ecx,4
+   352 000001E2 6601CF                  		add edi,ecx		; EDI = address to fetch to
+   353 000001E5 660FB64E1C              		movzx ecx,P_AL		; Sector count
+   354 000001EA 6689C6                  		mov esi,eax
+   355 000001ED 6601C8                  		add eax,ecx		; LBA of final sector + 1
+   356 000001F0 66C1E609                		shl esi,SECTORSIZE_LG2	; LBA -> byte offset
+   357 000001F4 660336[7C00]            		add esi,[DiskBuf]	; Get address in high memory
+   358 000001F9 663B06[8000]            		cmp eax,[DiskSize]	; Check the high mark against limit
+   359 000001FE 7705                    		ja .overrun
+   360 00000200 66C1E107                		shl ecx,SECTORSIZE_LG2-2 ; Convert count to 32-bit words
+   361 00000204 C3                      		ret
+   362                                  
+   363 00000205 58                      .overrun:	pop ax			; Drop setup_regs return address
+   364 00000206 B80002                  		mov ax,0200h		; Missing address mark
+   365 00000209 C3                      		ret			; Return to Done
+   366                                  
+   367                                  int15_e820:
+   368 0000020A 6681FA50414D53          		cmp edx,534D4150h	; "SMAP"
+   369 00000211 0F858A00                		jne near oldint15
+   370 00000215 6683F914                		cmp ecx,20		; Need 20 bytes
+   371 00000219 7263                    		jb err86
+   372 0000021B 1E                      		push ds
+   373 0000021C 0E                      		push cs
+   374 0000021D 1F                      		pop ds
+   375 0000021E 6621DB                  		and ebx,ebx
+   376 00000221 7506                    		jne .renew
+   377 00000223 66BB[C8000000]          		mov ebx,E820Table
+   378                                  .renew:
+   379 00000229 83C30C                  		add bx,12		; Advance to next
+   380 0000022C 668B47FC                		mov eax,[bx-4]		; Type
+   381 00000230 6621C0                  		and eax,eax		; Null type?
+   382 00000233 74F4                    		jz .renew		; If so advance to next
+   383 00000235 2666894510              		mov [es:di+16],eax
+   384 0000023A 668B47F4                		mov eax,[bx-12]		; Start addr (low)
+   385 0000023E 26668905                		mov [es:di],eax
+   386 00000242 668B4FF8                		mov ecx,[bx-8]		; Start addr (high)
+   387 00000246 2666894D04              		mov [es:di+4],ecx
+   388 0000024B 668B07                  		mov eax,[bx]		; End addr (low)
+   389 0000024E 668B4F04                		mov ecx,[bx+4]		; End addr (high)
+   390 00000252 662B47F4                		sub eax,[bx-12]		; Derive the length
+   391 00000256 661B4FF8                		sbb ecx,[bx-8]
+   392 0000025A 2666894508              		mov [es:di+8],eax	; Length (low)
+   393 0000025F 2666894D0C              		mov [es:di+12],ecx	; Length (high)
+   394 00000264 66837F08FF              		cmp dword [bx+8],-1	; Type of next = end?
+   395 00000269 7503                    		jne .notdone
+   396 0000026B 6631DB                  		xor ebx,ebx		; Done with table
+   397                                  .notdone:
+   398 0000026E 6689D0                  		mov eax,edx		; "SMAP"
+   399 00000271 1F                      		pop ds
+   400 00000272 66B914000000            		mov ecx,20		; Bytes loaded
+   401                                  int15_success:
+   402 00000278 C6460602                		mov byte [bp+6], 02h	; Clear CF
+   403 0000027C 5D                      		pop bp
+   404 0000027D CF                      		iret
+   405                                  
+   406                                  err86:
+   407 0000027E C6460603                		mov byte [bp+6], 03h	; Set CF
+   408 00000282 B486                    		mov ah,86h
+   409 00000284 5D                      		pop bp
+   410 00000285 CF                      		iret
+   411                                  
+   412                                  Int15Start:
+   413 00000286 55                      		push bp
+   414 00000287 89E5                    		mov bp,sp
+   415 00000289 3D20E8                  		cmp ax,0E820h
+   416 0000028C 0F847AFF                		je near int15_e820
+   417 00000290 3D01E8                  		cmp ax,0E801h
+   418 00000293 7410                    		je int15_e801
+   419 00000295 3D81E8                  		cmp ax,0E881h
+   420 00000298 741A                    		je int15_e881
+   421 0000029A 80FC88                  		cmp ah,88h
+   422 0000029D 7428                    		je int15_88
+   423 0000029F 5D                      oldint15:	pop bp
+   424 000002A0 2EFF2E[8C00]            		jmp far [cs:OldInt15]
+   425                                  		
+   426                                  int15_e801:
+   427 000002A5 2EA1[A000]              		mov ax,[cs:Mem1MB]
+   428 000002A9 89C1                    		mov cx,ax
+   429 000002AB 2E8B1E[A400]            		mov bx,[cs:Mem16MB]
+   430 000002B0 89DA                    		mov dx,bx
+   431 000002B2 EBC4                    		jmp short int15_success
+   432                                  
+   433                                  int15_e881:
+   434 000002B4 2E66A1[A000]            		mov eax,[cs:Mem1MB]
+   435 000002B9 6689C1                  		mov ecx,eax
+   436 000002BC 2E668B1E[A400]          		mov ebx,[cs:Mem16MB]
+   437 000002C2 6689DA                  		mov edx,ebx
+   438 000002C5 EBB1                    		jmp short int15_success
+   439                                  
+   440                                  int15_88:
+   441 000002C7 2EA1[9600]              		mov ax,[cs:MemInt1588]
+   442 000002CB EBAB                    		jmp short int15_success
+   443                                  
+   444                                  ;
+   445                                  ; Routine to copy in/out of high memory
+   446                                  ; esi = linear source address
+   447                                  ; edi = linear target address
+   448                                  ; ecx = 32-bit word count 
+   449                                  ;
+   450                                  ; Assumes cs = ds = es
+   451                                  ;
+   452                                  bcopy:
+   453 000002CD 6650                    		push eax
+   454 000002CF 6653                    		push ebx
+   455 000002D1 6652                    		push edx
+   456 000002D3 6655                    		push ebp
+   457                                  
+   458 000002D5 F606[AB00]02            		test byte [ConfigFlags],CONFIG_RAW
+   459 000002DA 0F848D00                		jz .anymode
+   460                                  
+   461 000002DE 0F01E0                  		smsw ax			; Unprivileged!
+   462 000002E1 A801                    		test al,01h
+   463 000002E3 0F858400                		jnz .protmode
+   464                                  
+   465                                  .realmode:
+   466                                  		TRACER 'r'
+   467                                  		; We're in real mode, do it outselves
+   468                                  
+   469 000002E7 669C                    		pushfd
+   470 000002E9 1E                      		push ds
+   471 000002EA 06                      		push es
+   472                                  
+   473 000002EB FA                      		cli
+   474 000002EC FC                      		cld
+   475                                  
+   476 000002ED 6631DB                  		xor ebx,ebx
+   477 000002F0 8CCB                    		mov bx,cs
+   478 000002F2 66C1E304                		shl ebx,4
+   479 000002F6 66678D93[30000000]      		lea edx,[Shaker+ebx]
+   480 000002FE 668916[3200]            		mov [Shaker+2],edx
+   481                                  
+   482                                  		; Test to see if A20 is enabled or not
+   483 00000303 31C0                    		xor ax,ax
+   484 00000305 8ED8                    		mov ds,ax
+   485 00000307 48                      		dec ax
+   486 00000308 8EC0                    		mov es,ax
+   487                                  
+   488 0000030A A10000                  		mov ax,[0]
+   489 0000030D 89C3                    		mov bx,ax
+   490 0000030F 26331E1000              		xor bx,[es:10h]
+   491 00000314 F7D0                    		not ax
+   492 00000316 A30000                  		mov [0],ax
+   493 00000319 89C2                    		mov dx,ax
+   494 0000031B 2633161000              		xor dx,[es:10h]
+   495 00000320 F7D0                    		not ax
+   496 00000322 A30000                  		mov [0],ax
+   497                                  
+   498 00000325 09DA                    		or dx,bx
+   499 00000327 52                      		push dx			; Save A20 status
+   500 00000328 7505                    		jnz .skip_a20e
+   501                                  
+   502 0000032A B80124                  		mov ax,2401h		; Enable A20
+   503 0000032D CD15                    		int 15h
+   504                                  .skip_a20e:
+   505 0000032F 8A16[AB00]              		mov dl,[ConfigFlags]
+   506 00000333 83E208                  		and dx,CONFIG_BIGRAW
+   507 00000336 83C208                  		add dx,8
+   508                                  		; DX = 16 for BIGRAW, 8 for RAW
+   509                                  		;  8 is selector for a 64K flat segment,
+   510                                  		; 16 is selector for a 4GB flat segment.	
+   511                                  
+   512 00000339 2E0F0116[3000]          		lgdt [cs:Shaker]
+   513 0000033F 0F20C0                  		mov eax,cr0
+   514 00000342 0C01                    		or al,01h
+   515 00000344 0F22C0                  		mov cr0,eax
+   516                                  
+   517 00000347 BB1000                  		mov bx,16		; Large flat segment
+   518 0000034A 8EDB                    		mov ds,bx
+   519 0000034C 8EC3                    		mov es,bx
+   520                                  
+   521 0000034E 67F366A5                		a32 rep movsd
+   522                                  
+   523                                  		; DX has the appropriate value to put in
+   524                                  		; the registers on return
+   525 00000352 8EDA                    		mov ds,dx
+   526 00000354 8EC2                    		mov es,dx
+   527                                  
+   528 00000356 24FE                    		and al,~01h
+   529 00000358 0F22C0                  		mov cr0,eax
+   530                                  
+   531 0000035B 07                      		pop es
+   532 0000035C 1F                      		pop ds
+   533                                  
+   534 0000035D 5A                      		pop dx			; A20 status
+   535 0000035E 21D2                    		and dx,dx
+   536 00000360 7505                    		jnz .skip_a20d
+   537 00000362 B80024                  		mov ax,2400h		; Disable A20
+   538 00000365 CD15                    		int 15h
+   539                                  .skip_a20d:
+   540 00000367 669D                    		popfd
+   541 00000369 EB5E                    		jmp .done
+   542                                  
+   543                                  .protmode:
+   544                                  		TRACER 'p'
+   545                                  .anymode:
+   546                                  
+   547                                  .copy_loop:
+   548 0000036B 6656                    		push esi
+   549 0000036D 6657                    		push edi
+   550 0000036F 6651                    		push ecx
+   551 00000371 6681F900400000          		cmp ecx,4000h
+   552 00000378 7606                    		jna .safe_size
+   553 0000037A 66B900400000            		mov ecx,4000h
+   554                                  .safe_size:
+   555 00000380 6651                    		push ecx	; Transfer size this cycle
+   556 00000382 6689F0                  		mov eax, esi
+   557 00000385 8936[5A00]              		mov [Mover_src1], si
+   558 00000389 66C1E810                		shr eax, 16
+   559 0000038D A2[5C00]                		mov [Mover_src1+2], al
+   560 00000390 8826[5F00]              		mov [Mover_src2], ah
+   561 00000394 6689F8                  		mov eax, edi
+   562 00000397 893E[6200]              		mov [Mover_dst1], di
+   563 0000039B 66C1E810                		shr eax, 16
+   564 0000039F A2[6400]                		mov [Mover_dst1+2], al
+   565 000003A2 8826[6700]              		mov [Mover_dst2], ah
+   566 000003A6 BE[4800]                		mov si,Mover
+   567 000003A9 B487                    		mov ah, 87h
+   568 000003AB D1E1                    		shl cx,1	; Convert to 16-bit words
+   569 000003AD CD15                    		int 15h
+   570 000003AF FA                      		cli		; Some BIOSes enable interrupts on INT 15h
+   571 000003B0 6658                    		pop eax		; Transfer size this cycle
+   572 000003B2 6659                    		pop ecx
+   573 000003B4 665F                    		pop edi
+   574 000003B6 665E                    		pop esi
+   575 000003B8 720F                    		jc .error
+   576 000003BA 66678D3486              		lea esi,[esi+4*eax]
+   577 000003BF 66678D3C87              		lea edi,[edi+4*eax]
+   578 000003C4 6629C1                  		sub ecx, eax
+   579 000003C7 75A2                    		jnz .copy_loop
+   580                                  		; CF = 0
+   581                                  .error:
+   582                                  .done:
+   583 000003C9 665D                    		pop ebp
+   584 000003CB 665A                    		pop edx
+   585 000003CD 665B                    		pop ebx
+   586 000003CF 6658                    		pop eax
+   587 000003D1 C3                      		ret
+   588                                  
+   589                                  %ifdef DEBUG_TRACERS
+   590                                  debug_tracer:	pushad
+   591                                  		pushfd
+   592                                  		mov bp,sp
+   593                                  		mov bx,[bp+9*4]
+   594                                  		mov al,[cs:bx]
+   595                                  		inc word [bp+9*4]
+   596                                  		mov ah,0Eh
+   597                                  		mov bx,7
+   598                                  		int 10h
+   599                                  		popfd
+   600                                  		popad
+   601                                  		ret
+   602                                  %endif
+   603                                  
+   604                                  		section .data
+   605                                  		alignb 2
+   606 00000000 [BC00]                  Int13Funcs	dw Reset		; 00h - RESET
+   607 00000002 [0501]                  		dw GetStatus		; 01h - GET STATUS
+   608 00000004 [1001]                  		dw Read			; 02h - READ
+   609 00000006 [1B01]                  		dw Write		; 03h - WRITE
+   610 00000008 [2D01]                  		dw Verify		; 04h - VERIFY
+   611 0000000A [E000]                  		dw Invalid		; 05h - FORMAT TRACK
+   612 0000000C [E000]                  		dw Invalid		; 06h - FORMAT TRACK AND SET BAD FLAGS
+   613 0000000E [E000]                  		dw Invalid		; 07h - FORMAT DRIVE AT TRACK
+   614 00000010 [3301]                  		dw GetParms		; 08h - GET PARAMETERS
+   615 00000012 [3001]                  		dw InitWithParms	; 09h - INITIALIZE CONTROLLER WITH DRIVE PARAMETERS
+   616 00000014 [E000]                  		dw Invalid		; 0Ah
+   617 00000016 [E000]                  		dw Invalid		; 0Bh
+   618 00000018 [2D01]                  		dw Seek			; 0Ch - SEEK TO CYLINDER
+   619 0000001A [BC00]                  		dw Reset		; 0Dh - RESET HARD DISKS
+   620 0000001C [E000]                  		dw Invalid		; 0Eh
+   621 0000001E [E000]                  		dw Invalid		; 0Fh
+   622 00000020 [3001]                  		dw CheckIfReady		; 10h - CHECK IF READY
+   623 00000022 [3001]                  		dw Recalibrate		; 11h - RECALIBRATE
+   624 00000024 [E000]                  		dw Invalid		; 12h
+   625 00000026 [E000]                  		dw Invalid		; 13h
+   626 00000028 [E000]                  		dw Invalid		; 14h
+   627 0000002A [E500]                  		dw GetDriveType		; 15h - GET DRIVE TYPE
+   628 0000002C [3001]                  		dw DetectChange		; 16h - DETECT DRIVE CHANGE
+   629                                  %if 0
+   630                                  		dw Invalid		; 17h
+   631                                  		dw Invalid		; 18h
+   632                                  		dw Invalid		; 19h
+   633                                  		dw Invalid		; 1Ah
+   634                                  		dw Invalid		; 1Bh
+   635                                  		dw Invalid		; 1Ch
+   636                                  		dw Invalid		; 1Dh
+   637                                  		dw Invalid		; 1Eh
+   638                                  		dw Invalid		; 1Fh
+   639                                  		dw Invalid		; 20h
+   640                                  		dw ReadMult		; 21h - READ MULTIPLE
+   641                                  		dw WriteMult		; 22h - WRITE MULTIPLE
+   642                                  		dw SetMode		; 23h - SET CONTROLLER FEATURES
+   643                                  		dw SetMode		; 24h - SET MULTIPLE MODE
+   644                                  		dw Invalid		; 25h - IDENTIFY DRIVE
+   645                                  		dw Invalid		; 26h
+   646                                  		dw Invalid		; 27h
+   647                                  		dw Invalid		; 28h
+   648                                  		dw Invalid		; 29h
+   649                                  		dw Invalid		; 2Ah
+   650                                  		dw Invalid		; 2Bh
+   651                                  		dw Invalid		; 2Ch
+   652                                  		dw Invalid		; 2Dh
+   653                                  		dw Invalid		; 2Eh
+   654                                  		dw Invalid		; 2Fh
+   655                                  		dw Invalid		; 30h
+   656                                  		dw Invalid		; 31h
+   657                                  		dw Invalid		; 32h
+   658                                  		dw Invalid		; 33h
+   659                                  		dw Invalid		; 34h
+   660                                  		dw Invalid		; 35h
+   661                                  		dw Invalid		; 36h
+   662                                  		dw Invalid		; 37h
+   663                                  		dw Invalid		; 38h
+   664                                  		dw Invalid		; 39h
+   665                                  		dw Invalid		; 3Ah
+   666                                  		dw Invalid		; 3Bh
+   667                                  		dw Invalid		; 3Ch
+   668                                  		dw Invalid		; 3Dh
+   669                                  		dw Invalid		; 3Eh
+   670                                  		dw Invalid		; 3Fh
+   671                                  		dw Invalid		; 40h
+   672                                  		dw EDDPresence		; 41h - EDD PRESENCE DETECT
+   673                                  		dw EDDRead		; 42h - EDD READ
+   674                                  		dw EDDWrite		; 43h - EDD WRITE
+   675                                  		dw EDDVerify		; 44h - EDD VERIFY
+   676                                  		dw Invalid		; 45h - EDD LOCK/UNLOCK MEDIA
+   677                                  		dw Invalid		; 46h - EDD EJECT
+   678                                  		dw EDDSeek		; 47h - EDD SEEK
+   679                                  		dw EDDGetParms		; 48h - EDD GET PARAMETERS
+   680                                  %endif
+   681                                  
+   682                                  Int13FuncsEnd	equ $
+   683                                  Int13FuncsMax	equ (Int13FuncsEnd-Int13Funcs) >> 1
+   684                                  
+   685 0000002E 00<rept>                		alignb 8, db 0
+   686 00000030 1800                    Shaker		dw ShakerEnd-$
+   687 00000032 00000000                		dd 0			; Pointer to self
+   688 00000036 0000                    		dw 0
+   689                                  
+   690 00000038 FFFF0000                Shaker_RMDS:	dd 0x0000ffff		; 64K data segment
+   691 0000003C 00930000                		dd 0x00009300
+   692                                  
+   693 00000040 FFFF0000                Shaker_DS:	dd 0x0000ffff		; 4GB data segment
+   694 00000044 00938F00                		dd 0x008f9300
+   695                                  
+   696                                  ShakerEnd	equ $
+   697                                  
+   698                                  		alignb 8, db 0
+   699                                  
+   700                                  
+   701 00000048 000000000000000000-     Mover		dd 0, 0, 0, 0		; Must be zero
+   702 00000051 00000000000000     
+   703 00000058 FFFF                    		dw 0ffffh		; 64 K segment size
+   704 0000005A 000000                  Mover_src1:	db 0, 0, 0		; Low 24 bits of source addy
+   705 0000005D 93                      		db 93h			; Access rights
+   706 0000005E 00                      		db 00h			; Extended access rights
+   707 0000005F 00                      Mover_src2:	db 0			; High 8 bits of source addy
+   708 00000060 FFFF                    		dw 0ffffh		; 64 K segment size
+   709 00000062 000000                  Mover_dst1:	db 0, 0, 0		; Low 24 bits of target addy
+   710 00000065 93                      		db 93h			; Access rights
+   711 00000066 00                      		db 00h			; Extended access rights
+   712 00000067 00                      Mover_dst2:	db 0			; High 8 bits of source addy
+   713 00000068 000000000000000000-     Mover_dummy2:	dd 0, 0, 0, 0		; More space for the BIOS
+   714 00000071 00000000000000     
+   715                                  
+   716                                  		alignb 4, db 0
+   717                                  MemDisk_Info	equ $			; Pointed to by installation check
+   718 00000078 1B00                    MDI_Bytes	dw 27			; Total bytes in MDI structure
+   719 0000007A 0903                    MDI_Version	db VER_MINOR, VER_MAJOR	; MEMDISK version
+   720                                  
+   721                                  PatchArea	equ $			; This gets filled in by the installer
+   722                                  
+   723 0000007C 00000000                DiskBuf		dd 0			; Linear address of high memory disk
+   724 00000080 00000000                DiskSize	dd 0			; Size of disk in blocks
+   725 00000084 00000000                CommandLine	dw 0, 0			; Far pointer to saved command line
+   726                                  
+   727 00000088 00000000                OldInt13	dd 0			; INT 13h in chain
+   728 0000008C 00000000                OldInt15	dd 0			; INT 15h in chain
+   729                                  
+   730 00000090 0000                    OldDosMem	dw 0			; Old position of DOS mem end
+   731 00000092 00                      BootLoaderID	db 0			; Boot loader ID from header
+   732                                  ; ---- MDI structure ends here ---
+   733 00000093 000000                  		db 0, 0, 0		; pad
+   734                                  
+   735 00000096 0000                    MemInt1588	dw 0			; 1MB-65MB memory amount (1K)
+   736                                  
+   737 00000098 0000                    Cylinders	dw 0			; Cylinder count
+   738 0000009A 0000                    Heads		dw 0			; Head count
+   739 0000009C 00000000                Sectors		dd 0			; Sector count (zero-extended)
+   740                                  
+   741 000000A0 00000000                Mem1MB		dd 0			; 1MB-16MB memory amount (1K)
+   742 000000A4 00000000                Mem16MB		dd 0			; 16MB-4G memory amount (64K)
+   743                                  
+   744 000000A8 00                      DriveNo		db 0			; Our drive number
+   745 000000A9 00                      DriveType	db 0			; Our drive type (floppies)
+   746 000000AA 00                      DriveCnt	db 0			; Drive count (from the BIOS)
+   747                                  
+   748 000000AB 00                      ConfigFlags	db 0			; Bit 0 - readonly
+   749                                  
+   750 000000AC 0000                    MyStack		dw 0			; Offset of stack
+   751 000000AE 0000                    StatusPtr	dw 0			; Where to save status (zeroseg ptr)
+   752                                  
+   753 000000B0 00<rept>                DPT		times 16 db 0		; BIOS parameter table pointer (floppies)
+   754                                  
+   755                                  		; End patch area
+   756                                  
+   757 000000C0 00000000                Stack		dd 0			; Saved SS:ESP on invocation
+   758 000000C4 0000                    		dw 0
+   759 000000C6 0000                    SavedAX		dw 0			; AX saved on invocation
+   760                                  
+   761                                  		alignb 4, db 0		; We *MUST* end on a dword boundary
+   762                                  
+   763                                  E820Table	equ $			; The installer loads the E820 table here
+   764                                  TotalSize	equ $			; End pointer

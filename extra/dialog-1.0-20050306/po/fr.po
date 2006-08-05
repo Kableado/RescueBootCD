@@ -1,0 +1,70 @@
+# French translation of Dialog.
+# Copyright (C) 2001 Thomas Dickey.
+# Frédéric L. W. Meunier <0 @ pervalidus.net>, 2001.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Dialog 0.9a-20020814\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-12-19 20:14-0500\n"
+"PO-Revision-Date: 2002-09-04 19:12-0300\n"
+"Last-Translator: Frédéric L. W. Meunier <0 @ pervalidus.net>\n"
+"Language-Team: French <traduc @ traduc.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: buttons.c:359
+msgid "Yes"
+msgstr "Oui"
+
+#: buttons.c:367
+msgid "No"
+msgstr "Non"
+
+#: buttons.c:375
+msgid "OK"
+msgstr "Accepter"
+
+#: buttons.c:383
+msgid "Cancel"
+msgstr "Annuler"
+
+#: buttons.c:391
+msgid "EXIT"
+msgstr "Sortir"
+
+#: buttons.c:399
+msgid "Extra"
+msgstr ""
+
+#: buttons.c:407
+msgid "Help"
+msgstr "Aide"
+
+#. Headline "Month"
+#: calendar.c:299
+msgid "Month"
+msgstr "Mois"
+
+#. Headline "Year"
+#: calendar.c:319
+msgid "Year"
+msgstr "Année"
+
+#: dialog.c:672
+msgid "Rename"
+msgstr ""
+
+#: fselect.c:426
+msgid "Directories"
+msgstr "Répertoires"
+
+#: fselect.c:427
+msgid "Files"
+msgstr "Fichiers"
+
+#: textbox.c:437
+#, fuzzy
+msgid "Search"
+msgstr "Recherche"

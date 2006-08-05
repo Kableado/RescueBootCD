@@ -1,0 +1,66 @@
+# -*- makefile -*-
+# $Id: MCONFIG,v 1.6 2005/01/08 05:58:20 hpa Exp $
+
+CC	= gcc
+LD	= ld
+INCLUDE	= -I.
+AR	= ar
+RANLIB	= ranlib
+NM	= nm
+PERL	= perl
+STRIP	= strip --strip-all -R .comment -R .note
+OBJCOPY	= objcopy
+
+# zlib and libpng configuration flags
+LIBFLAGS = -DDYNAMIC_CRC_TABLE -DPNG_NO_CONSOLE_IO \
+	   -DPNG_NO_MNG_FEATURES -DPNG_NO_FLOATING_POINT_SUPPORTED \
+	   -DPNG_NO_WRITE_FLUSH -DPNG_NO_WRITE_tIME -DPNG_NO_READ_tIME
+
+REQFLAGS  = -g -m32 -mregparm=3 -DREGPARM=3 -D__COM32__ -I. -I./sys -I../include
+OPTFLAGS  = -Os -march=i386 -falign-functions=0 -falign-jumps=0 \
+	    -falign-labels=0
+WARNFLAGS = -W -Wall -Wpointer-arith -Wwrite-strings -Wstrict-prototypes -Winline
+
+CFLAGS  = -Wp,-MT,$@,-MD,$(dir $@).$(notdir $@).d $(OPTFLAGS) \
+	  $(REQFLAGS) $(WARNFLAGS) $(LIBFLAGS)
+LDFLAGS	= -m elf32_i386
+
+.SUFFIXES: .c .o .a .so .lo .i .S .s .ls .ss .lss
+
+% : %.c # Cancel default rule
+
+% : %.S
+
+.c.o:
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+.c.i:
+	$(CC) $(CFLAGS) -E -o $@ $<
+
+.c.s:
+	$(CC) $(CFLAGS) -S -o $@ $<
+
+.S.o:
+	$(CC) $(CFLAGS) -D__ASSEMBLY__ -c -o $@ $<
+
+.S.s:
+	$(CC) $(CFLAGS) -D__ASSEMBLY__ -E -o $@ $<
+
+.S.lo:
+	$(CC) $(CFLAGS) $(SOFLAGS) -D__ASSEMBLY__ -c -o $@ $<
+
+.S.ls:
+	$(CC) $(CFLAGS) $(SOFLAGS) -D__ASSEMBLY__ -E -o $@ $<
+
+.s.o:
+	$(CC) $(CFLAGS) -x assembler -c -o $@ $<
+
+.ls.lo:
+	$(CC) $(CFLAGS) $(SOFLAGS) -x assembler -c -o $@ $<
+
+.c.lo:
+	$(CC) $(CFLAGS) $(SOFLAGS) -c -o $@ $<
+
+.c.ls:
+	$(CC) $(CFLAGS) $(SOFLAGS) -S -o $@ $<
+

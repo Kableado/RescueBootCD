@@ -1,0 +1,32 @@
+Kable's Mighty HD Restoration CD:
+-----------------------------------
+
+-Dependecias
+	-Bash
+	-e2fsprogs
+	-cdrtools
+
+- Contenido
+	-Linux
+	-Dialog
+	-Busybox
+	-Partimage
+
+Esto utiliza imagenes de partimage 
+Poniendo las imagenes en la raiz de la imagen
+
+
+- Inicio es 	/linuxrc
+		/etc/rc.sysinit
+		
+- Ejecucion normal es /dodeeds.sh
+	- La restauracion es /restore.sh 
+
+- El apagado es /etc/rc.sysuninit
+
+
+
+
+- NOTA:
+Aunque el codigo de partimage parece que monta y desmonta volunes,
+NO parece cierto, quizas sea necesaria una entrada en fstab

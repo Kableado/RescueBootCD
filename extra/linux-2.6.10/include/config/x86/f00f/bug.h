@@ -1,0 +1,1 @@
+#define CONFIG_X86_F00F_BUG 1

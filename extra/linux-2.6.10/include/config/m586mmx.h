@@ -1,0 +1,1 @@
+#define CONFIG_M586MMX 1

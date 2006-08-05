@@ -1,0 +1,27 @@
+syslxmod.o: syslxmod.c syslinux.h
+gethostip.o: gethostip.c
+copybs.bin: copybs.asm
+extlinux.bin: extlinux.asm macros.inc config.inc kernel.inc bios.inc tracers.inc \
+   layout.inc ext2_fs.inc init.inc cpuinit.inc ui.inc runkernel.inc \
+   comboot.inc com32.inc cmdline.inc bootsect.inc getc.inc conio.inc \
+   writestr.inc parseconfig.inc rllpack.inc parsecmd.inc bcopy32.inc \
+   loadhigh.inc font.inc graphics.inc highmem.inc strcpy.inc cache.inc \
+   keywords.inc
+isolinux.bin: isolinux.asm macros.inc config.inc kernel.inc bios.inc tracers.inc \
+   layout.inc writestr.inc writehex.inc init.inc cpuinit.inc ui.inc \
+   runkernel.inc comboot.inc com32.inc cmdline.inc bootsect.inc getc.inc \
+   conio.inc parseconfig.inc rllpack.inc parsecmd.inc bcopy32.inc \
+   loadhigh.inc font.inc graphics.inc highmem.inc strcpy.inc rawcon.inc \
+   keywords.inc
+ldlinux.bin: ldlinux.asm macros.inc config.inc kernel.inc bios.inc tracers.inc \
+   layout.inc cpuinit.inc init.inc ui.inc runkernel.inc comboot.inc \
+   com32.inc cmdline.inc bootsect.inc getc.inc conio.inc writestr.inc \
+   parseconfig.inc rllpack.inc parsecmd.inc bcopy32.inc loadhigh.inc font.inc \
+   graphics.inc highmem.inc strcpy.inc cache.inc keywords.inc
+mbr.bin: mbr.asm bios.inc
+pxelinux.bin: pxelinux.asm macros.inc config.inc kernel.inc bios.inc tracers.inc pxe.inc \
+   layout.inc init.inc cpuinit.inc ui.inc runkernel.inc comboot.inc \
+   com32.inc cmdline.inc bootsect.inc getc.inc conio.inc writestr.inc \
+   writehex.inc parseconfig.inc rllpack.inc parsecmd.inc bcopy32.inc \
+   loadhigh.inc font.inc graphics.inc highmem.inc strcpy.inc rawcon.inc \
+   dnsresolv.inc keywords.inc

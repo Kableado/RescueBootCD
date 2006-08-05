@@ -1,0 +1,11 @@
+#!/bin/sh
+
+
+# montar proc y sys
+/bin/mount -n -t proc proc /proc
+/bin/mount /dev/rd/0 / -o rw,remount
+/bin/cat /proc/mounts > /etc/mtab
+/bin/mount -n -t sysfs sysfs /sys
+
+# iniciar una consola auxiliar
+/usr/bin/openvt 2 /bin/sh

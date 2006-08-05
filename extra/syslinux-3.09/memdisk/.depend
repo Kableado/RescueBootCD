@@ -1,0 +1,27 @@
+conio.s: conio.c ../com32/include/stdint.h memdisk.h \
+  ../com32/include/com32.h ../com32/include/klibc/compiler.h conio.h \
+  ../com32/include/stddef.h ../com32/include/bitsize/stddef.h \
+  ../com32/include/stdarg.h
+e820func.s: e820func.c ../com32/include/stdint.h memdisk.h \
+  ../com32/include/com32.h ../com32/include/klibc/compiler.h e820.h
+e820test.s: e820test.c ../com32/include/string.h \
+  ../com32/include/klibc/extern.h ../com32/include/stddef.h \
+  ../com32/include/bitsize/stddef.h ../com32/include/stdio.h \
+  ../com32/include/stdarg.h ../com32/include/stdlib.h \
+  ../com32/include/klibc/compiler.h ../com32/include/inttypes.h \
+  ../com32/include/stdint.h e820.h
+inflate.s: inflate.c
+msetup.s: msetup.c ../com32/include/stdint.h memdisk.h \
+  ../com32/include/com32.h ../com32/include/klibc/compiler.h conio.h \
+  ../com32/include/stddef.h ../com32/include/bitsize/stddef.h \
+  ../com32/include/stdarg.h e820.h
+setup.s: setup.c ../com32/include/stdint.h e820.h conio.h \
+  ../com32/include/stddef.h ../com32/include/bitsize/stddef.h \
+  ../com32/include/stdarg.h version.h memdisk.h ../com32/include/com32.h \
+  ../com32/include/klibc/compiler.h
+unzip.s: unzip.c ../com32/include/stdint.h memdisk.h \
+  ../com32/include/com32.h ../com32/include/klibc/compiler.h conio.h \
+  ../com32/include/stddef.h ../com32/include/bitsize/stddef.h \
+  ../com32/include/stdarg.h inflate.c
+memdisk.bin: memdisk.asm
+memdisk16.bin: memdisk16.asm

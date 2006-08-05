@@ -1,0 +1,1 @@
+cmd_drivers/ide/pci/built-in.o :=  ld -m elf_i386  -r -o drivers/ide/pci/built-in.o drivers/ide/pci/alim15x3.o drivers/ide/pci/amd74xx.o drivers/ide/pci/atiixp.o drivers/ide/pci/piix.o drivers/ide/pci/rz1000.o drivers/ide/pci/sis5513.o drivers/ide/pci/triflex.o drivers/ide/pci/via82cxxx.o drivers/ide/pci/generic.o

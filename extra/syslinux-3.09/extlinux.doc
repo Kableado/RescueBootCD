@@ -1,0 +1,89 @@
+EXTLINUX is a new syslinux derivative, which boots from a Linux
+ext2/ext3 filesystem.
+
+It works the same way as SYSLINUX, with a few slight modifications.
+
+1. The installer is run on a *mounted* filesystem.  Run the extlinux
+   installer on the directory in which you want extlinux installed:
+
+	extlinux /boot
+
+   NOTE: this doesn't have to be the root directory of a filesystem.
+   If /boot is a filesystem, you can do:
+
+	mkdir -p /boot/extlinux
+	extlinux /boot/extlinux
+
+   ... to create a subdirectory and install extlinux in it. 
+
+
+2. The configuration file is called "extlinux.conf", and is expected
+   to be found in the same directory as extlinux is installed in.
+
+
+3. Pathnames can be absolute or relative; if absolute (with a leading
+   slash), they are relative to the root of the filesystem on which
+   extlinux is installed (/boot in the example above), if relative,
+   they are relative to the extlinux directory.
+
+   extlinux supports subdirectories, but the total path length is
+   limited to 255 characters.
+
+
+4. EXTLINUX currently doesn't support symlinks it does, however,
+   support hard links.  This will be fixed in a future version.
+
+
+
+Note that EXTLINUX installs in the filesystem partition like a
+well-behaved bootloader :)  Thus, it needs a master boot record in the
+partition table; the mbr.bin shipped with SYSLINUX should work well.
+To install it just do:
+
+	cat mbr.bin > /dev/XXX
+
+... where /dev/XXX is the appropriate master device, e.g. /dev/hda,
+and make sure the correct partition in set active.
+
+
+If you have multiple disks in a software RAID configuration, the
+preferred way to boot is:
+
+- Create a separate RAID-1 partition for /boot.  Note that the Linux
+  RAID-1 driver can span as many disks as you wish.
+
+- Install the MBR on *each disk*, and mark the RAID-1 partition
+  active.
+
+- Run "extlinux /boot" to install extlinux.  This will install it on
+  all the drives in the RAID-1 set, which means you can boot any
+  combination of drives in any order.
+
+
+
+It is not required to re-run the extlinux installer after installing
+new kernels.  If you are using ext3 journalling, however, it might be
+desirable to do so, since running the extlinux installer will flush
+the log.  Otherwise a dirty shutdown could cause some of the new
+kernel image to still be in the log.  This is a general problem for
+boot loaders on journalling filesystems; it is not specific to
+extlinux.  The "sync" command does not flush the log on the ext3
+filesystem.
+
+
+The SYSLINUX series boot loaders support chain loading other operating
+systems via a separate module, chain.c32 (located in
+com32/modules/chain.c32).  To use it, specify a LABEL in the
+configuration file with KERNEL chain.c32 and
+APPEND [hd|fd]<number> [<partition>]
+
+For example:
+
+# Windows CE/ME/NT, a very dense operating system.
+# Second partition (2) on the first hard disk (hd0);
+# Linux would *typically* call this /dev/hda2 or /dev/sda2.
+LABEL cement
+	KERNEL chain.c32
+	APPEND hd0 2
+
+See also README.menu.
