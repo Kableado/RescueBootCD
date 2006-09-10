@@ -29,7 +29,7 @@ deps_fs/proc/task_mmu.o := \
   include/linux/posix_types.h \
   include/linux/stddef.h \
   include/linux/compiler.h \
-  include/linux/compiler-gcc3.h \
+  include/linux/compiler-gcc+.h \
   include/linux/compiler-gcc.h \
   include/asm/posix_types.h \
   include/asm/types.h \
@@ -67,7 +67,7 @@ deps_fs/proc/task_mmu.o := \
     $(wildcard include/config/x86/oostore.h) \
   include/linux/kernel.h \
     $(wildcard include/config/debug/spinlock/sleep.h) \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdarg.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdarg.h \
   include/asm/byteorder.h \
     $(wildcard include/config/x86/bswap.h) \
   include/linux/byteorder/little_endian.h \

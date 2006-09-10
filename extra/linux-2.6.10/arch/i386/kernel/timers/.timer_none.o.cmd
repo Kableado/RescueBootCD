@@ -8,7 +8,7 @@ deps_arch/i386/kernel/timers/timer_none.o := \
   include/linux/config.h \
     $(wildcard include/config/h.h) \
   include/linux/compiler.h \
-  include/linux/compiler-gcc3.h \
+  include/linux/compiler-gcc+.h \
   include/linux/compiler-gcc.h \
   include/asm/timer.h \
     $(wildcard include/config/x86/cyclone/timer.h) \

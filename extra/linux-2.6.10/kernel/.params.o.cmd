@@ -9,12 +9,12 @@ deps_kernel/params.o := \
   include/linux/init.h \
     $(wildcard include/config/hotplug.h) \
   include/linux/compiler.h \
-  include/linux/compiler-gcc3.h \
+  include/linux/compiler-gcc+.h \
   include/linux/compiler-gcc.h \
   include/linux/stringify.h \
   include/linux/kernel.h \
     $(wildcard include/config/debug/spinlock/sleep.h) \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdarg.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdarg.h \
   include/linux/linkage.h \
   include/asm/linkage.h \
     $(wildcard include/config/regparm.h) \

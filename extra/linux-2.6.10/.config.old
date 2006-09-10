@@ -1,7 +1,7 @@
 #
 # Automatically generated make config: don't edit
 # Linux kernel version: 2.6.10
-# Sat Aug 13 22:42:09 2005
+# Sun Aug 14 01:08:59 2005
 #
 CONFIG_X86=y
 CONFIG_MMU=y
@@ -673,7 +673,7 @@ CONFIG_PROC_FS=y
 CONFIG_PROC_KCORE=y
 CONFIG_SYSFS=y
 CONFIG_DEVFS_FS=y
-# CONFIG_DEVFS_MOUNT is not set
+CONFIG_DEVFS_MOUNT=y
 # CONFIG_DEVFS_DEBUG is not set
 # CONFIG_DEVPTS_FS_XATTR is not set
 CONFIG_TMPFS=y

@@ -1,1 +1,1 @@
-#undef CONFIG_CHR_DEV_SG
+#define CONFIG_CHR_DEV_SG 1

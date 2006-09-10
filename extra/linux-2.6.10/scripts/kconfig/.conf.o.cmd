@@ -8,7 +8,7 @@ deps_scripts/kconfig/conf.o := \
   /usr/include/gnu/stubs.h \
   /usr/include/bits/types.h \
   /usr/include/bits/wordsize.h \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stddef.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stddef.h \
   /usr/include/bits/typesizes.h \
   /usr/include/endian.h \
   /usr/include/bits/endian.h \
@@ -39,11 +39,11 @@ deps_scripts/kconfig/conf.o := \
   /usr/include/wchar.h \
   /usr/include/bits/wchar.h \
   /usr/include/gconv.h \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdarg.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdarg.h \
   /usr/include/bits/stdio_lim.h \
   /usr/include/bits/sys_errlist.h \
   /usr/include/bits/stdio.h \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdbool.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdbool.h \
   scripts/kconfig/lkc_proto.h \
 
 scripts/kconfig/conf.o: $(deps_scripts/kconfig/conf.o)

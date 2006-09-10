@@ -4,7 +4,7 @@ deps_arch/i386/kernel/process.o := \
   arch/i386/kernel/process.c \
     $(wildcard include/config/math/emulation.h) \
     $(wildcard include/config/x86/smp.h) \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdarg.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdarg.h \
   include/linux/errno.h \
   include/asm/errno.h \
   include/asm-generic/errno.h \
@@ -26,7 +26,7 @@ deps_arch/i386/kernel/process.o := \
   include/linux/posix_types.h \
   include/linux/stddef.h \
   include/linux/compiler.h \
-  include/linux/compiler-gcc3.h \
+  include/linux/compiler-gcc+.h \
   include/linux/compiler-gcc.h \
   include/asm/posix_types.h \
   include/asm/types.h \

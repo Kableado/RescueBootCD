@@ -9,7 +9,7 @@ deps_drivers/input/input.o := \
   include/linux/config.h \
     $(wildcard include/config/h.h) \
   include/linux/compiler.h \
-  include/linux/compiler-gcc3.h \
+  include/linux/compiler-gcc+.h \
   include/linux/compiler-gcc.h \
   include/linux/sched.h \
     $(wildcard include/config/keys.h) \
@@ -63,7 +63,7 @@ deps_drivers/input/input.o := \
     $(wildcard include/config/x86/oostore.h) \
   include/linux/kernel.h \
     $(wildcard include/config/debug/spinlock/sleep.h) \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdarg.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdarg.h \
   include/asm/byteorder.h \
     $(wildcard include/config/x86/bswap.h) \
   include/linux/byteorder/little_endian.h \

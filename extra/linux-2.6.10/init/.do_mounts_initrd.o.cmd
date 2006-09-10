@@ -5,7 +5,7 @@ deps_init/do_mounts_initrd.o := \
   include/linux/unistd.h \
   include/asm/unistd.h \
   include/linux/compiler.h \
-  include/linux/compiler-gcc3.h \
+  include/linux/compiler-gcc+.h \
   include/linux/compiler-gcc.h \
   include/linux/types.h \
     $(wildcard include/config/uid16.h) \
@@ -26,7 +26,7 @@ deps_init/do_mounts_initrd.o := \
     $(wildcard include/config/frame/pointer.h) \
   include/linux/kernel.h \
     $(wildcard include/config/debug/spinlock/sleep.h) \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdarg.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdarg.h \
   include/linux/bitops.h \
   include/asm/bitops.h \
   include/asm/byteorder.h \

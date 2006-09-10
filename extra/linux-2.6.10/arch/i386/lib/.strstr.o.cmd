@@ -4,7 +4,7 @@ deps_arch/i386/lib/strstr.o := \
   arch/i386/lib/strstr.c \
   include/linux/string.h \
   include/linux/compiler.h \
-  include/linux/compiler-gcc3.h \
+  include/linux/compiler-gcc+.h \
   include/linux/compiler-gcc.h \
   include/linux/types.h \
     $(wildcard include/config/uid16.h) \

@@ -18,7 +18,7 @@ deps_scripts/kconfig/mconf.o := \
   /usr/include/bits/sigset.h \
   /usr/include/bits/types.h \
   /usr/include/bits/wordsize.h \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stddef.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stddef.h \
   /usr/include/bits/typesizes.h \
   /usr/include/bits/signum.h \
   /usr/include/time.h \
@@ -26,7 +26,6 @@ deps_scripts/kconfig/mconf.o := \
   /usr/include/bits/sigaction.h \
   /usr/include/bits/sigcontext.h \
   /usr/include/asm/sigcontext.h \
-  /usr/include/linux/compiler.h \
   /usr/include/bits/sigstack.h \
   /usr/include/bits/pthreadtypes.h \
   /usr/include/bits/sigthread.h \
@@ -42,22 +41,20 @@ deps_scripts/kconfig/mconf.o := \
   /usr/include/bits/errno.h \
   /usr/include/linux/errno.h \
   /usr/include/asm/errno.h \
-  /usr/include/asm-generic/errno.h \
-  /usr/include/asm-generic/errno-base.h \
   /usr/include/fcntl.h \
   /usr/include/bits/fcntl.h \
   /usr/include/sys/types.h \
   /usr/include/sys/select.h \
   /usr/include/bits/select.h \
   /usr/include/sys/sysmacros.h \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/limits.h \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/syslimits.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/limits.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/syslimits.h \
   /usr/include/limits.h \
   /usr/include/bits/posix1_lim.h \
   /usr/include/bits/local_lim.h \
   /usr/include/linux/limits.h \
   /usr/include/bits/posix2_lim.h \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdarg.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdarg.h \
   /usr/include/stdlib.h \
   /usr/include/alloca.h \
   /usr/include/string.h \
@@ -81,7 +78,7 @@ deps_scripts/kconfig/mconf.o := \
   /usr/include/bits/stdio_lim.h \
   /usr/include/bits/sys_errlist.h \
   /usr/include/bits/stdio.h \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdbool.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdbool.h \
   scripts/kconfig/lkc_proto.h \
 
 scripts/kconfig/mconf.o: $(deps_scripts/kconfig/mconf.o)

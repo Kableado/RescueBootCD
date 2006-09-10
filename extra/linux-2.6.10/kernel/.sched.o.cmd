@@ -33,7 +33,7 @@ deps_kernel/sched.o := \
   include/linux/posix_types.h \
   include/linux/stddef.h \
   include/linux/compiler.h \
-  include/linux/compiler-gcc3.h \
+  include/linux/compiler-gcc+.h \
   include/linux/compiler-gcc.h \
   include/asm/posix_types.h \
   include/asm/types.h \
@@ -69,7 +69,7 @@ deps_kernel/sched.o := \
     $(wildcard include/config/x86/cmpxchg.h) \
     $(wildcard include/config/x86/oostore.h) \
   include/linux/kernel.h \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdarg.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdarg.h \
   include/asm/byteorder.h \
     $(wildcard include/config/x86/bswap.h) \
   include/linux/byteorder/little_endian.h \

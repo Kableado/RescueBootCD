@@ -28,8 +28,8 @@ retval=$?
 if test $retval -eq 0 ; then
   # restaurar
   echo "Restaurar."
-  partimage -b restore /dev/ide/host0/bus0/target0/lun0/part1 /mnt/cdrom/win98se.000
-  partimage -b restmbr /mnt/cdrom/win98se.000
+  partimage -b restore /dev/scsi/host0/bus0/target0/lun0/part1 /mnt/cdrom/winxp.000
+  partimage -b restmbr /mnt/cdrom/winxp.000
 
   # desmontar 
   umount /mnt/cdrom

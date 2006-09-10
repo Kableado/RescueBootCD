@@ -1,1 +1,1 @@
-#undef CONFIG_SCSI_SATA
+#define CONFIG_SCSI_SATA 1

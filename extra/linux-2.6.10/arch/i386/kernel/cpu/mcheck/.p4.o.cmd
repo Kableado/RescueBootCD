@@ -9,7 +9,7 @@ deps_arch/i386/kernel/cpu/mcheck/p4.o := \
   include/linux/config.h \
     $(wildcard include/config/h.h) \
   include/linux/compiler.h \
-  include/linux/compiler-gcc3.h \
+  include/linux/compiler-gcc+.h \
   include/linux/compiler-gcc.h \
   include/linux/types.h \
     $(wildcard include/config/uid16.h) \
@@ -21,7 +21,7 @@ deps_arch/i386/kernel/cpu/mcheck/p4.o := \
     $(wildcard include/config/lbd.h) \
   include/linux/kernel.h \
     $(wildcard include/config/debug/spinlock/sleep.h) \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdarg.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdarg.h \
   include/linux/linkage.h \
   include/asm/linkage.h \
     $(wildcard include/config/regparm.h) \

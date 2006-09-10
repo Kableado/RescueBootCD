@@ -1,3 +1,5 @@
+
+
 /* ld script to make i386 Linux kernel
  * Written by Martin Mares <mj@atrey.karlin.mff.cuni.cz>;
  */
@@ -9,19 +11,11 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.10
- * Thu Aug 11 16:33:44 2005
+ * Mon Sep 11 18:53:05 2006
  */
-
-
-
-
-
-
-
 /*
  * Code maturity level options
  */
-
 
 
 
@@ -31,8 +25,6 @@
 /*
  * Loadable module support
  */
-
-
 /*
  * Processor type and features
  */
@@ -42,94 +34,54 @@
 /*
  * Power management options (ACPI, APM)
  */
-
-
 /*
  * ACPI (Advanced Configuration and Power Interface) Support
  */
-
-
-
 /*
  * CPU Frequency scaling
  */
-
-
 /*
  * Bus options (PCI, PCMCIA, EISA, MCA, ISA)
  */
 /*
  * PCCARD (PCMCIA/CardBus) support
  */
-
-
 /*
  * PC-card bridges
  */
-
-
 /*
  * PCI Hotplug Support
  */
-
-
 /*
  * Executable file formats
  */
-
-
-
-
 /*
  * Device Drivers
  */
-
 /*
  * Generic Driver Options
  */
-
-
-
-
 /*
  * Memory Technology Devices (MTD)
  */
-
-
 /*
  * Parallel port support
  */
-
-
 /*
  * Plug and Play support
  */
-
-
-
 /*
  * Protocols
  */
-
-
-
 /*
  * Block devices
  */
 /*
  * IO Schedulers
  */
-
-
-
-
-
 /*
  * ATA/ATAPI/MFM/RLL support
  */
-
-
-
 /*
  * Please see Documentation/ide.txt for help/info on IDE drives
  */
@@ -139,80 +91,45 @@
 /*
  * SCSI device support
  */
-
-
-
 /*
  * SCSI support type (disk, tape, CD-ROM)
  */
-
-
-
-
-
-
 /*
  * Some SCSI devices (e.g. CD jukebox) support multiple LUNs
  */
-
-
-
-
 /*
  * SCSI Transport Attributes
  */
-
-
-
 /*
  * SCSI low-level drivers
  */
 /*
  * Old CD-ROM drivers (not SCSI, not IDE)
  */
-
-
 /*
  * Multi-device support (RAID and LVM)
  */
-
-
 /*
  * Fusion MPT device support
  */
-
-
 /*
  * IEEE 1394 (FireWire) support
  */
-
-
 /*
  * I2O device support
  */
-
-
 /*
  * Networking support
  */
-
-
-
-
 /*
  * ISDN subsystem
  */
-
 /*
  * Telephony Support
  */
-
-
 /*
  * Input device support
  */
-
-
 /*
  * Userland interfaces
  */
@@ -225,32 +142,15 @@
 /*
  * Character devices
  */
-
-
-
-
-
 /*
  * Serial drivers
  */
-
-
-
-
-
 /*
  * Non-8250 serial port support
  */
-
-
-
-
-
 /*
  * IPMI
  */
-
-
 /*
  * Watchdog Cards
  */
@@ -260,27 +160,18 @@
 /*
  * I2C support
  */
-
-
 /*
  * Dallas's 1-wire bus
  */
-
-
 /*
  * Misc devices
  */
-
-
 /*
  * Multimedia devices
  */
-
-
 /*
  * Digital Video Broadcasting Devices
  */
-
 /*
  * Graphics support
  */
@@ -288,47 +179,26 @@
  * Console display driver support
  */
 /*
- * Logo configuration
- */
-
-
-/*
  * Sound
  */
-
-
 /*
  * USB support
  */
-
-
-
-
 /*
  * NOTE: USB_STORAGE enables SCSI, and 'SCSI disk support' may also be needed; see USB_STORAGE Help for more information
  */
-
 /*
  * USB Gadget Support
  */
-
-
 /*
  * MMC/SD Card support
  */
-
-
 /*
  * File systems
  */
 /*
  * CD-ROM/DVD Filesystems
  */
-
-
-
-
-
 /*
  * DOS/FAT/NT Filesystems
  */
@@ -341,36 +211,21 @@
 /*
  * Partition Types
  */
-
-
-
 /*
  * Native Language Support
  */
 /*
  * Profiling support
  */
-
-
 /*
  * Kernel hacking
  */
-
-
-
-
-
 /*
  * Security options
  */
-
-
-
 /*
  * Cryptographic options
  */
-
-
 /*
  * Library routines
  */
@@ -391,10 +246,6 @@
  * In prior versions of gcc, such functions and data would be emitted, but
  * would be warned about except with attribute((unused)).
  */
-
-
-
-
 /*
  * From the GCC manual:
  *
@@ -405,10 +256,6 @@
  * would be.
  * [...]
  */
-
-
-
-
 /*
  * From the GCC manual:
  *
@@ -425,8 +272,6 @@
  */
 /* PAGE_SHIFT determines the page size */
 /* to align the pointer to the (next) page boundary */
-
-
 /*
  * This handles the memory map.. We could make this a config
  * option, but too many people screw it up, and too few need
@@ -457,16 +302,7 @@
  * preempt_count needs to be 1 initially, until the scheduler is functional.
  */
 /* how to get the thread information struct from ASM */
-
-
-
-
 /* use this one if reg already contains %esp */
-
-
-
-
-
 /*
  * thread information flags
  * - these are process state flags that various assembly files may need to access
@@ -474,10 +310,6 @@
  * - other flags in MSW
  */
 /* work to do on interrupt/exception return */
-
-
-
-
 /*
  * Thread-synchronous status.
  *
@@ -485,13 +317,6 @@
  * ever touches our thread-synchronous status, so we don't
  * have to worry about atomic accesses.
  */
-
-
-
-
-
-
-
 OUTPUT_FORMAT("elf32-i386", "elf32-i386", "elf32-i386")
 OUTPUT_ARCH(i386)
 ENTRY(startup_32)
@@ -508,39 +333,29 @@ SECTIONS
  *(.fixup)
  *(.gnu.warning)
  } = 0x9090
-
   _etext = .; /* End of text section */
-
   . = ALIGN(16); /* Exception table */
   __start___ex_table = .;
   __ex_table : { *(__ex_table) }
   __stop___ex_table = .;
-
   .rodata : AT(ADDR(.rodata) - 0) { *(.rodata) *(.rodata.*) *(__vermagic) } .rodata1 : AT(ADDR(.rodata1) - 0) { *(.rodata1) } .pci_fixup : AT(ADDR(.pci_fixup) - 0) { __start_pci_fixups_early = .; *(.pci_fixup_early) __end_pci_fixups_early = .; __start_pci_fixups_header = .; *(.pci_fixup_header) __end_pci_fixups_header = .; __start_pci_fixups_final = .; *(.pci_fixup_final) __end_pci_fixups_final = .; __start_pci_fixups_enable = .; *(.pci_fixup_enable) __end_pci_fixups_enable = .; } __ksymtab : AT(ADDR(__ksymtab) - 0) { __start___ksymtab = .; *(__ksymtab) __stop___ksymtab = .; } __ksymtab_gpl : AT(ADDR(__ksymtab_gpl) - 0) { __start___ksymtab_gpl = .; *(__ksymtab_gpl) __stop___ksymtab_gpl = .; } __kcrctab : AT(ADDR(__kcrctab) - 0) { __start___kcrctab = .; *(__kcrctab) __stop___kcrctab = .; } __kcrctab_gpl : AT(ADDR(__kcrctab_gpl) - 0) { __start___kcrctab_gpl = .; *(__kcrctab_gpl) __stop___kcrctab_gpl = .; } __ksymtab_strings : AT(ADDR(__ksymtab_strings) - 0) { *(__ksymtab_strings) } __param : AT(ADDR(__param) - 0) { __start___param = .; *(__param) __stop___param = .; }
-
   /* writeable */
   .data : { /* Data */
  *(.data)
  CONSTRUCTORS
  }
-
   . = ALIGN(4096);
   __nosave_begin = .;
   .data_nosave : { *(.data.nosave) }
   . = ALIGN(4096);
   __nosave_end = .;
-
   . = ALIGN(4096);
   .data.page_aligned : { *(.data.idt) }
-
   . = ALIGN(32);
   .data.cacheline_aligned : { *(.data.cacheline_aligned) }
-
   _edata = .; /* End of data section */
-
   . = ALIGN((8192)); /* init_task */
   .data.init_task : { *(.data.init_task) }
-
   /* will be freed after init */
   . = ALIGN(4096); /* Init code and data */
   __init_begin = .;
@@ -589,7 +404,6 @@ SECTIONS
   . = ALIGN(4096);
   __init_end = .;
   /* freed after init ends here */
-
   __bss_start = .; /* BSS */
   .bss : {
  *(.bss.page_aligned)
@@ -597,18 +411,14 @@ SECTIONS
   }
   . = ALIGN(4);
   __bss_stop = .;
-
   _end = . ;
-
   /* This is where the kernel creates the early boot page tables */
   . = ALIGN(4096);
   pg0 = .;
-
   /* Sections to be discarded */
   /DISCARD/ : {
  *(.exitcall.exit)
  }
-
   /* Stabs debugging sections.  */
   .stab 0 : { *(.stab) }
   .stabstr 0 : { *(.stabstr) }

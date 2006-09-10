@@ -6,7 +6,7 @@ deps_usr/gen_init_cpio := \
   /usr/include/features.h \
   /usr/include/sys/cdefs.h \
   /usr/include/gnu/stubs.h \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stddef.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stddef.h \
   /usr/include/bits/types.h \
   /usr/include/bits/wordsize.h \
   /usr/include/bits/typesizes.h \
@@ -15,7 +15,7 @@ deps_usr/gen_init_cpio := \
   /usr/include/wchar.h \
   /usr/include/bits/wchar.h \
   /usr/include/gconv.h \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdarg.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdarg.h \
   /usr/include/bits/stdio_lim.h \
   /usr/include/bits/sys_errlist.h \
   /usr/include/bits/stdio.h \
@@ -46,11 +46,9 @@ deps_usr/gen_init_cpio := \
   /usr/include/bits/errno.h \
   /usr/include/linux/errno.h \
   /usr/include/asm/errno.h \
-  /usr/include/asm-generic/errno.h \
-  /usr/include/asm-generic/errno-base.h \
   /usr/include/ctype.h \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/limits.h \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/syslimits.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/limits.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/syslimits.h \
   /usr/include/limits.h \
   /usr/include/bits/posix1_lim.h \
   /usr/include/bits/local_lim.h \

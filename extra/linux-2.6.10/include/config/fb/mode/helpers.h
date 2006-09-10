@@ -1,1 +1,0 @@
-#undef CONFIG_FB_MODE_HELPERS

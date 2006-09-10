@@ -5,8 +5,8 @@
 
 
 # pivotar y cambiar el rootcambiar el roor
-pivot_root . .
-chroot / /bin/sh
+/sbin/pivot_root . .
+/sbin/chroot / /bin/sh
 
 
 ## desiniciar el sistema

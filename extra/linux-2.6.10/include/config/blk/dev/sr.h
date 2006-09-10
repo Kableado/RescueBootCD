@@ -1,1 +1,1 @@
-#undef CONFIG_BLK_DEV_SR
+#define CONFIG_BLK_DEV_SR 1

@@ -13,14 +13,14 @@ deps_drivers/char/rtc.o := \
     $(wildcard include/config/generic/irq/probe.h) \
   include/linux/kernel.h \
     $(wildcard include/config/debug/spinlock/sleep.h) \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdarg.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdarg.h \
   include/linux/linkage.h \
   include/asm/linkage.h \
     $(wildcard include/config/regparm.h) \
     $(wildcard include/config/x86/alignment/16.h) \
   include/linux/stddef.h \
   include/linux/compiler.h \
-  include/linux/compiler-gcc3.h \
+  include/linux/compiler-gcc+.h \
   include/linux/compiler-gcc.h \
   include/linux/types.h \
     $(wildcard include/config/uid16.h) \

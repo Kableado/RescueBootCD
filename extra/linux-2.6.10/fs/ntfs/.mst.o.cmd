@@ -5,11 +5,11 @@ deps_fs/ntfs/mst.o := \
   fs/ntfs/ntfs.h \
   include/linux/stddef.h \
   include/linux/compiler.h \
-  include/linux/compiler-gcc3.h \
+  include/linux/compiler-gcc+.h \
   include/linux/compiler-gcc.h \
   include/linux/kernel.h \
     $(wildcard include/config/debug/spinlock/sleep.h) \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdarg.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdarg.h \
   include/linux/linkage.h \
   include/linux/config.h \
     $(wildcard include/config/h.h) \

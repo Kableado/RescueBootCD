@@ -9,7 +9,7 @@ deps_drivers/char/consolemap_deftbl.o := \
   include/linux/posix_types.h \
   include/linux/stddef.h \
   include/linux/compiler.h \
-  include/linux/compiler-gcc3.h \
+  include/linux/compiler-gcc+.h \
   include/linux/compiler-gcc.h \
   include/asm/posix_types.h \
   include/asm/types.h \

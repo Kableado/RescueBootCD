@@ -19,7 +19,7 @@ deps_fs/reiserfs/ibalance.o := \
   include/asm/bitops.h \
     $(wildcard include/config/smp.h) \
   include/linux/compiler.h \
-  include/linux/compiler-gcc3.h \
+  include/linux/compiler-gcc+.h \
   include/linux/compiler-gcc.h \
   include/asm/thread_info.h \
     $(wildcard include/config/4kstacks.h) \
@@ -44,7 +44,7 @@ deps_fs/reiserfs/ibalance.o := \
     $(wildcard include/config/x86/oostore.h) \
   include/linux/kernel.h \
     $(wildcard include/config/debug/spinlock/sleep.h) \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdarg.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdarg.h \
   include/linux/linkage.h \
   include/asm/linkage.h \
     $(wildcard include/config/regparm.h) \

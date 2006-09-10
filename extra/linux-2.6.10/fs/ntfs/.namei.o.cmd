@@ -9,7 +9,7 @@ deps_fs/ntfs/namei.o := \
   include/linux/config.h \
     $(wildcard include/config/h.h) \
   include/linux/compiler.h \
-  include/linux/compiler-gcc3.h \
+  include/linux/compiler-gcc+.h \
   include/linux/compiler-gcc.h \
   include/asm/processor.h \
     $(wildcard include/config/mk8.h) \
@@ -36,7 +36,7 @@ deps_fs/ntfs/namei.o := \
     $(wildcard include/config/x86/oostore.h) \
   include/linux/kernel.h \
     $(wildcard include/config/debug/spinlock/sleep.h) \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdarg.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdarg.h \
   include/linux/linkage.h \
   include/asm/linkage.h \
     $(wildcard include/config/regparm.h) \

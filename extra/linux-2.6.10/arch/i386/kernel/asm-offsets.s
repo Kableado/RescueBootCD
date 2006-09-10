@@ -74,5 +74,5 @@ foo:
 #NO_APP
 	ret
 	.size	foo, .-foo
+	.ident	"GCC: (GNU) 4.0.3"
 	.section	.note.GNU-stack,"",@progbits
-	.ident	"GCC: (GNU) 3.4.1"

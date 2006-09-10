@@ -1,8 +1,8 @@
-/* This file is auto generated, version 3 */
+/* This file is auto generated, version 1 */
 #define UTS_MACHINE "i386"
-#define UTS_VERSION "#3 Sun Aug 14 01:09:14 CEST 2005"
-#define LINUX_COMPILE_TIME "01:09:14"
-#define LINUX_COMPILE_BY "kable"
-#define LINUX_COMPILE_HOST "whitestar"
+#define UTS_VERSION "#1 Mon Sep 11 18:55:47 CEST 2006"
+#define LINUX_COMPILE_TIME "18:55:47"
+#define LINUX_COMPILE_BY "root"
+#define LINUX_COMPILE_HOST "darkstar"
 #define LINUX_COMPILE_DOMAIN ""
-#define LINUX_COMPILER "gcc versión 3.4.1"
+#define LINUX_COMPILER "gcc versión 4.0.3"

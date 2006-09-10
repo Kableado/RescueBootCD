@@ -9,7 +9,7 @@ deps_scripts/basic/split-include := \
   /usr/include/gnu/stubs.h \
   /usr/include/bits/types.h \
   /usr/include/bits/wordsize.h \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stddef.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stddef.h \
   /usr/include/bits/typesizes.h \
   /usr/include/time.h \
   /usr/include/bits/stat.h \
@@ -27,8 +27,6 @@ deps_scripts/basic/split-include := \
   /usr/include/bits/errno.h \
   /usr/include/linux/errno.h \
   /usr/include/asm/errno.h \
-  /usr/include/asm-generic/errno.h \
-  /usr/include/asm-generic/errno-base.h \
   /usr/include/fcntl.h \
   /usr/include/bits/fcntl.h \
   /usr/include/stdio.h \
@@ -37,7 +35,7 @@ deps_scripts/basic/split-include := \
   /usr/include/wchar.h \
   /usr/include/bits/wchar.h \
   /usr/include/gconv.h \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdarg.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdarg.h \
   /usr/include/bits/stdio_lim.h \
   /usr/include/bits/sys_errlist.h \
   /usr/include/bits/stdio.h \

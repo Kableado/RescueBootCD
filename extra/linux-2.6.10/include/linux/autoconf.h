@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.10
- * Sun Aug 14 01:08:59 2005
+ * Mon Sep 11 18:53:05 2006
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_X86 1
@@ -308,11 +308,12 @@
 /*
  * SCSI support type (disk, tape, CD-ROM)
  */
-#undef CONFIG_BLK_DEV_SD
+#define CONFIG_BLK_DEV_SD 1
 #undef CONFIG_CHR_DEV_ST
 #undef CONFIG_CHR_DEV_OSST
-#undef CONFIG_BLK_DEV_SR
-#undef CONFIG_CHR_DEV_SG
+#define CONFIG_BLK_DEV_SR 1
+#undef CONFIG_BLK_DEV_SR_VENDOR
+#define CONFIG_CHR_DEV_SG 1
 
 /*
  * Some SCSI devices (e.g. CD jukebox) support multiple LUNs
@@ -344,7 +345,18 @@
 #undef CONFIG_SCSI_IN2000
 #undef CONFIG_MEGARAID_NEWGEN
 #undef CONFIG_MEGARAID_LEGACY
-#undef CONFIG_SCSI_SATA
+#define CONFIG_SCSI_SATA 1
+#undef CONFIG_SCSI_SATA_AHCI
+#undef CONFIG_SCSI_SATA_SVW
+#undef CONFIG_SCSI_ATA_PIIX
+#undef CONFIG_SCSI_SATA_NV
+#undef CONFIG_SCSI_SATA_PROMISE
+#undef CONFIG_SCSI_SATA_SX4
+#undef CONFIG_SCSI_SATA_SIL
+#undef CONFIG_SCSI_SATA_SIS
+#undef CONFIG_SCSI_SATA_ULI
+#undef CONFIG_SCSI_SATA_VIA
+#undef CONFIG_SCSI_SATA_VITESSE
 #undef CONFIG_SCSI_BUSLOGIC
 #undef CONFIG_SCSI_DMX3191D
 #undef CONFIG_SCSI_DTC3280
@@ -550,34 +562,8 @@
 /*
  * Graphics support
  */
-#define CONFIG_FB 1
-#undef CONFIG_FB_MODE_HELPERS
-#undef CONFIG_FB_TILEBLITTING
-#undef CONFIG_FB_CIRRUS
-#undef CONFIG_FB_PM2
-#undef CONFIG_FB_CYBER2000
-#undef CONFIG_FB_ASILIANT
-#undef CONFIG_FB_IMSTT
-#undef CONFIG_FB_VGA16
-#define CONFIG_FB_VESA 1
+#undef CONFIG_FB
 #define CONFIG_VIDEO_SELECT 1
-#undef CONFIG_FB_HGA
-#undef CONFIG_FB_RIVA
-#undef CONFIG_FB_I810
-#undef CONFIG_FB_INTEL
-#undef CONFIG_FB_MATROX
-#undef CONFIG_FB_RADEON_OLD
-#undef CONFIG_FB_RADEON
-#undef CONFIG_FB_ATY128
-#undef CONFIG_FB_ATY
-#undef CONFIG_FB_SAVAGE
-#undef CONFIG_FB_SIS
-#undef CONFIG_FB_NEOMAGIC
-#undef CONFIG_FB_KYRO
-#undef CONFIG_FB_3DFX
-#undef CONFIG_FB_VOODOO1
-#undef CONFIG_FB_TRIDENT
-#undef CONFIG_FB_VIRTUAL
 
 /*
  * Console display driver support
@@ -585,21 +571,6 @@
 #define CONFIG_VGA_CONSOLE 1
 #undef CONFIG_MDA_CONSOLE
 #define CONFIG_DUMMY_CONSOLE 1
-#define CONFIG_FRAMEBUFFER_CONSOLE 1
-#define CONFIG_FONTS 1
-#undef CONFIG_FONT_8x8
-#define CONFIG_FONT_8x16 1
-#undef CONFIG_FONT_6x11
-#undef CONFIG_FONT_PEARL_8x8
-#undef CONFIG_FONT_ACORN_8x8
-#undef CONFIG_FONT_MINI_4x6
-#undef CONFIG_FONT_SUN8x16
-#undef CONFIG_FONT_SUN12x22
-
-/*
- * Logo configuration
- */
-#undef CONFIG_LOGO
 
 /*
  * Sound

@@ -1,11 +1,10 @@
+
+
 /*
  * Linker script for vsyscall DSO.  The vsyscall page is an ELF shared
  * object prelinked to its virtual address, and with only one read-only
  * segment (that fits in one page).  This script controls its layout.
  */
-
-
-
 /*
  * DO NOT MODIFY.
  *
@@ -15,22 +14,18 @@
 SECTIONS
 {
   . = -8192 + SIZEOF_HEADERS;
-
   .hash : { *(.hash) } :text
   .dynsym : { *(.dynsym) }
   .dynstr : { *(.dynstr) }
   .gnu.version : { *(.gnu.version) }
   .gnu.version_d : { *(.gnu.version_d) }
   .gnu.version_r : { *(.gnu.version_r) }
-
   /* This linker script is used both with -r and with -shared.
      For the layouts to match, we need to skip more than enough
      space for the dynamic symbol table et al.  If this amount
      is insufficient, ld -shared will barf.  Just increase it here.  */
   . = -8192 + 0x400;
-
   .text : { *(.text) } :text =0x90909090
-
   .eh_frame_hdr : { *(.eh_frame_hdr) } :text :eh_frame_hdr
   .eh_frame : { KEEP (*(.eh_frame)) } :text
   .dynamic : { *(.dynamic) } :text :dynamic

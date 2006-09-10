@@ -9,7 +9,7 @@ deps_arch/i386/kernel/cpu/mtrr/if.o := \
   include/linux/config.h \
     $(wildcard include/config/h.h) \
   include/linux/compiler.h \
-  include/linux/compiler-gcc3.h \
+  include/linux/compiler-gcc+.h \
   include/linux/compiler-gcc.h \
   include/linux/proc_fs.h \
     $(wildcard include/config/proc/devicetree.h) \
@@ -59,7 +59,7 @@ deps_arch/i386/kernel/cpu/mtrr/if.o := \
     $(wildcard include/config/x86/oostore.h) \
   include/linux/kernel.h \
     $(wildcard include/config/debug/spinlock/sleep.h) \
-  /usr/lib/gcc/i686-pc-linux-gnu/3.4.1/include/stdarg.h \
+  /usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/stdarg.h \
   include/linux/stddef.h \
   include/linux/types.h \
     $(wildcard include/config/uid16.h) \
