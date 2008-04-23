@@ -2,10 +2,12 @@
 
 
 
-
-mkisofs -o bootcd.iso -b boot/isolinux/isolinux.bin -c boot/isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table CD 
-
+build_all.sh
 
 
 
 cdrecord dev=ATA:1,0,0 driveropts=burnfree blank=fast -eject -v bootcd.iso
+
+
+growisofs -dvd-compat -Z /dev/sr0=bootcd.iso
+

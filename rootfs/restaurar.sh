@@ -1,10 +1,10 @@
 #!/bin/sh
 
-mount_cd () 
+mount_cd ()
 {
-    for i in /dev/cdroms/*; 
+    for i in /dev/cdroms/*;
     do
-	if mount -t iso9660 $i /mnt/cdrom; 
+	if mount -t iso9660 $i /mnt/cdrom;
 	then
     	    if test -f /mnt/cdrom/bootcd
 	    then
@@ -28,10 +28,10 @@ retval=$?
 if test $retval -eq 0 ; then
   # restaurar
   echo "Restaurar."
-  partimage -b restore /dev/scsi/host0/bus0/target0/lun0/part1 /mnt/cdrom/winxp.000
-  partimage -b restmbr /mnt/cdrom/winxp.000
+  partimage -b restore /dev/ide/host0/bus0/target0/lun0/part1 /mnt/cdrom/acer.000
+  partimage -b restmbr /mnt/cdrom/acer.000
 
-  # desmontar 
+  # desmontar
   umount /mnt/cdrom
 else
   echo "No se encuentra el CD"
